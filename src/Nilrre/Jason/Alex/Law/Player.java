@@ -2,18 +2,15 @@ package Nilrre.Jason.Alex.Law;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Player {
-	private static String piece;
-	private String playerNumber;
+	private String piece;
 	
-	public static void setPlayerNUmber(Player name, int number){
-		String Number = Integer.toString(number);
-		name.playerNumber = Number;
-	}
+	
 
-	public static String getPiece(Player piece){
-		return Player.piece;
+	public static String getPiece(Player pieceFinder){
+		return pieceFinder.piece;
 	}
 
 	public static void setPiece(Player newPiece) throws IOException {
@@ -23,18 +20,20 @@ public class Player {
 		}
 		System.out.println("");
 		int Selection = ConsoleUI.promptForInt("What piece would you like?", 1, pieces.size());
-		Player.piece = pieces.get(Selection - 1);
+		newPiece.piece = pieces.get(Selection - 1);
 	}
 
-	public void buyBoardPiece() {
-
-	}
-
-	public static void roll() {
+	public static void buyBoardPiece() {
 
 	}
 
-	public void buyHousesOrHotel() {
+	public static int roll() {
+		Random gen = new Random();
+		int movement = (gen.nextInt(11) + 2);
+		return movement;
+	}
+
+	public static void buyHousesOrHotel() {
 
 	}
 
