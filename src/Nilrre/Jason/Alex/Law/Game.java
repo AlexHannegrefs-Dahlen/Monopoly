@@ -12,9 +12,11 @@ public class Game {
 	private static final Player six = new Player();
 	private static final Player seven = new Player();
 	private static final Player eight = new Player();
+	
+	static int amountOfPlayers;
 
 	public static void RunGame() throws IOException {
-		int amountOfPlayers = ConsoleUI.promptForInt("How many players?", 2, 8);
+		amountOfPlayers = ConsoleUI.promptForInt("How many players?", 2, 8);
 
 		for (int i = 1; i <= amountOfPlayers; i++) {
 			makePlayer(i);
@@ -57,13 +59,11 @@ public class Game {
 		String[] options = new String[] { "1: Roll", "2: Buy Houses or Hotels", "3: Trade with another Player" };
 		int turnSelect = ConsoleUI.promptForMenuSelection(options, false);
 		if (turnSelect == 1) {
-			int move = 0;
-			move = Player.roll();
-			System.out.println(Player.getPiece(play) + " moves " + move + " spaces.");
+			Player.roll(play);
 		} else if (turnSelect == 2) {
-			Player.buyHousesOrHotel();
+			Player.buyHousesOrHotel(play);
 		} else if (turnSelect == 3) {
-			Trade.askForTradeOption();
+			Player.trade(play);
 		}
 	}
 }

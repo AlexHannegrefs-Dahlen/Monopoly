@@ -10,6 +10,7 @@ public class Player {
 	private int jailCard;
 	private ArrayList<String> land;
 	private boardspace spaceCurrentlyOn;
+	
 
 	public static void SetSpaceCurrentlyOn(Player space, boardspace spotOnBoard){
 		space.spaceCurrentlyOn = spotOnBoard;
@@ -99,6 +100,10 @@ public class Player {
 
 	public static void buyHousesOrHotel(boardspace property) {
 
+	}
+	
+	public static void trade(Player trading){
+		Trade.whatPlayerToTradeWith();
 	}
 
 }
