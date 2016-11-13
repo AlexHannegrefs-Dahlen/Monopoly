@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Player {
-	private String piece;
+	private GamePieces piece;
 	private int money;
 	private int jailCard;
 	private ArrayList<String> land;
@@ -44,18 +44,25 @@ public class Player {
 		moneyVal.money = 1500;
 	}
 
-	public static String getPiece(Player pieceFinder) {
+	public static GamePieces getPiece(Player pieceFinder) {
 		return pieceFinder.piece;
 	}
 
 	public static void setPiece(Player newPiece) throws IOException {
-		ArrayList<String> pieces = GamePieces.theseAreGamePieces();
+		boolean pieceAlreadyTaken;
+		do{
+		ArrayList<GamePieces> pieces = GamePieces.theseAreGamePieces();
 		for (int i = 0; i < pieces.size(); i++) {
 			System.out.print(i + 1 + ": " + pieces.get(i) + " ");
 		}
 		System.out.println("");
 		int Selection = ConsoleUI.promptForInt("What piece would you like?", 1, pieces.size());
 		newPiece.piece = pieces.get(Selection - 1);
+		pieceAlreadyTaken = GamePieces.checkIfTaken(newPiece.piece);
+		if(pieceAlreadyTaken){
+			System.out.println("Sorry. Piece Already Taken");
+		}
+		}while(pieceAlreadyTaken);
 	}
 
 	public static void roll(Player rolling) {
@@ -86,7 +93,12 @@ public class Player {
 	
 	public static void makeMovement(int dieOne, int dieTwo, Player moving){
 		int movement = dieOne + dieTwo;
+		try{
 		moving.spaceCurrentlyOn = moving.spaceCurrentlyOn + movement;
+		} catch (ArrayIndexOutOfBoundsException EndOfBoard) {
+			//player moved past boardwalk
+		}
+		
 	}
 
 	public static boolean checkForDoubles(int dieOne, int dieTwo) {
