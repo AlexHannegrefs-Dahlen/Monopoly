@@ -9,13 +9,34 @@ public class Player {
 	private int money;
 	private int jailCard;
 	private ArrayList<boardspace> land;
+	private boolean GetOutOfJailChance = false;
+	private boolean GetOutOfJailChest = false;
 	private boardspace spaceCurrentlyOn;
 	
-
-	public static void SetSpaceCurrentlyOn(Player space, boardspace spotOnBoard){
-		space.spaceCurrentlyOn = spotOnBoard;
+	public static void setGetOutOfJailChance(Player JailChance, boolean haveCard){
+		JailChance.GetOutOfJailChance = haveCard;
+		
 	}
 	
+	public static boolean getGetOutOfJailChance(Player JailChance){
+		return JailChance.GetOutOfJailChance;
+		
+	}
+	
+	public static boolean getGetOutOfJailChest(Player JailChest){
+		return JailChest.GetOutOfJailChance;
+		
+	}
+	
+	public static void setGetOutOfJailChest(Player JailChest, boolean haveCard){
+		JailChest.GetOutOfJailChance = haveCard;
+		
+	}
+
+	public static void setSpaceCurrentlyOn(Player space, boardspace spotOnBoard) {
+		space.spaceCurrentlyOn = spotOnBoard;
+	}
+
 	public static void removeLand(Player land, boardspace property) {
 		land.land.remove(property);
 	}
@@ -50,38 +71,37 @@ public class Player {
 
 	public static void setPiece(Player newPiece) throws IOException {
 		boolean pieceAlreadyTaken;
-		do{
-		ArrayList<GamePieces> pieces = GamePieces.theseAreGamePieces();
-		for (int i = 0; i < pieces.size(); i++) {
-			System.out.print(i + 1 + ": " + pieces.get(i) + " ");
-		}
-		System.out.println("");
-		int Selection = ConsoleUI.promptForInt("What piece would you like?", 1, pieces.size());
-		newPiece.piece = pieces.get(Selection - 1);
-		pieceAlreadyTaken = GamePieces.checkIfTaken(newPiece.piece);
-		if(pieceAlreadyTaken){
-			System.out.println("Sorry. Piece Already Taken");
-		}
-		}while(pieceAlreadyTaken);
+		do {
+			ArrayList<GamePieces> pieces = GamePieces.theseAreGamePieces();
+			for (int i = 0; i < pieces.size(); i++) {
+				System.out.print(i + 1 + ": " + pieces.get(i) + " ");
+			}
+			System.out.println("");
+			int Selection = ConsoleUI.promptForInt("What piece would you like?", 1, pieces.size());
+			newPiece.piece = pieces.get(Selection - 1);
+			pieceAlreadyTaken = GamePieces.checkIfTaken(newPiece.piece);
+			if (pieceAlreadyTaken) {
+				System.out.println("Sorry. Piece Already Taken");
+			}
+		} while (pieceAlreadyTaken);
 	}
 
 	public static void roll(Player rolling) {
 		Random gen = new Random();
 		int dieOne = (gen.nextInt(11) + 2);
 		int dieTwo = (gen.nextInt(11) + 2);
-		if(rolling.spaceCurrentlyOn == boardspace.inJail){
+		if (rolling.spaceCurrentlyOn == boardspace.inJail) {
 			boolean doubles = checkForDoubles(dieOne, dieTwo);
-			if(doubles){
+			if (doubles) {
 				rolling.spaceCurrentlyOn = boardspace.visitingJail;
 				makeMovement(dieOne, dieTwo, rolling);
 			}
-		}
-		else{
+		} else {
 			int doublesCounter;
 			boolean doubles = checkForDoubles(dieOne, dieTwo);
-			if (doubles){
+			if (doubles) {
 				doublesCounter++;
-				if(doublesCounter == 3){
+				if (doublesCounter == 3) {
 					rolling.spaceCurrentlyOn = boardspace.inJail;
 					System.out.println("You went to jail for rolling doubles three times in a row");
 					return;
@@ -90,15 +110,15 @@ public class Player {
 			}
 		}
 	}
-	
-	public static void makeMovement(int dieOne, int dieTwo, Player moving){
+
+	public static void makeMovement(int dieOne, int dieTwo, Player moving) {
 		int movement = dieOne + dieTwo;
-		try{
-		moving.spaceCurrentlyOn = moving.spaceCurrentlyOn + movement;
+		try {
+			moving.spaceCurrentlyOn = moving.spaceCurrentlyOn + movement;
 		} catch (ArrayIndexOutOfBoundsException EndOfBoard) {
-			//player moved past boardwalk
+			// player moved past boardwalk
 		}
-		
+
 	}
 
 	public static boolean checkForDoubles(int dieOne, int dieTwo) {
@@ -113,8 +133,8 @@ public class Player {
 	public static void buyHousesOrHotel(boardspace property) {
 
 	}
-	
-	public static void trade(Player trading){
+
+	public static void trade(Player trading) {
 		Trade.whatPlayerToTradeWith();
 	}
 
