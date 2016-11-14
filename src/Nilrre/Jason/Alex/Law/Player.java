@@ -8,7 +8,7 @@ public class Player {
 	private GamePieces piece;
 	private int money;
 	private int jailCard;
-	private ArrayList<String> land;
+	private ArrayList<boardspace> land;
 	private boardspace spaceCurrentlyOn;
 	
 
