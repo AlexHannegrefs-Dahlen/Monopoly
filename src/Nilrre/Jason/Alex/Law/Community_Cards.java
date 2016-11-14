@@ -6,10 +6,6 @@ import java.util.Random;
 
 public class Community_Cards {
 
-	public static void main(String[] args) {
-
-	}
-
 	public static int communityCards() {
 		ArrayList <String> comCards = new ArrayList <String>();
 		comCards.add("Advance to go");
