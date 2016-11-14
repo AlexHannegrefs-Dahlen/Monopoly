@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class GamePieces {
 	private boolean taken;
 	private static GamePieces Thimble;
-	
 	private static GamePieces Wheel_Barrow;
 	private static GamePieces Boot;
 	private static GamePieces Dog;

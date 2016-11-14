@@ -7,11 +7,16 @@ public class Trade {
 		
 	}
 	
+<<<<<<< HEAD
 	//Spaced everything out to make it easier to read
 	public static void askForTradeOption() throws IOException {
 
 		String[] selection = new String[] { "No Trade", "Trade", "Wage" };
 
+=======
+	public static void askForTradeOption() throws IOException{
+		String[] selection = new String[]{"Wager", "Accept", "Decline", "Modify"};
+>>>>>>> be034e4aabe863195dd80295b431359ea076b0ed
 		int menuSelect = ConsoleUI.promptForMenuSelection(selection, false);
 
 		if (menuSelect == 1) {
