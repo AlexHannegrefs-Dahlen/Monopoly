@@ -1,14 +1,30 @@
 package Nilrre.Jason.Alex.Law;
 
 public class BoardSpaces {
-
-	private static BoardSpaces BoardSpaces;
+	private enum SpaceType {
+		Property,
+		Jail,
+		Go, 
+		FreeParking,
+		GoToJail,
+		CardDraw,
+		Tax
+	}
+	
+	
+	private SpaceType type;
 	private String name;
 	private String color;
 	private int rent;
 	private int morgageValue;
-	private int[] housePrice;
+	private int housePrice;
 	private boolean isAvailable;
+	
+	public void LandOnSpace(BoardSpaces space){
+		if(space.type == SpaceType.Jail){
+			
+		}
+	}
 
 	public String getName() {
 		return name;
@@ -18,64 +34,45 @@ public class BoardSpaces {
 		return color;
 	}
 
-	public int getRent() {
-		return rent;
+	public int getRent(BoardSpaces space) {
+		return space.rent;
 	}
 
-	public int getMorgageValue() {
-		return morgageValue;
+	public int getMorgageValue(BoardSpaces space) {
+		return space.morgageValue;
 	}
 
-	public int[] getHousePrice() {
-		return housePrice;
+	public int getHousePrice(BoardSpaces space) {
+		return space.housePrice;
 	}
 
-	public boolean getIsAvailable() {
-		return isAvailable;
+	public boolean getIsAvailable(BoardSpaces space) {
+		return space.isAvailable;
 	}
 
-	public void setName(String newName) {
-		name = newName;
+	public void setName(String newName, BoardSpaces space) {
+		space.name = newName;
 	}
 
-	public void setColor(String newColor) {
-		color = newColor;
+	public void setColor(String newColor, BoardSpaces space) {
+		space.color = newColor;
 	}
 
-	public void setRent(int newRent) {
-		rent = newRent;
+	public void setRent(int newRent, BoardSpaces space) {
+		space.rent = newRent;
 	}
 
-	public void setMorgageValue(int newMorgage) {
-		morgageValue = newMorgage;
+	public void setMorgageValue(int newMorgage, BoardSpaces space) {
+		space.morgageValue = newMorgage;
 	}
 	
-	public void setHousePrice(int[] newHouse) {
-		housePrice = newHouse;
+	public void setHousePrice(int newHouse, BoardSpaces space) {
+		space.housePrice = newHouse;
 	}
 	
-	public void setIsAvailable(boolean available) {
-		isAvailable = available;
+	public void setIsAvailable(boolean available, BoardSpaces space) {
+		space.isAvailable = available;
 	}
 
-	public BoardSpaces getboardSpace(){
-		getColor();
-		getName();
-		getIsAvailable();
-		getRent();
-		getHousePrice();
-		getMorgageValue();
-		return BoardSpaces;
-	}
-	
-	
-	public BoardSpaces setboardSpace(String color, String Name, boolean isAvailable, int rent, int morgageValue){
-		setColor(color);
-		setName(name);
-		setIsAvailable(isAvailable);
-		setRent(rent);
-		setHousePrice(housePrice);
-		setMorgageValue(morgageValue);
-		return BoardSpaces;
-	}
+
 }
