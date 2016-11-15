@@ -11,7 +11,7 @@ public class Player {
 	private ArrayList<BoardSpaces> land;
 	private boolean GetOutOfJailChance = false;
 	private boolean GetOutOfJailChest = false;
-	private BoardSpaces spaceCurrentlyOn;
+	private int spaceCurrentlyOn;
 	
 	public static void setGetOutOfJailChance(Player JailChance, boolean haveCard){
 		JailChance.GetOutOfJailChance = haveCard;
@@ -33,7 +33,7 @@ public class Player {
 		
 	}
 
-	public static void setSpaceCurrentlyOn(Player space, BoardSpaces spotOnBoard) {
+	public static void setSpaceCurrentlyOn(Player space, BoardSpaces[][] spotOnBoard) {
 		space.spaceCurrentlyOn = spotOnBoard;
 	}
 
@@ -112,16 +112,14 @@ public class Player {
 	}
 
 	public static void makeMovement(int dieOne, int dieTwo, Player moving) {
-		int movement = dieOne + dieTwo;
-		try {
-			moving.spaceCurrentlyOn = (moving.spaceCurrentlyOn + movement);
-		} catch (ArrayIndexOutOfBoundsException EndOfBoard) {
-			// player moved past boardwalk
+		int movement = dieOne + dieTwo;	
+		if((moving.spaceCurrentlyOn =+ movement) > 40){
+			moving.spaceCurrentlyOn =- 40;
 		}
-
+		
 	}
 
-	public static boolean checkForDoubles(int dieOne, int dieTwo) {
+	private static boolean checkForDoubles(int dieOne, int dieTwo) {
 		boolean rolledDoubles = false;
 
 		if (dieOne == dieTwo) {
@@ -130,7 +128,7 @@ public class Player {
 		return rolledDoubles;
 	}
 
-	public static void buyHousesOrHotel(boardspace property) {
+	public static void buyHousesOrHotel(BoardSpaces property) {
 
 	}
 
