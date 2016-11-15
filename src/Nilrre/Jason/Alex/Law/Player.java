@@ -8,10 +8,10 @@ public class Player {
 	private GamePieces piece;
 	private int money;
 	private int jailCard;
-	private ArrayList<boardspace> land;
+	private ArrayList<BoardSpaces> land;
 	private boolean GetOutOfJailChance = false;
 	private boolean GetOutOfJailChest = false;
-	private boardspace spaceCurrentlyOn;
+	private BoardSpaces spaceCurrentlyOn;
 	
 	public static void setGetOutOfJailChance(Player JailChance, boolean haveCard){
 		JailChance.GetOutOfJailChance = haveCard;
@@ -24,24 +24,24 @@ public class Player {
 	}
 	
 	public static boolean getGetOutOfJailChest(Player JailChest){
-		return JailChest.GetOutOfJailChance;
+		return JailChest.GetOutOfJailChest;
 		
 	}
 	
 	public static void setGetOutOfJailChest(Player JailChest, boolean haveCard){
-		JailChest.GetOutOfJailChance = haveCard;
+		JailChest.GetOutOfJailChest = haveCard;
 		
 	}
 
-	public static void setSpaceCurrentlyOn(Player space, boardspace spotOnBoard) {
+	public static void setSpaceCurrentlyOn(Player space, BoardSpaces spotOnBoard) {
 		space.spaceCurrentlyOn = spotOnBoard;
 	}
 
-	public static void removeLand(Player land, boardspace property) {
+	public static void removeLand(Player land, BoardSpaces property) {
 		land.land.remove(property);
 	}
 
-	public static void buyLand(Player land, boardspace property) {
+	public static void buyLand(Player land, BoardSpaces property) {
 		land.land.add(property);
 	}
 
@@ -90,10 +90,10 @@ public class Player {
 		Random gen = new Random();
 		int dieOne = (gen.nextInt(11) + 2);
 		int dieTwo = (gen.nextInt(11) + 2);
-		if (rolling.spaceCurrentlyOn == boardspace.inJail) {
+		if (rolling.spaceCurrentlyOn == BoardSpaces.inJail) {
 			boolean doubles = checkForDoubles(dieOne, dieTwo);
 			if (doubles) {
-				rolling.spaceCurrentlyOn = boardspace.visitingJail;
+				rolling.spaceCurrentlyOn = BoardSpaces.visitingJail;
 				makeMovement(dieOne, dieTwo, rolling);
 			}
 		} else {
@@ -102,7 +102,7 @@ public class Player {
 			if (doubles) {
 				doublesCounter++;
 				if (doublesCounter == 3) {
-					rolling.spaceCurrentlyOn = boardspace.inJail;
+					rolling.spaceCurrentlyOn = BoardSpaces.inJail;
 					System.out.println("You went to jail for rolling doubles three times in a row");
 					return;
 				}
@@ -114,7 +114,7 @@ public class Player {
 	public static void makeMovement(int dieOne, int dieTwo, Player moving) {
 		int movement = dieOne + dieTwo;
 		try {
-			moving.spaceCurrentlyOn = moving.spaceCurrentlyOn + movement;
+			moving.spaceCurrentlyOn = (moving.spaceCurrentlyOn + movement);
 		} catch (ArrayIndexOutOfBoundsException EndOfBoard) {
 			// player moved past boardwalk
 		}
