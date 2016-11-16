@@ -1,20 +1,36 @@
 package Nilrre.Jason.Alex.Law;
 
 public class BoardSpaces {
-	private enum SpaceType {
+	enum SpaceType {
 		Property,
 		Jail,
 		Go, 
 		FreeParking,
 		GoToJail,
 		CardDraw,
-		Tax
+		Tax,
+		Utilities,
+		Nothing
+	}
+	
+	enum SpaceColor {
+		Blank,
+		Purple,
+		Silver,
+		Pink,
+		Orange,
+		Red,
+		Yellow,
+		Green,
+		Blue,
+		Railroad,
+		Utilities
 	}
 	
 	
 	private SpaceType type;
 	private String name;
-	private String color;
+	private SpaceColor color;
 	private int rent;
 	private int morgageValue;
 	private int housePrice;
@@ -24,55 +40,80 @@ public class BoardSpaces {
 		if(space.type == SpaceType.Jail){
 			
 		}
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public String getColor() {
-		return color;
-	}
-
-	public int getRent(BoardSpaces space) {
-		return space.rent;
-	}
-
-	public int getMorgageValue(BoardSpaces space) {
-		return space.morgageValue;
-	}
-
-	public int getHousePrice(BoardSpaces space) {
-		return space.housePrice;
-	}
-
-	public boolean getIsAvailable(BoardSpaces space) {
-		return space.isAvailable;
-	}
-
-	public void setName(String newName, BoardSpaces space) {
-		space.name = newName;
-	}
-
-	public void setColor(String newColor, BoardSpaces space) {
-		space.color = newColor;
-	}
-
-	public void setRent(int newRent, BoardSpaces space) {
-		space.rent = newRent;
-	}
-
-	public void setMorgageValue(int newMorgage, BoardSpaces space) {
-		space.morgageValue = newMorgage;
+		else if (space.type == SpaceType.Property){
+			
+		}
+		
 	}
 	
-	public void setHousePrice(int newHouse, BoardSpaces space) {
-		space.housePrice = newHouse;
+//	public void setType(BoardSpaces space, BoardSpaces.SpaceType Type){
+//		space.type = Type;
+//	}
+//	
+//	public SpaceType getType(BoardSpaces space, BoardSpaces.SpaceType Type){
+//		return space.type;
+//	}
+//
+//	public String getName() {
+//		return name;
+//	}
+//
+//	public SpaceColor getColor() {
+//		return color;
+//	}
+//
+//	public int getRent(BoardSpaces space) {
+//		return space.rent;
+//	}
+//
+//	public int getMorgageValue(BoardSpaces space) {
+//		return space.morgageValue;
+//	}
+//
+//	public int getHousePrice(BoardSpaces space) {
+//		return space.housePrice;
+//	}
+//
+//	public boolean getIsAvailable(BoardSpaces space) {
+//		return space.isAvailable;
+//	}
+//
+//	public void setName(String newName, BoardSpaces space) {
+//		space.name = newName;
+//	}
+//
+//	public void setColor(SpaceColor newColor, BoardSpaces space) {
+//		space.color = newColor;
+//	}
+//
+//	public void setRent(int newRent, BoardSpaces space) {
+//		space.rent = newRent;
+//	}
+//
+//	public void setMorgageValue(int newMorgage, BoardSpaces space) {
+//		space.morgageValue = newMorgage;
+//	}
+//	
+//	public void setHousePrice(int newHouse, BoardSpaces space) {
+//		space.housePrice = newHouse;
+//	}
+//	
+//	public void setIsAvailable(boolean available, BoardSpaces space) {
+//		space.isAvailable = available;
+//	}
+	
+	public void makeSpace(BoardSpaces space, SpaceColor color, String name, int rent, int morgage, int housePrice, boolean isAvail, SpaceType Type){
+		space.isAvailable = isAvail;
+		space.color = color;
+		space.name = name;
+		space.rent = rent;
+		space.morgageValue = morgage;
+		space.housePrice = housePrice;
+		space.type = Type;
 	}
 	
-	public void setIsAvailable(boolean available, BoardSpaces space) {
-		space.isAvailable = available;
+	public void makeSpaceBlank(BoardSpaces space, SpaceType Type){
+		space.type = Type;
 	}
-
 
 }
