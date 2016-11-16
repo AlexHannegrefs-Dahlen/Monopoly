@@ -16,6 +16,7 @@ public class Game {
 	static int amountOfPlayers;
 
 	public static void RunGame() throws IOException {
+		GamePieces.makeGamePieces();
 		amountOfPlayers = ConsoleUI.promptForInt("How many players?", 2, 8);
 
 		for (int i = 1; i <= amountOfPlayers; i++) {
@@ -27,6 +28,18 @@ public class Game {
 				turn(one);
 			} else if (i == 2) {
 				turn(two);
+			} else if (i == 3){
+				turn(three);
+			} else if (i == 4){
+				turn(four);
+			} else if (i == 5){
+				turn(five);
+			} else if (i == 6){
+				turn(six);
+			} else if (i == 7){
+				turn(seven);
+			} else if (i == 8){
+				turn(eight);
 			}
 		}
 
@@ -36,10 +49,8 @@ public class Game {
 		System.out.println("Player " + playerNumber);
 		if (playerNumber == 1) {
 			Player.setPiece(one);
-			System.out.println(Player.getPiece(one));
 		} else if (playerNumber == 2) {
 			Player.setPiece(two);
-			System.out.println(Player.getPiece(two));
 		} else if (playerNumber == 3) {
 			Player.setPiece(three);
 		} else if (playerNumber == 4) {
@@ -61,7 +72,7 @@ public class Game {
 		if (turnSelect == 1) {
 			Player.roll(play);
 		} else if (turnSelect == 2) {
-			Player.buyHousesOrHotel(play);
+			//buy houses
 		} else if (turnSelect == 3) {
 			Player.trade(play);
 		}

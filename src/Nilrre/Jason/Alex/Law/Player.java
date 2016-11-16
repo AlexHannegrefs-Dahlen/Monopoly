@@ -46,6 +46,10 @@ public class Player {
 	public static void setSpaceCurrentlyOn(Player space, int spotOnBoard) {
 		space.spaceCurrentlyOn = spotOnBoard;
 	}
+	
+	public static int getSpaceCurrentlyOn(Player space) {
+		return space.spaceCurrentlyOn;
+	}
 
 	public static void removeLand(Player land, BoardSpaces property) {
 		land.land.remove(property);
@@ -82,13 +86,13 @@ public class Player {
 	public static void setPiece(Player newPiece) throws IOException {
 		boolean pieceAlreadyTaken;
 		do {
-			ArrayList<GamePieces> pieces = GamePieces.theseAreGamePieces();
-			for (int i = 0; i < pieces.size(); i++) {
-				System.out.print(i + 1 + ": " + pieces.get(i) + " ");
+			
+			for (int i = 0; i < GamePieces.getPieces().length; i++) {
+				System.out.print(i + 1 + ": " + GamePieces.getPieces()[i] + " ");
 			}
 			System.out.println("");
-			int Selection = ConsoleUI.promptForInt("What piece would you like?", 1, pieces.size());
-			newPiece.piece = pieces.get(Selection - 1);
+			int Selection = ConsoleUI.promptForInt("What piece would you like?", 1, GamePieces.getPieces().length);
+			newPiece.piece = GamePieces.getPieces()[Selection - 1];
 			pieceAlreadyTaken = GamePieces.checkIfTaken(newPiece.piece);
 			if (pieceAlreadyTaken) {
 				System.out.println("Sorry. Piece Already Taken");

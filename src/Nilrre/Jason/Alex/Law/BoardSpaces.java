@@ -35,16 +35,8 @@ public class BoardSpaces {
 	private int morgageValue;
 	private int housePrice;
 	private boolean isAvailable;
+	private int boardSpaceNumber;
 	
-	public void LandOnSpace(BoardSpaces space){
-		if(space.type == SpaceType.Jail){
-			
-		}
-		else if (space.type == SpaceType.Property){
-			
-		}
-		
-	}
 	
 //	public void setType(BoardSpaces space, BoardSpaces.SpaceType Type){
 //		space.type = Type;
@@ -102,7 +94,7 @@ public class BoardSpaces {
 //		space.isAvailable = available;
 //	}
 	
-	public void makeSpace(BoardSpaces space, SpaceColor color, String name, int rent, int morgage, int housePrice, boolean isAvail, SpaceType Type){
+	public void makeSpace(BoardSpaces space, SpaceColor color, String name, int rent, int morgage, int housePrice, boolean isAvail, SpaceType Type, int boardSpaceNumber){
 		space.isAvailable = isAvail;
 		space.color = color;
 		space.name = name;
@@ -110,6 +102,7 @@ public class BoardSpaces {
 		space.morgageValue = morgage;
 		space.housePrice = housePrice;
 		space.type = Type;
+		space.boardSpaceNumber = boardSpaceNumber;
 	}
 	
 	public void makeSpaceBlank(BoardSpaces space, SpaceType Type){
