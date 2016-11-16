@@ -75,8 +75,8 @@ public class Player {
 		return moneyFinder.money;
 	}
 
-	public static void setMoney(Player moneyVal) {
-		moneyVal.money = 1500;
+	public static void setMoney(Player moneyVal, int valuetochange) {
+		moneyVal.money =+ valuetochange;
 	}
 
 	public static GamePieces getPiece(Player pieceFinder) {

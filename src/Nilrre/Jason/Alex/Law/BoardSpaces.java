@@ -37,62 +37,40 @@ public class BoardSpaces {
 	private boolean isAvailable;
 	private int boardSpaceNumber;
 	
+	public SpaceType getType(BoardSpaces space, BoardSpaces.SpaceType Type){
+		return space.type;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public SpaceColor getColor() {
+		return color;
+	}
+
+	public int getRent(BoardSpaces space) {
+		return space.rent;
+	}
+
+	public int getMorgageValue(BoardSpaces space) {
+		return space.morgageValue;
+	}
+
+	public int getHousePrice(BoardSpaces space) {
+		return space.housePrice;
+	}
 	
-//	public void setType(BoardSpaces space, BoardSpaces.SpaceType Type){
-//		space.type = Type;
-//	}
-//	
-//	public SpaceType getType(BoardSpaces space, BoardSpaces.SpaceType Type){
-//		return space.type;
-//	}
-//
-//	public String getName() {
-//		return name;
-//	}
-//
-//	public SpaceColor getColor() {
-//		return color;
-//	}
-//
-//	public int getRent(BoardSpaces space) {
-//		return space.rent;
-//	}
-//
-//	public int getMorgageValue(BoardSpaces space) {
-//		return space.morgageValue;
-//	}
-//
-//	public int getHousePrice(BoardSpaces space) {
-//		return space.housePrice;
-//	}
-//
-//	public boolean getIsAvailable(BoardSpaces space) {
-//		return space.isAvailable;
-//	}
-//
-//	public void setName(String newName, BoardSpaces space) {
-//		space.name = newName;
-//	}
-//
-//	public void setColor(SpaceColor newColor, BoardSpaces space) {
-//		space.color = newColor;
-//	}
-//
-//	public void setRent(int newRent, BoardSpaces space) {
-//		space.rent = newRent;
-//	}
-//
-//	public void setMorgageValue(int newMorgage, BoardSpaces space) {
-//		space.morgageValue = newMorgage;
-//	}
-//	
-//	public void setHousePrice(int newHouse, BoardSpaces space) {
-//		space.housePrice = newHouse;
-//	}
-//	
-//	public void setIsAvailable(boolean available, BoardSpaces space) {
-//		space.isAvailable = available;
-//	}
+	public boolean getIsAvailable(BoardSpaces space) {
+		return space.isAvailable;
+	}
+	
+	public int getBoardSpaceNumber(BoardSpaces space){
+		return space.boardSpaceNumber;
+		
+	}
+
+
 	
 	public void makeSpace(BoardSpaces space, SpaceColor color, String name, int rent, int morgage, int housePrice, boolean isAvail, SpaceType Type, int boardSpaceNumber){
 		space.isAvailable = isAvail;
