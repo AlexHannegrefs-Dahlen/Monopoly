@@ -11,7 +11,17 @@ public class Player {
 	private ArrayList<BoardSpaces> land;
 	private boolean GetOutOfJailChance = false;
 	private boolean GetOutOfJailChest = false;
+	private boolean inJail = false;
 	private int spaceCurrentlyOn;
+	private int rolledDoubles;
+	
+	public static void setInJail(Player jail, boolean Jail){
+		jail.inJail = Jail;
+	}
+	
+	public static boolean getInJail(Player jail){
+		return jail.inJail;
+	}
 	
 	public static void setGetOutOfJailChance(Player JailChance, boolean haveCard){
 		JailChance.GetOutOfJailChance = haveCard;
@@ -33,7 +43,7 @@ public class Player {
 		
 	}
 
-	public static void setSpaceCurrentlyOn(Player space, BoardSpaces[][] spotOnBoard) {
+	public static void setSpaceCurrentlyOn(Player space, int spotOnBoard) {
 		space.spaceCurrentlyOn = spotOnBoard;
 	}
 
@@ -90,20 +100,21 @@ public class Player {
 		Random gen = new Random();
 		int dieOne = (gen.nextInt(11) + 2);
 		int dieTwo = (gen.nextInt(11) + 2);
-		if (rolling.spaceCurrentlyOn == BoardSpaces.inJail) {
+		if (rolling.inJail) {
 			boolean doubles = checkForDoubles(dieOne, dieTwo);
 			if (doubles) {
-				rolling.spaceCurrentlyOn = BoardSpaces.visitingJail;
+				setInJail(rolling, false);
 				makeMovement(dieOne, dieTwo, rolling);
 			}
 		} else {
-			int doublesCounter;
+			
 			boolean doubles = checkForDoubles(dieOne, dieTwo);
 			if (doubles) {
-				doublesCounter++;
-				if (doublesCounter == 3) {
-					rolling.spaceCurrentlyOn = BoardSpaces.inJail;
+				rolling.rolledDoubles++;
+				if (rolling.rolledDoubles == 3) {
+					setInJail(rolling, true);
 					System.out.println("You went to jail for rolling doubles three times in a row");
+					rolling.rolledDoubles = 0;
 					return;
 				}
 				makeMovement(dieOne, dieTwo, rolling);
