@@ -102,8 +102,8 @@ public class Player {
 
 	public static void roll(Player rolling) {
 		Random gen = new Random();
-		int dieOne = (gen.nextInt(11) + 2);
-		int dieTwo = (gen.nextInt(11) + 2);
+		int dieOne = (gen.nextInt(6) + 1);
+		int dieTwo = (gen.nextInt(6) + 1);
 		if (rolling.inJail) {
 			boolean doubles = checkForDoubles(dieOne, dieTwo);
 			if (doubles) {
