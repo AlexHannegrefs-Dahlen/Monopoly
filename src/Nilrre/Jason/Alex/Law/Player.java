@@ -8,19 +8,54 @@ public class Player {
 	private GamePieces piece;
 	private int money;
 	private int jailCard;
-	private ArrayList<boardspace> land;
-	private boardspace spaceCurrentlyOn;
+	private ArrayList<BoardSpaces> land;
+	private boolean GetOutOfJailChance = false;
+	private boolean GetOutOfJailChest = false;
+	private boolean inJail = false;
+	private int spaceCurrentlyOn;
+	private int rolledDoubles;
 	
+	public static void setInJail(Player jail, boolean Jail){
+		jail.inJail = Jail;
+	}
+	
+	public static boolean getInJail(Player jail){
+		return jail.inJail;
+	}
+	
+	public static void setGetOutOfJailChance(Player JailChance, boolean haveCard){
+		JailChance.GetOutOfJailChance = haveCard;
+		
+	}
+	
+	public static boolean getGetOutOfJailChance(Player JailChance){
+		return JailChance.GetOutOfJailChance;
+		
+	}
+	
+	public static boolean getGetOutOfJailChest(Player JailChest){
+		return JailChest.GetOutOfJailChest;
+		
+	}
+	
+	public static void setGetOutOfJailChest(Player JailChest, boolean haveCard){
+		JailChest.GetOutOfJailChest = haveCard;
+		
+	}
 
-	public static void SetSpaceCurrentlyOn(Player space, boardspace spotOnBoard){
+	public static void setSpaceCurrentlyOn(Player space, int spotOnBoard) {
 		space.spaceCurrentlyOn = spotOnBoard;
 	}
 	
-	public static void removeLand(Player land, boardspace property) {
+	public static int getSpaceCurrentlyOn(Player space) {
+		return space.spaceCurrentlyOn;
+	}
+
+	public static void removeLand(Player land, BoardSpaces property) {
 		land.land.remove(property);
 	}
 
-	public static void buyLand(Player land, boardspace property) {
+	public static void buyLand(Player land, BoardSpaces property) {
 		land.land.add(property);
 	}
 
@@ -40,8 +75,8 @@ public class Player {
 		return moneyFinder.money;
 	}
 
-	public static void setMoney(Player moneyVal) {
-		moneyVal.money = 1500;
+	public static void setMoney(Player moneyVal, int valuetochange) {
+		moneyVal.money =+ valuetochange;
 	}
 
 	public static GamePieces getPiece(Player pieceFinder) {
@@ -50,58 +85,56 @@ public class Player {
 
 	public static void setPiece(Player newPiece) throws IOException {
 		boolean pieceAlreadyTaken;
-		do{
-		ArrayList<GamePieces> pieces = GamePieces.theseAreGamePieces();
-		for (int i = 0; i < pieces.size(); i++) {
-			System.out.print(i + 1 + ": " + pieces.get(i) + " ");
-		}
-		System.out.println("");
-		int Selection = ConsoleUI.promptForInt("What piece would you like?", 1, pieces.size());
-		newPiece.piece = pieces.get(Selection - 1);
-		pieceAlreadyTaken = GamePieces.checkIfTaken(newPiece.piece);
-		if(pieceAlreadyTaken){
-			System.out.println("Sorry. Piece Already Taken");
-		}
-		}while(pieceAlreadyTaken);
+		do {
+			
+			for (int i = 0; i < GamePieces.getPieces().length; i++) {
+				System.out.print(i + 1 + ": " + GamePieces.getPieces()[i] + " ");
+			}
+			System.out.println("");
+			int Selection = ConsoleUI.promptForInt("What piece would you like?", 1, GamePieces.getPieces().length);
+			newPiece.piece = GamePieces.getPieces()[Selection - 1];
+			pieceAlreadyTaken = GamePieces.checkIfTaken(newPiece.piece);
+			if (pieceAlreadyTaken) {
+				System.out.println("Sorry. Piece Already Taken");
+			}
+		} while (pieceAlreadyTaken);
 	}
 
 	public static void roll(Player rolling) {
 		Random gen = new Random();
 		int dieOne = (gen.nextInt(11) + 2);
 		int dieTwo = (gen.nextInt(11) + 2);
-		if(rolling.spaceCurrentlyOn == boardspace.inJail){
+		if (rolling.inJail) {
 			boolean doubles = checkForDoubles(dieOne, dieTwo);
-			if(doubles){
-				rolling.spaceCurrentlyOn = boardspace.visitingJail;
+			if (doubles) {
+				setInJail(rolling, false);
 				makeMovement(dieOne, dieTwo, rolling);
 			}
-		}
-		else{
-			int doublesCounter;
+		} else {
+			
 			boolean doubles = checkForDoubles(dieOne, dieTwo);
-			if (doubles){
-				doublesCounter++;
-				if(doublesCounter == 3){
-					rolling.spaceCurrentlyOn = boardspace.inJail;
+			if (doubles) {
+				rolling.rolledDoubles++;
+				if (rolling.rolledDoubles == 3) {
+					setInJail(rolling, true);
 					System.out.println("You went to jail for rolling doubles three times in a row");
+					rolling.rolledDoubles = 0;
 					return;
 				}
 				makeMovement(dieOne, dieTwo, rolling);
 			}
 		}
 	}
-	
-	public static void makeMovement(int dieOne, int dieTwo, Player moving){
-		int movement = dieOne + dieTwo;
-		try{
-		moving.spaceCurrentlyOn = moving.spaceCurrentlyOn + movement;
-		} catch (ArrayIndexOutOfBoundsException EndOfBoard) {
-			//player moved past boardwalk
+
+	public static void makeMovement(int dieOne, int dieTwo, Player moving) {
+		int movement = dieOne + dieTwo;	
+		if((moving.spaceCurrentlyOn =+ movement) > 40){
+			moving.spaceCurrentlyOn =- 40;
 		}
 		
 	}
 
-	public static boolean checkForDoubles(int dieOne, int dieTwo) {
+	private static boolean checkForDoubles(int dieOne, int dieTwo) {
 		boolean rolledDoubles = false;
 
 		if (dieOne == dieTwo) {
@@ -110,11 +143,11 @@ public class Player {
 		return rolledDoubles;
 	}
 
-	public static void buyHousesOrHotel(boardspace property) {
+	public static void buyHousesOrHotel(BoardSpaces property) {
 
 	}
-	
-	public static void trade(Player trading){
+
+	public static void trade(Player trading) {
 		Trade.whatPlayerToTradeWith();
 	}
 

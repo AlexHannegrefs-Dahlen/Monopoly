@@ -1,6 +1,5 @@
 package Nilrre.Jason.Alex.Law;
 
-public class Community_Cards {
-
+public class UpgradeLand {
 
 }

@@ -1,11 +1,8 @@
 package Nilrre.Jason.Alex.Law;
 
-import java.util.ArrayList;
-
 public class GamePieces {
 	private boolean taken;
 	private static GamePieces Thimble;
-	
 	private static GamePieces Wheel_Barrow;
 	private static GamePieces Boot;
 	private static GamePieces Dog;
@@ -13,20 +10,21 @@ public class GamePieces {
 	private static GamePieces Iron;
 	private static GamePieces Battleship;
 	private static GamePieces Tophat;
+	private static GamePieces[] pieces = new GamePieces[8];
 	
-	public static ArrayList<GamePieces> theseAreGamePieces() {
-		Thimble.taken = false;
-		Wheel_Barrow.taken = false;
-		ArrayList<GamePieces> pieces = new ArrayList<GamePieces>();
-		pieces.add(Thimble);
-		pieces.add(Wheel_Barrow);
-		pieces.add(Boot);
-		pieces.add(Dog);
-		pieces.add(RaceCar);
-		pieces.add(Iron);
-		pieces.add(Battleship);
-		pieces.add(Tophat);
-		return pieces;
+	public static GamePieces[] getPieces(){
+		return GamePieces.pieces;
+	}
+	
+	public static void makeGamePieces(){
+		GamePieces.pieces[0] = Thimble;
+		GamePieces.pieces[1] = Wheel_Barrow;
+		GamePieces.pieces[2] = Boot;
+		GamePieces.pieces[3] = Dog;
+		GamePieces.pieces[4] = RaceCar;
+		GamePieces.pieces[5] = Iron;
+		GamePieces.pieces[6] = Battleship;
+		GamePieces.pieces[7] = Tophat;
 	}
 	
 	public static boolean checkIfTaken(GamePieces piece){	
