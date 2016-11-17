@@ -5,7 +5,7 @@ import Nilrre.Jason.Alex.Law.BoardSpaces.SpaceType;
 
 public class Board {
 
-	public BoardSpaces[][] board = new BoardSpaces[11][11];
+	private static BoardSpaces[][] board = new BoardSpaces[11][11];
 	BoardSpaces b = new BoardSpaces();
 	
 	public void createBoard() {
@@ -66,6 +66,10 @@ public class Board {
 					}
 				}
 				
+	}
+	
+	public static BoardSpaces[][] getBoard(){
+		return board;
 	}
 	
 	public void printBoard(BoardSpaces[][] board){
