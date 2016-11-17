@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
+import Nilrre.Jason.Alex.Law.GamePieces.diffPieces;
+
 public class Player {
-	private GamePieces piece;
+	private diffPieces piece;
 	private int money;
 	private int jailCard;
 	private ArrayList<BoardSpaces> land;
@@ -79,7 +81,7 @@ public class Player {
 		moneyVal.money =+ valuetochange;
 	}
 
-	public static GamePieces getPiece(Player pieceFinder) {
+	public static diffPieces getPiece(Player pieceFinder) {
 		return pieceFinder.piece;
 	}
 
@@ -92,10 +94,13 @@ public class Player {
 			}
 			System.out.println("");
 			int Selection = ConsoleUI.promptForInt("What piece would you like?", 1, GamePieces.getPieces().length);
-			newPiece.piece = GamePieces.getPieces()[Selection - 1];
+			newPiece.piece = GamePieces.diffPieces.values()[Selection - 1];
 			pieceAlreadyTaken = GamePieces.checkIfTaken(newPiece.piece);
 			if (pieceAlreadyTaken) {
 				System.out.println("Sorry. Piece Already Taken");
+			}
+			else {
+				GamePieces.takePiece(newPiece.piece);
 			}
 		} while (pieceAlreadyTaken);
 	}

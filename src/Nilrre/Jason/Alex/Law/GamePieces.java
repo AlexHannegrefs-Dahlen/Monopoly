@@ -1,40 +1,38 @@
 package Nilrre.Jason.Alex.Law;
 
 public class GamePieces {
-	private boolean taken;
-	private static GamePieces Thimble;
-	private static GamePieces Wheel_Barrow;
-	private static GamePieces Boot;
-	private static GamePieces Dog;
-	private static GamePieces RaceCar;
-	private static GamePieces Iron;
-	private static GamePieces Battleship;
-	private static GamePieces Tophat;
-	private static GamePieces[] pieces = new GamePieces[8];
-	
-	public static GamePieces[] getPieces(){
-		return GamePieces.pieces;
+
+	enum diffPieces {
+		Thimble, Wheel_Barrow, Boot, Dog, RaceCar, Iron, Battleship, Tophat;
+
+		private boolean taken;
 	}
-	
-	public static void makeGamePieces(){
-		GamePieces.pieces[0] = Thimble;
-		GamePieces.pieces[1] = Wheel_Barrow;
-		GamePieces.pieces[2] = Boot;
-		GamePieces.pieces[3] = Dog;
-		GamePieces.pieces[4] = RaceCar;
-		GamePieces.pieces[5] = Iron;
-		GamePieces.pieces[6] = Battleship;
-		GamePieces.pieces[7] = Tophat;
+
+	private static GamePieces.diffPieces[] pieces = new GamePieces.diffPieces[8];
+
+	public static GamePieces.diffPieces[] getPieces() {
+		return GamePieces.diffPieces.values();
 	}
-	
-	public static boolean checkIfTaken(GamePieces piece){	
-		if (piece.taken){
+
+	public static void makeGamePieces() {
+		GamePieces.pieces[0] = GamePieces.diffPieces.Thimble;
+		GamePieces.pieces[1] = GamePieces.diffPieces.Wheel_Barrow;
+		GamePieces.pieces[2] = GamePieces.diffPieces.Boot;
+		GamePieces.pieces[3] = GamePieces.diffPieces.Dog;
+		GamePieces.pieces[4] = GamePieces.diffPieces.RaceCar;
+		GamePieces.pieces[5] = GamePieces.diffPieces.Iron;
+		GamePieces.pieces[6] = GamePieces.diffPieces.Battleship;
+		GamePieces.pieces[7] = GamePieces.diffPieces.Tophat;
+	}
+
+	public static boolean checkIfTaken(GamePieces.diffPieces piece) {
+		if (piece.taken) {
 			return true;
 		}
 		return false;
 	}
-	
-	public static void takePiece(GamePieces piece){
+
+	public static void takePiece(GamePieces.diffPieces piece) {
 		piece.taken = true;
 	}
 }
