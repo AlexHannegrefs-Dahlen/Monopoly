@@ -12,7 +12,7 @@ public class Game {
 	private static final Player six = new Player();
 	private static final Player seven = new Player();
 	private static final Player eight = new Player();
-	
+	private static GamePieces gamePieces = new GamePieces();
 	static int amountOfPlayers;
 
 	public static void RunGame() throws IOException {
@@ -48,7 +48,7 @@ public class Game {
 	public static void makePlayer(int playerNumber) throws IOException {
 		System.out.println("Player " + playerNumber);
 		if (playerNumber == 1) {
-			Player.setPiece(one);
+				Player.setPiece(one);
 		} else if (playerNumber == 2) {
 			Player.setPiece(two);
 		} else if (playerNumber == 3) {

@@ -51,10 +51,9 @@ public class Chance_Cards {
 		return retVal;
 	}
 
-
-	public void CardEffects(String retVal,BoardSpaces.SpaceColor) {
+	public void CardEffects(String retVal) {
 		if (retVal == "GTG"){
-			
+			BoardSpaces.
 		}
 		if (retVal == "GTJ"){
 			
@@ -88,4 +87,5 @@ public class Chance_Cards {
 		if (retVal == "P25HOUSEPHOTEL100"){
 		}
 	}
+}
 
