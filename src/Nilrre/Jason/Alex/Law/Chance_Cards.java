@@ -5,6 +5,7 @@ import java.util.Random;
 
 public class Chance_Cards {
 	ArrayList<String> CARDS = new ArrayList<>();
+	private static Player player = new Player();
 	
 	int nextDrawIndex = 0;
 
@@ -53,7 +54,6 @@ public class Chance_Cards {
 
 	public void CardEffects(String retVal) {
 		if (retVal == "GTG"){
-			BoardSpaces.
 		}
 		if (retVal == "GTJ"){
 			
@@ -86,6 +86,14 @@ public class Chance_Cards {
 		}
 		if (retVal == "P25HOUSEPHOTEL100"){
 		}
+	}
+
+	public static Player getPlayer() {
+		return player;
+	}
+
+	public static void setPlayer(Player player) {
+		Chance_Cards.player = player;
 	}
 }
 
