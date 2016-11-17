@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class Chance_Cards {
 	ArrayList<String> CARDS = new ArrayList<>();
-	
+
 	int nextDrawIndex = 0;
 
 	public void Make_Cards() {
@@ -44,48 +44,48 @@ public class Chance_Cards {
 	public String DRAW() {
 		String retVal = CARDS.get(nextDrawIndex);
 		nextDrawIndex++;
-		if(nextDrawIndex >= CARDS.size()) {
+		if (nextDrawIndex >= CARDS.size()) {
 			Shuffle();
 			nextDrawIndex = 0;
 		}
 		return retVal;
 	}
 
+	public void CardEffects(String retVal, BoardSpaces.SpaceType space) {
+		if (retVal == "GTG") {
 
-	public void CardEffects(String retVal,BoardSpaces.SpaceColor) {
-		if (retVal == "GTG"){
-			
 		}
-		if (retVal == "GTJ"){
-			
+		if (retVal == "GTJ") {
+
 		}
-		if (retVal == "C50"){
+		if (retVal == "C50") {
 		}
-		if (retVal == "GB3"){
+		if (retVal == "GB3") {
 		}
-		if (retVal == "ADV1"){
+		if (retVal == "ADV1") {
 		}
-		if (retVal == "P15"){
+		if (retVal == "P15") {
 		}
-		if (retVal == "ADV2"){
+		if (retVal == "ADV2") {
 		}
-		if (retVal == "PEP50"){
+		if (retVal == "PEP50") {
 		}
-		if (retVal == "ADV2RAIL1"){
+		if (retVal == "ADV2RAIL1") {
 		}
-		if (retVal == "ADV2RAIL2"){
+		if (retVal == "ADV2RAIL2") {
 		}
-		if (retVal == "ADV3"){
+		if (retVal == "ADV3") {
 		}
-		if (retVal == "ADV4"){
+		if (retVal == "ADV4") {
 		}
-		if (retVal == "C150"){
+		if (retVal == "C150") {
 		}
-		if (retVal == "ADV5"){
+		if (retVal == "ADV5") {
 		}
-		if (retVal == "GETOUT"){
+		if (retVal == "GETOUT") {
 		}
-		if (retVal == "P25HOUSEPHOTEL100"){
+		if (retVal == "P25HOUSEPHOTEL100") {
 		}
 	}
 
+}
