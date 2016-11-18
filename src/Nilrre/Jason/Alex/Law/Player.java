@@ -16,6 +16,15 @@ public class Player {
 	private boolean inJail = false;
 	private int spaceCurrentlyOn;
 	private int rolledDoubles;
+	private boolean myTurn = false;
+	
+	public static void setMyTurn(Player turn, boolean Turn){
+		turn.myTurn = Turn;
+	}
+	
+	public static boolean getMyTurn(Player turn){
+		return turn.myTurn;
+	}
 	
 	public static void setInJail(Player jail, boolean Jail){
 		jail.inJail = Jail;
