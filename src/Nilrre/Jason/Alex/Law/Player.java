@@ -148,7 +148,7 @@ public class Player {
 		return rolledDoubles;
 	}
 
-	public static void buyHousesOrHotel(BoardSpaces property) {
+	public static void buyHousesOrHotel(Player upgrading) {
 
 	}
 

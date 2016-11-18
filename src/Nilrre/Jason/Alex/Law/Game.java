@@ -1,4 +1,4 @@
-package Nilrre.Jason.Alex.Law;
+ package Nilrre.Jason.Alex.Law;
 
 import java.io.IOException;
 
@@ -13,6 +13,7 @@ public class Game {
 	private static final Player seven = new Player();
 	private static final Player eight = new Player();
 	static int amountOfPlayers;
+	static boolean gameRunning = true;
 
 	public static void RunGame() throws IOException {
 		GamePieces.makeGamePieces();
@@ -21,7 +22,7 @@ public class Game {
 		for (int i = 1; i <= amountOfPlayers; i++) {
 			makePlayer(i);
 		}
-
+		do{
 		for (int i = 1; i <= amountOfPlayers; i++) {
 			if (i == 1) {
 				turn(one);
@@ -41,6 +42,7 @@ public class Game {
 				turn(eight);
 			}
 		}
+		}while(gameRunning);
 
 	}
 
@@ -66,12 +68,13 @@ public class Game {
 	}
 
 	public static void turn(Player play) throws IOException {
+		System.out.println(Player.getPiece(play) + "'s turn.");
 		String[] options = new String[] { "1: Roll", "2: Buy Houses or Hotels", "3: Trade with another Player" };
 		int turnSelect = ConsoleUI.promptForMenuSelection(options, false);
 		if (turnSelect == 1) {
 			Player.roll(play);
 		} else if (turnSelect == 2) {
-			//buy houses
+			Player.buyHousesOrHotel(play);
 		} else if (turnSelect == 3) {
 			Player.trade(play);
 		}
