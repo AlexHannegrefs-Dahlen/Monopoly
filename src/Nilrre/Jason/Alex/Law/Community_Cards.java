@@ -72,32 +72,25 @@ public class Community_Cards {
 		if ((!(night == Game.returnPlayerOne())) && (Player.getPlayingGame(Game.returnPlayerOne()))) {
 			Player.setMoney(Game.returnPlayerOne(), -50);
 			total += 50;
-		}
-		else if ((!(night == Game.returnPlayerTwo())) && (Player.getPlayingGame(Game.returnPlayerTwo()))) {
+		} else if ((!(night == Game.returnPlayerTwo())) && (Player.getPlayingGame(Game.returnPlayerTwo()))) {
 			Player.setMoney(Game.returnPlayerTwo(), -50);
 			total += 50;
-		}
-		else if ((!(night == Game.returnPlayerThree())) && (Player.getPlayingGame(Game.returnPlayerThree()))) {
+		} else if ((!(night == Game.returnPlayerThree())) && (Player.getPlayingGame(Game.returnPlayerThree()))) {
 			Player.setMoney(Game.returnPlayerThree(), -50);
 			total += 50;
-		}
-		else if ((!(night == Game.returnPlayerFour())) && (Player.getPlayingGame(Game.returnPlayerFour()))) {
+		} else if ((!(night == Game.returnPlayerFour())) && (Player.getPlayingGame(Game.returnPlayerFour()))) {
 			Player.setMoney(Game.returnPlayerFour(), -50);
 			total += 50;
-		}
-		else if ((!(night == Game.returnPlayerFive())) && (Player.getPlayingGame(Game.returnPlayerFive()))) {
+		} else if ((!(night == Game.returnPlayerFive())) && (Player.getPlayingGame(Game.returnPlayerFive()))) {
 			Player.setMoney(Game.returnPlayerFive(), -50);
 			total += 50;
-		}
-		else if ((!(night == Game.returnPlayerSix())) && (Player.getPlayingGame(Game.returnPlayerSix()))) {
+		} else if ((!(night == Game.returnPlayerSix())) && (Player.getPlayingGame(Game.returnPlayerSix()))) {
 			Player.setMoney(Game.returnPlayerSix(), -50);
 			total += 50;
-		}
-		else if ((!(night == Game.returnPlayerSeven())) && (Player.getPlayingGame(Game.returnPlayerSeven()))) {
+		} else if ((!(night == Game.returnPlayerSeven())) && (Player.getPlayingGame(Game.returnPlayerSeven()))) {
 			Player.setMoney(Game.returnPlayerSeven(), -50);
 			total += 50;
-		}
-		else if ((!(night == Game.returnPlayerEight())) && (Player.getPlayingGame(Game.returnPlayerEight()))) {
+		} else if ((!(night == Game.returnPlayerEight())) && (Player.getPlayingGame(Game.returnPlayerEight()))) {
 			Player.setMoney(Game.returnPlayerEight(), -50);
 			total += 50;
 		}
@@ -137,22 +130,15 @@ public class Community_Cards {
 		Player.setMoney(Game.getPlayerWhosTurnItIs(), Player.getMoney(Game.getPlayerWhosTurnItIs()) + 100);
 	}
 
-	public static void streetRepairs() {
-		// how will i check to see how many houses and hotels there are
-		int houses = 0;
-		int hotels = 0;
-		for (int i = 0; i < Land.size; i++) {
-			if (land[i] == house) {
-				houses++;
-			} else if (land[i] == hotels) {
-				hotels++;
-			}
-		}
-
-		houses *= 40;
-		hotels *= 115;
-
-		Player.setMoney(Game.getPlayerWhosTurnItIs(),
-				Player.getMoney(Game.getPlayerWhosTurnItIs()) - (hotels + houses));
-	}
+	/*
+	 * public static void streetRepairs() { // how will i check to see how many
+	 * houses and hotels there are int houses = 0; int hotels = 0; for (int i =
+	 * 0; i < Land.size; i++) { if (land[i] == house) { houses++; } else if
+	 * (land[i] == hotels) { hotels++; } }
+	 * 
+	 * houses *= 40; hotels *= 115;
+	 * 
+	 * Player.setMoney(Game.getPlayerWhosTurnItIs(),
+	 * Player.getMoney(Game.getPlayerWhosTurnItIs()) - (hotels + houses)); }
+	 */
 }
