@@ -61,7 +61,7 @@ public class Chance_Cards {
 			player.setSpaceCurrentlyOn(ME, 0);
 			//|if player doesn't automaticly get there $200
 			//V
-			player.setMoney(ME, 200);
+			player.setMoney(Game.getPlayerWhosTurnItIs(), 200);
 			
 		}
 		if (retVal == "GTJ"){

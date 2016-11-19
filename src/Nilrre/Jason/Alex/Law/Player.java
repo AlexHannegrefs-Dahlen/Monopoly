@@ -17,6 +17,15 @@ public class Player {
 	private int spaceCurrentlyOn;
 	private int rolledDoubles;
 	private boolean myTurn = false;
+	private boolean playingGame = false;
+	
+	public static void setPlayingGame(Player game, boolean Game){
+		game.playingGame = Game;
+	}
+	
+	public static boolean getPlayingGame(Player game){
+		return game.playingGame;
+	}
 	
 	public static void setMyTurn(Player turn, boolean Turn){
 		turn.myTurn = Turn;

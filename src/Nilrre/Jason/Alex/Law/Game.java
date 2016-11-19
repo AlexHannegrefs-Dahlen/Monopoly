@@ -14,6 +14,38 @@ public class Game {
 	static int amountOfPlayers;
 	private static boolean gameRunning = true;
 
+	public static Player returnPlayerOne() {
+		return one;
+	}
+
+	public static Player returnPlayerTwo() {
+		return two;
+	}
+
+	public static Player returnPlayerThree() {
+		return three;
+	}
+
+	public static Player returnPlayerFour() {
+		return four;
+	}
+
+	public static Player returnPlayerFive() {
+		return five;
+	}
+
+	public static Player returnPlayerSix() {
+		return six;
+	}
+
+	public static Player returnPlayerSeven() {
+		return seven;
+	}
+
+	public static Player returnPlayerEight() {
+		return eight;
+	}
+
 	public static void RunGame() throws IOException {
 		GamePieces.makeGamePieces();
 		amountOfPlayers = ConsoleUI.promptForInt("How many players?", 2, 8);
@@ -49,6 +81,7 @@ public class Game {
 		System.out.println("Player " + playerNumber);
 		if (playerNumber == 1) {
 			Player.setPiece(one);
+			
 		} else if (playerNumber == 2) {
 			Player.setPiece(two);
 		} else if (playerNumber == 3) {

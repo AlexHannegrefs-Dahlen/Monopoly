@@ -41,8 +41,8 @@ public class Trade {
 			int selectPlayerTrade = ConsoleUI.promptForMenuSelection(tradingPlayer, false);
 			
 			if (selectPlayerTrade == 1){
-				int enter2ndValue = ConsoleUI.promptForInt("Enter in the value of money you would like to trade", 0, Integer.MAX_VALUE);
-				Player.setMoney(Player, enter2ndValue);
+				int enter2ndValue = ConsoleUI.promptForInt("Enter in the value of money you would like to trade", 0, Player.getMoney(Game.getPlayerWhosTurnItIs()));
+				Player.setMoney(Game.getPlayerWhosTurnItIs(), enter2ndValue);
 				System.out.println("Amount To Be Exchanged: " + enter2ndValue);
 			}
 			
@@ -78,7 +78,7 @@ public class Trade {
 			
 			if (selectWhatToModify == 1){
 				int enter3rdValue = ConsoleUI.promptForInt("Enter in the value of money you would like to trade instead", 0, Integer.MAX_VALUE);
-				Player.setMoney(Player, enter3rdValue);
+				Player.setMoney(Game.getPlayerWhosTurnItIs(), enter3rdValue);
 				System.out.println("Amount To Be Exchanged: " + enter3rdValue);
 			}
 			
