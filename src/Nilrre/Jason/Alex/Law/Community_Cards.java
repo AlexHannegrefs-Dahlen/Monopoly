@@ -33,107 +33,102 @@ public class Community_Cards {
 	}
 
 	public static void advanceToGo() {
-		Player.setSpaceCurrentlyOn(player, boardspaces[10][10]);
-		Player.setMoney(200);// Whatever they currently have plus
+		Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(),0);
+		Player.setMoney(Game.getPlayerWhosTurnItIs(), 200);
 											// 200
 	}
 
 	public static void bankError() {
-		Player.setMoney(200);// Whatever they currently have plus
+		Player.setMoney(Game.getPlayerWhosTurnItIs(),Player.getMoney(Game.getPlayerWhosTurnItIs()) + 200);// Whatever they currently have plus
 											// 200
 	}
 
 	public static void doctorFees() {
-		Player.setMoney(bankAccount - 50);// Whatever they currently have minus
+		Player.setMoney(Game.getPlayerWhosTurnItIs(), Player.getMoney(Game.getPlayerWhosTurnItIs()) - 50);
 											// 50
 	}
 
 	public static void getOuttaJail() {
-		Player.setGetOutOfJailChest(JailChest, haveCard);
+		Player.setGetOutOfJailChest(Game.getPlayerWhosTurnItIs(), true);
 	}
 
 	public static void goToJail() {
-		if (player.contains(getOuttaJail()) {
-			 boolean askForUse = ConsoleUI.promptForBool("Would you like to use your get out of jail card? [Yes/No]", "Yes", "No");
-			 if (askForUse == true){
-				 //remove get outta jail card
-			 }
-		}
-			else {
-				Player.setSpaceCurrentlyOn(player, boardspace[10][0]);
-			}
-		}
+		Player.setInJail(Game.getPlayerWhosTurnItIs(), true);
+	}
 	
 	public static void grandOperaNight() {
 		int total = 0;
+		int totalPlayers = Game.amountOfPlayers;
+		//How do i check to see each individual character
 		if (Player1){
-			Player.setMoney(bankAccount - 50);
+			Player.setMoney(Player.getMoney() - 50);
 			total += 50;
 		}
 		if (Player2){
-			Player.setMoney(bankAccount - 50);
+			Player.setMoney(Player.getMoney(Player2)- 50);
 			total += 50;
 		}
 		if (Player3){
-			Player.setMoney(bankAccount - 50);
+			Player.setMoney(Player.getMoney(Player3) - 50);
 			total += 50;
 		}
 		if (Player4){
-			Player.setMoney(bankAccount - 50);
+			Player.setMoney(Player.getMoney(Player4) - 50);
 			total += 50;
 		}
 		if (Player5){
-			Player.setMoney(bankAccount - 50);
+			Player.setMoney(Player.getMoney(Player5) - 50);
 			total += 50;
 		}
 		if (Player6){
-			Player.setMoney(bankAccount - 50);
+			Player.setMoney(Player.getMoney(Player6) - 50);
 			total += 50;
 	}
 		if (Player7){
-			Player.setMoney(bankAccount - 50);
+			Player.setMoney(Player.getMoney(Player7) - 50);
 			total += 50;
 		}
 		if (Player8){
-			Player.setMoney(bankAccount - 50);
+			Player.setMoney(Player.getMoney(Player8) - 50);
 			total += 50;
 		}
 		
-		Player.setMoney(bankAccount + total);
+		Player.setMoney(Game.getPlayerWhosTurnItIs(),totalPlayers + total);
 	}
 	
 	public static void holidayFundMatures() {
-		Player.setMoney(backAccount + 50);
+		Player.setMoney(Game.getPlayerWhosTurnItIs(),Player.getMoney(Game.getPlayerWhosTurnItIs()) + 50);
 }
  	
  	public static void incomeTaxReturn() {
- 		Player.setMoney(bankAccount + 20);
+ 		Player.setMoney(Game.getPlayerWhosTurnItIs(),Player.getMoney(Game.getPlayerWhosTurnItIs()) + 20);
  	}
  	
  	public static void lifeInsuranceFunds() {
- 		Player.setMoney(bankAccount + 100);
+ 		Player.setMoney(Game.getPlayerWhosTurnItIs(),Player.getMoney(Game.getPlayerWhosTurnItIs()) + 100);
  	}
  	
  	public static void hospitalBill() {
- 		Player.setMoney(bankAccount - 100);
+ 		Player.setMoney(Game.getPlayerWhosTurnItIs(),Player.getMoney(Game.getPlayerWhosTurnItIs()) - 100);
  	}
   	public static void schoolFee() {
- 		Player.setMoney(bankAccount - 150);
+ 		Player.setMoney(Game.getPlayerWhosTurnItIs(),Player.getMoney(Game.getPlayerWhosTurnItIs()) - 150);
  	}
  	
  	public static void serviceFee() {
- 		Player.setMoney(bankAccount + 25);
+ 		Player.setMoney(Game.getPlayerWhosTurnItIs(),Player.getMoney(Game.getPlayerWhosTurnItIs()) + 25);
  	}
  	
  	public static void beautyContest() {
- 		Player.setMoney(bankAccount + 10);
+ 		Player.setMoney(Game.getPlayerWhosTurnItIs(),Player.getMoney(Game.getPlayerWhosTurnItIs()) + 10);
  	}
  	
  	public static void inheritance() {
- 		Player.setMoney(bankAccount + 100);
+ 		Player.setMoney(Game.getPlayerWhosTurnItIs(),Player.getMoney(Game.getPlayerWhosTurnItIs()) + 100);
  	}
  	
  	public static void streetRepairs() {
+ 		//how will i check to see how many houses and hotels there are
  		int houses = 0;
  	int hotels = 0;
  		for(int i  = 0; i < Land.size; i++){
@@ -148,6 +143,6 @@ public class Community_Cards {
  		houses *= 40;
  		hotels *= 115;
  		
- 		Player.setMoney(bankAccount - (hotels + houses));
+ 		Player.setMoney(Game.getPlayerWhosTurnItIs(),Player.getMoney(Game.getPlayerWhosTurnItIs()) - (hotels + houses));
  	}
  }

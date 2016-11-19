@@ -11,7 +11,7 @@ public class Game {
 	private static final Player six = new Player();
 	private static final Player seven = new Player();
 	private static final Player eight = new Player();
-	private static int amountOfPlayers;
+	static int amountOfPlayers;
 	private static boolean gameRunning = true;
 
 	public static void RunGame() throws IOException {
