@@ -44,12 +44,12 @@ public class Community_Cards {
 	}
 
 	public static void bankError() {
-		Player.setMoney(Game.getPlayerWhosTurnItIs(), Player.getMoney(Game.getPlayerWhosTurnItIs()) + 200);// Whatever
-																											// they
-																											// currently
-																											// have
-																											// plus
-		// 200
+		Player.setMoney(Game.getPlayerWhosTurnItIs(), Player.getMoney(Game.getPlayerWhosTurnItIs()) + 200);
+	}
+	
+	public static void saleStock() {
+		Player.setMoney(Game.getPlayerWhosTurnItIs(), Player.getMoney(Game.getPlayerWhosTurnItIs()) + 50);
+
 	}
 
 	public static void doctorFees() {

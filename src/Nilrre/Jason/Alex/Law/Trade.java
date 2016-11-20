@@ -8,15 +8,17 @@ public class Trade {
 	}
 
 	//Spaced everything out to make it easier to read
-	
 	public static void askForTradeOption() throws IOException{
+		
 		String[] selection = new String[]{"Accept", "Decline"};
 		int menuSelect = ConsoleUI.promptForMenuSelection(selection, false);
-
+		
+		//They want to trade
 		if (menuSelect == 1) {
-
 			System.out.println("Please select what you want to trade?");
-
+			
+			//The player selects what they want to trade
+			//Multiple if statments so that they can trade multiple things
 			String[] tradingCards = new String[] { "Money", "Get out of jail free", "Properties" };
 			int selectTrade = ConsoleUI.promptForMenuSelection(tradingCards, false);
 
@@ -27,16 +29,25 @@ public class Trade {
 			}
 
 			if (selectTrade == 2) {
-				// Add array list for get outta jail
+				//Check to see if they have a get out of jail card
+				boolean tradeJailCard = ConsoleUI.promptForBool("Would you like to trade your Get Out of Jail Card?" + "[Y/N]", "Y", "N");
+				
+				if (tradeJailCard == true){
+				//Check to see if they have a get outta jail card	
+				}
+				
+				if (tradeJailCard == false){
+					
+				}
 			}
 
 			if (selectTrade == 3) {
-				
+				//Trading property
 			}
-			
+			//Allow choose another player
 			System.out.println("Select another player to trade with");
 			
-			
+			System.out.println("What would you like to take from them?");
 			String[] tradingPlayer = new String[] { "Money", "Get out of jail free", "Properties" };
 			int selectPlayerTrade = ConsoleUI.promptForMenuSelection(tradingPlayer, false);
 			
@@ -47,13 +58,14 @@ public class Trade {
 			}
 			
 			if (selectPlayerTrade == 2){
-				
+			//Check to see if other player has jail card	
 			}
 			
 			if (selectPlayerTrade == 3){
-				
+			//Choose property
 			}
 			
+			//Sends to method below
 			boolean otherPlayerRequest = Trade.acceptOrDeclinePlayerTradeRequest();
 			
 			
@@ -83,11 +95,11 @@ public class Trade {
 			}
 			
 			if (selectWhatToModify == 2){
-				
+			//Decided whether or not to trade jail card
 			}
 			
 			if (selectWhatToModify == 3){
-				
+			//Change property
 			}
 		}
 		
@@ -100,7 +112,8 @@ public class Trade {
 		
 		else if (acceptOrDecline == false){
 			System.out.println("Trade declined");
-			//send back to other method
+			System.out.println("Let's restart the process");
+			//send back to method above
 		}
 		return acceptOrDecline;
 	}
