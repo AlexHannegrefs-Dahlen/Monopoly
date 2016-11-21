@@ -2,6 +2,7 @@ package Nilrre.Jason.Alex.Law;
 
 import java.util.ArrayList;
 import java.util.Random;
+import Nilrre.Jason.Alex.Law.Player;
 
 public class Chance_Cards {
 	ArrayList<String> CARDS = new ArrayList<>();
@@ -19,8 +20,8 @@ public class Chance_Cards {
 		CARDS.add("P15");
 		CARDS.add("ADV2");
 		CARDS.add("PEP50");/* Pay Each Player */
-		CARDS.add("ADV2RAIL1");
-		CARDS.add("ADV2RAIL2");
+		CARDS.add("ADV2NEARRAIL");
+		CARDS.add("ADV2READRAIL");
 		CARDS.add("ADV3");
 		CARDS.add("ADV4");
 		CARDS.add("C150");
@@ -108,13 +109,30 @@ public class Chance_Cards {
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), -50 * Game.amountOfPlayers);
 
 		}
-		if (retVal == "ADV2RAIL1") {
+		if (retVal == "ADV2NEARRAIL") {
+			if (Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) == 7) {
+				Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 15);
+			}
+
+			if (Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) == 22) {
+				Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 25);
+			}
+			if (Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) == 36) {
+				Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 5);
+			}
+
 		}
-		if (retVal == "ADV2RAIL2") {
+		if (retVal == "ADV2READRAIL") {
+				Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 5);
+				//WIP
 		}
 		if (retVal == "ADV3") {
+			Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 11);
+			System.out.println("You've advanced to St.Charles Place");
 		}
 		if (retVal == "ADV4") {
+			Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), );
+			System.out.println("You've advanced to ");
 		}
 		if (retVal == "C150") {
 		}
