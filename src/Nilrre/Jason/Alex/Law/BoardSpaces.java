@@ -2,32 +2,13 @@ package Nilrre.Jason.Alex.Law;
 
 public class BoardSpaces {
 	enum SpaceType {
-		Property,
-		Jail,
-		Go, 
-		FreeParking,
-		GoToJail,
-		CardDraw,
-		Tax,
-		Utilities,
-		Nothing
+		Property, Jail, Go, FreeParking, GoToJail, CardDraw, Tax, Utilities, Nothing
 	}
-	
+
 	enum SpaceColor {
-		Blank,
-		Purple,
-		Silver,
-		Pink,
-		Orange,
-		Red,
-		Yellow,
-		Green,
-		Blue,
-		Railroad,
-		Utilities
+		Blank, Purple, Silver, Pink, Orange, Red, Yellow, Green, Blue, Railroad, Utilities
 	}
-	
-	
+
 	private SpaceType type;
 	private String name;
 	private SpaceColor color;
@@ -38,24 +19,24 @@ public class BoardSpaces {
 	private int boardSpaceNumber;
 	private int houses;
 	private int hotel;
-	
-	public int getHouses(BoardSpaces space){
+
+	public int getHouses(BoardSpaces space) {
 		return space.houses;
 	}
-	
-	public void setHouses(BoardSpaces space, int numberOfHouses){
+
+	public void setHouses(BoardSpaces space, int numberOfHouses) {
 		space.houses = numberOfHouses;
 	}
-	
-	public int getHotel(BoardSpaces space){
+
+	public int getHotel(BoardSpaces space) {
 		return space.hotel;
 	}
-	
-	public void setHotel(BoardSpaces space, int numberOfHotels){
+
+	public void setHotel(BoardSpaces space, int numberOfHotels) {
 		space.hotel = numberOfHotels;
 	}
-	
-	public SpaceType getType(BoardSpaces space){
+
+	public SpaceType getType(BoardSpaces space) {
 		return space.type;
 	}
 
@@ -78,19 +59,18 @@ public class BoardSpaces {
 	public int getHousePrice(BoardSpaces space) {
 		return space.housePrice;
 	}
-	
+
 	public boolean getIsAvailable(BoardSpaces space) {
 		return space.isAvailable;
 	}
-	
-	public int getBoardSpaceNumber(BoardSpaces space){
+
+	public int getBoardSpaceNumber(BoardSpaces space) {
 		return space.boardSpaceNumber;
-		
+
 	}
 
-
-	
-	public void makeSpace(BoardSpaces space, SpaceColor color, String name, int rent, int morgage, int housePrice, boolean isAvail, SpaceType Type, int boardSpaceNumber){
+	public void makeSpace(BoardSpaces space, SpaceColor color, String name, int rent, int morgage, int housePrice,
+			boolean isAvail, SpaceType Type, int boardSpaceNumber) {
 		space.isAvailable = isAvail;
 		space.color = color;
 		space.name = name;
@@ -100,19 +80,22 @@ public class BoardSpaces {
 		space.type = Type;
 		space.boardSpaceNumber = boardSpaceNumber;
 	}
-	
-	public void makeSpaceBlank(BoardSpaces space){
-		space.name = " " ;
+
+	public void makeSpaceBlank(BoardSpaces space) {
+		space.name = "   ";
 	}
 
 	@Override
 	public String toString() {
-		String whatever = " ";
-		if(name != whatever){
-		whatever =  Integer.toString(boardSpaceNumber);
-			
+		String whatever = "   ";
+		if (name != whatever) {
+			whatever = " " + Integer.toString(boardSpaceNumber);
+			if (boardSpaceNumber >= 0 && boardSpaceNumber <= 9) {
+				whatever = "  " + Integer.toString(boardSpaceNumber);
+			}
 		}
+
 		return whatever;
 	}
-	
+
 }
