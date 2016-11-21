@@ -36,8 +36,26 @@ public class BoardSpaces {
 	private int housePrice;
 	private boolean isAvailable;
 	private int boardSpaceNumber;
+	private int houses;
+	private int hotel;
 	
-	public SpaceType getType(BoardSpaces space, BoardSpaces.SpaceType Type){
+	public int getHouses(BoardSpaces space){
+		return space.houses;
+	}
+	
+	public void setHouses(BoardSpaces space, int numberOfHouses){
+		space.houses = numberOfHouses;
+	}
+	
+	public int getHotel(BoardSpaces space){
+		return space.hotel;
+	}
+	
+	public void setHotel(BoardSpaces space, int numberOfHotels){
+		space.hotel = numberOfHotels;
+	}
+	
+	public SpaceType getType(BoardSpaces space){
 		return space.type;
 	}
 

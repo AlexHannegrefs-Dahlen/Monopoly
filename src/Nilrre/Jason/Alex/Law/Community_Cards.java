@@ -46,7 +46,7 @@ public class Community_Cards {
 	public static void bankError() {
 		Player.setMoney(Game.getPlayerWhosTurnItIs(), Player.getMoney(Game.getPlayerWhosTurnItIs()) + 200);
 	}
-	
+
 	public static void saleStock() {
 		Player.setMoney(Game.getPlayerWhosTurnItIs(), Player.getMoney(Game.getPlayerWhosTurnItIs()) + 50);
 
@@ -130,15 +130,15 @@ public class Community_Cards {
 		Player.setMoney(Game.getPlayerWhosTurnItIs(), Player.getMoney(Game.getPlayerWhosTurnItIs()) + 100);
 	}
 
-	/*
-	 * public static void streetRepairs() { // how will i check to see how many
-	 * houses and hotels there are int houses = 0; int hotels = 0; for (int i =
-	 * 0; i < Land.size; i++) { if (land[i] == house) { houses++; } else if
-	 * (land[i] == hotels) { hotels++; } }
-	 * 
-	 * houses *= 40; hotels *= 115;
-	 * 
-	 * Player.setMoney(Game.getPlayerWhosTurnItIs(),
-	 * Player.getMoney(Game.getPlayerWhosTurnItIs()) - (hotels + houses)); }
-	 */
+	public static void streetRepairs() {
+		int cost = 0;
+		for (int i = 0; i < Player.getland(Game.getPlayerWhosTurnItIs()).size(); i++) {
+			cost += Player.getland(Game.getPlayerWhosTurnItIs()).get(i)
+					.getHotel(Player.getland(Game.getPlayerWhosTurnItIs()).get(i)) * 115;
+			cost += Player.getland(Game.getPlayerWhosTurnItIs()).get(i)
+					.getHouses(Player.getland(Game.getPlayerWhosTurnItIs()).get(i)) * 40;
+		}
+		Player.setMoney(Game.getPlayerWhosTurnItIs(), cost);
+	}
+
 }

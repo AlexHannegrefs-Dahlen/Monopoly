@@ -70,6 +70,10 @@ public class Player {
 	public static int getSpaceCurrentlyOn(Player space) {
 		return space.spaceCurrentlyOn;
 	}
+	
+	public static ArrayList<BoardSpaces> getland(Player land){
+		return land.land;
+	}
 
 	public static void removeLand(Player land, BoardSpaces property) {
 		land.land.remove(property);
@@ -167,7 +171,7 @@ public class Player {
 	}
 
 	public static void buyHousesOrHotel(Player upgrading) {
-
+		UpgradeLand.buyHousesOrHotel(upgrading);
 	}
 
 	public static void trade(Player trading) {
