@@ -8,7 +8,7 @@ import Nilrre.Jason.Alex.Law.GamePieces.diffPieces;
 
 public class Player {
 	private diffPieces piece;
-	private int money = 1500;
+	private int money;
 	private int jailCard;
 	private ArrayList<BoardSpaces> land;
 	private boolean GetOutOfJailChance = false;
@@ -99,8 +99,8 @@ public class Player {
 		return moneyFinder.money;
 	}
 
-	public static void setMoney(Player moneyVal, int valuetochange) {
-		moneyVal.money =+ valuetochange;
+	public static void setMoney(Player moneyVal, int valuetoadd) {
+		moneyVal.money =+ valuetoadd;
 	}
 
 	public static diffPieces getPiece(Player pieceFinder) {

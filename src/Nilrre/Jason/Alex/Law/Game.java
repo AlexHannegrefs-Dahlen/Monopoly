@@ -81,15 +81,19 @@ public class Game {
 		System.out.println("Player " + playerNumber);
 		if (playerNumber == 1) {
 			Player.setPiece(one);
-			
+			Player.setMoney(one, 1500);
 		} else if (playerNumber == 2) {
 			Player.setPiece(two);
+			Player.setMoney(two, 1500);
 		} else if (playerNumber == 3) {
 			Player.setPiece(three);
+			Player.setMoney(three, 1500);
 		} else if (playerNumber == 4) {
 			Player.setPiece(four);
+			Player.setMoney(four, 1500);
 		} else if (playerNumber == 5) {
 			Player.setPiece(five);
+			Pla
 		} else if (playerNumber == 6) {
 			Player.setPiece(six);
 		} else if (playerNumber == 7) {
