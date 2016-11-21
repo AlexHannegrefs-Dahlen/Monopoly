@@ -101,8 +101,18 @@ public class BoardSpaces {
 		space.boardSpaceNumber = boardSpaceNumber;
 	}
 	
-	public void makeSpaceBlank(BoardSpaces space, SpaceType Type){
-		space.type = Type;
+	public void makeSpaceBlank(BoardSpaces space){
+		space.name = " " ;
 	}
 
+	@Override
+	public String toString() {
+		String whatever = " ";
+		if(name != whatever){
+		whatever =  Integer.toString(boardSpaceNumber);
+			
+		}
+		return whatever;
+	}
+	
 }
