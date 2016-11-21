@@ -8,7 +8,7 @@ import Nilrre.Jason.Alex.Law.GamePieces.diffPieces;
 
 public class Player {
 	private diffPieces piece;
-	private int money;
+	private int money = 1500;
 	private int jailCard;
 	private ArrayList<BoardSpaces> land;
 	private boolean GetOutOfJailChance = false;
@@ -128,6 +128,7 @@ public class Player {
 	}
 
 	public static void roll(Player rolling) {
+		System.out.println("Rolling");
 		Random gen = new Random();
 		int dieOne = (gen.nextInt(6) + 1);
 		int dieTwo = (gen.nextInt(6) + 1);
@@ -135,7 +136,6 @@ public class Player {
 			boolean doubles = checkForDoubles(dieOne, dieTwo);
 			if (doubles) {
 				setInJail(rolling, false);
-				makeMovement(dieOne, dieTwo, rolling);
 			}
 		} else {
 			
@@ -148,16 +148,21 @@ public class Player {
 					rolling.rolledDoubles = 0;
 					return;
 				}
-				makeMovement(dieOne, dieTwo, rolling);
 			}
 		}
+		makeMovement(dieOne, dieTwo, rolling);
 	}
 
 	public static void makeMovement(int dieOne, int dieTwo, Player moving) {
+		System.out.println("Moving");
 		int movement = dieOne + dieTwo;	
-		if((moving.spaceCurrentlyOn =+ movement) > 40){
-			moving.spaceCurrentlyOn =- 40;
+		moving.spaceCurrentlyOn += movement;
+		if((moving.spaceCurrentlyOn) > 40){
+			moving.spaceCurrentlyOn -= 40;
+			moving.money =+ 200;
+			System.out.println("You passed go Collect $200. Current funds: $" + moving.money);
 		}
+		System.out.println("Moved to space " + moving.spaceCurrentlyOn);
 		
 	}
 
