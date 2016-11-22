@@ -68,7 +68,7 @@ public class Trade {
 
 				}
 				
-				if (tradeProperty == false){
+				else if (tradeProperty == false){
 					System.out.println("No property will be traded");
 				}
 			}
@@ -119,17 +119,44 @@ public class Trade {
 			if (selectPlayerTrade == 1) {
 				
 				int enter2ndValue = ConsoleUI.promptForInt("Enter in the value of money you would like to trade", 0,
-						Player.getMoney(Game.getPlayerWhosTurnItIs()));
+				Player.getMoney(Game.getPlayerWhosTurnItIs()));
 				Player.setMoney(Game.getPlayerWhosTurnItIs(), enter2ndValue);
 				System.out.println("Amount To Be Exchanged: " + enter2ndValue);
 			}
 
 			if (selectPlayerTrade == 2) {
-				// Check to see if other player has jail card
+				boolean askForJailCard = ConsoleUI.promptForBool("Would you like to trade your Get Out of Jail Card?" + "[Y/N]", "Y", "N");
+
+				if (askForJailCard == true) {
+					// Check to see if player has a card
+					System.out.println("Checking to see if that player has a card");
+					if (!Player.getGetOutOfJailChance(Game.getPlayerWhosTurnItIs())
+							&& !Player.getGetOutOfJailChest(Game.getPlayerWhosTurnItIs())) {
+						System.out.println("Sorry, you don't possess a Get Out of Jail Free card");
+					}
+
+					else {
+						System.out.println("Excellent! You are eligible for trade");
+					}
+				}
+
+				else if (askForJailCard == false) {
+					System.out.println("No Get Out of Jail Free cards will be traded");
+				}
 			}
 
 			if (selectPlayerTrade == 3) {
-				// Choose property
+				boolean askForProperty = ConsoleUI.promptForBool("Would you like to trade some property?" + "[Y/N]", "Y", "N");
+				if (askForProperty == true){
+					System.out.println("What property will you be trading?");
+					Player.getland(Game.getPlayerWhosTurnItIs());
+					
+
+				}
+				
+				else if (askForProperty == false){
+					System.out.println("No property will be traded");
+				}
 			}
 
 			// Sends to method below
@@ -145,7 +172,7 @@ public class Trade {
 	}
 
 	public static boolean acceptOrDeclinePlayerTradeRequest() throws IOException {
-		boolean acceptOrDecline = ConsoleUI.promptForBool("Would you like to trade with player?" + "[Y/N]", "Y", "N");
+		boolean acceptOrDecline = ConsoleUI.promptForBool("Would you like to trade with player intiating trade?" + "[Y/N]", "Y", "N");
 
 		if (acceptOrDecline == true) {
 			boolean modifyOrNah = ConsoleUI.promptForBool("Would you like to modify your trade?" + "[Y/N]", "Y", "N");
@@ -155,24 +182,58 @@ public class Trade {
 				int selectWhatToModify = ConsoleUI.promptForMenuSelection(modifyChoice, false);
 
 				if (selectWhatToModify == 1) {
-					int enter3rdValue = ConsoleUI.promptForInt(
-							"Enter in the value of money you would like to trade instead", 0, Integer.MAX_VALUE);
+					boolean wouldYouLikeToChangeCurrency = ConsoleUI.promptForBool("Would you like to change the amount to trade?" + "[Y/N]", "Y", "N");
+					
+					if (wouldYouLikeToChangeCurrency == true){
+					int enter3rdValue = ConsoleUI.promptForInt("Enter in the value of money you would like to trade instead", 0, Integer.MAX_VALUE);
 					Player.setMoney(Game.getPlayerWhosTurnItIs(), enter3rdValue);
 					System.out.println("Amount To Be Exchanged: " + enter3rdValue);
+					}
+					
+					else if (wouldYouLikeToChangeCurrency == false){
+						System.out.println("Currency will not be changed");
+					}
 				}
 
 				if (selectWhatToModify == 2) {
-					// Decided whether or not to trade jail card
+					boolean modifyJailCard = ConsoleUI.promptForBool("Would you like to trade your Get Out of Jail Card?" + "[Y/N]", "Y", "N");
+
+					if (modifyJailCard == true) {
+						// Check to see if player has a card
+						System.out.println("Checking to see if that player has a card");
+						if (!Player.getGetOutOfJailChance(Game.getPlayerWhosTurnItIs())
+								&& !Player.getGetOutOfJailChest(Game.getPlayerWhosTurnItIs())) {
+							System.out.println("Sorry, you don't possess a Get Out of Jail Free card");
+						}
+
+						else {
+							System.out.println("Excellent! You are eligible for trade");
+						}
+					}
+
+					else if (modifyJailCard == false) {
+						System.out.println("No Get Out of Jail Free cards will be traded");
+					}	
 				}
 
 				if (selectWhatToModify == 3) {
-					// Change property
+					boolean tradeProperty = ConsoleUI.promptForBool("Would you like to trade some property?" + "[Y/N]", "Y", "N");
+					if (tradeProperty == true){
+						System.out.println("What property will you be trading?");
+						Player.getland(Game.getPlayerWhosTurnItIs());
+						
+
+					}
+					
+					else if (tradeProperty == false){
+						System.out.println("No property will be traded");
+					}
 				}
 			}
 
-			if (modifyOrNah == false) {
+			else if (modifyOrNah == false) {
 				System.out.println("There will be no modification of cards");
-				// initiate the trade right here since other player doesn't want
+				// initiate the trade right here since other player doesn't want the
 				// cards to be modified but wants to trade
 			}
 
@@ -181,7 +242,8 @@ public class Trade {
 		else if (acceptOrDecline == false) {
 			System.out.println("Trade declined");
 			System.out.println("Let's restart the process");
-			// send back to method above
+			askForTradeOption();
+			// sends back to method above
 		}
 		return acceptOrDecline;
 	}
