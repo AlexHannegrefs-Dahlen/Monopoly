@@ -119,6 +119,7 @@ public class Chance_Cards {
 			}
 			if (Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) == 36) {
 				Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 5);
+				Player.setMoney(Game.getPlayerWhosTurnItIs(), 200);
 			}
 
 		}
@@ -127,8 +128,15 @@ public class Chance_Cards {
 				//WIP
 		}
 		if (retVal == "ADV3") {
-			Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 11);
-			System.out.println("You've advanced to St.Charles Place");
+			if (Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) > 11){
+				Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 11);
+				System.out.println("You've advanced to St.Charles Place");	
+				Player.setMoney(Game.getPlayerWhosTurnItIs(), 200);
+			}
+			if (Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) < 11){
+				Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 11);
+				System.out.println("You've advanced to St.Charles Place");
+			}
 		}
 		if (retVal == "ADV4") {
 			Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), );
