@@ -19,10 +19,29 @@ public class BoardSpaces {
 	private int boardSpaceNumber;
 	private int houses;
 	private int hotel;
+	private int railroad;
+	private Player ownedBy;
+	
+	public Player getOwnedBy(BoardSpaces space){
+		return space.ownedBy;
+	}
+	
+	public void setOwnedBy(Player buying, BoardSpaces space){
+		space.ownedBy = buying;
+	}
 
+	public int getRailroad(BoardSpaces space){
+		return space.railroad;
+	}
+	
+	public void setRailroad(BoardSpaces space, int numberOfRailroads){
+		space.railroad = numberOfRailroads;
+	}
+	
 	public int getHouses(BoardSpaces space) {
 		return space.houses;
 	}
+	
 
 	public void setHouses(BoardSpaces space, int numberOfHouses) {
 		space.houses = numberOfHouses;
@@ -40,8 +59,8 @@ public class BoardSpaces {
 		return space.type;
 	}
 
-	public String getName() {
-		return name;
+	public String getName(BoardSpaces space) {
+		return space.name;
 	}
 
 	public SpaceColor getColor() {
@@ -68,6 +87,7 @@ public class BoardSpaces {
 		return space.boardSpaceNumber;
 
 	}
+	
 
 	public void makeSpace(BoardSpaces space, SpaceColor color, String name, int rent, int morgage, int housePrice,
 			boolean isAvail, SpaceType Type, int boardSpaceNumber) {

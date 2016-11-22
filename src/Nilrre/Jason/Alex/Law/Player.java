@@ -18,6 +18,15 @@ public class Player {
 	private int rolledDoubles;
 	private boolean myTurn = false;
 	private boolean playingGame = false;
+	private int amountOnDie;
+	
+	public static int getAmountOnDie(Player rolling){
+		return rolling.amountOnDie;
+	}
+	
+	public static void setAmountOnDie(Player rolling, int dieOne, int dieTwo){
+		rolling.amountOnDie = dieOne + dieTwo;
+	}
 	
 	public static void setPlayingGame(Player game, boolean Game){
 		game.playingGame = Game;
@@ -132,6 +141,7 @@ public class Player {
 		Random gen = new Random();
 		int dieOne = (gen.nextInt(6) + 1);
 		int dieTwo = (gen.nextInt(6) + 1);
+		setAmountOnDie(rolling, dieOne, dieTwo);
 		if (rolling.inJail) {
 			boolean doubles = checkForDoubles(dieOne, dieTwo);
 			if (doubles) {
