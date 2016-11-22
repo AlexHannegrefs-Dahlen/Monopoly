@@ -65,7 +65,6 @@ public class Trade {
 					System.out.println("What property will you be trading?");
 					Player.getland(Game.getPlayerWhosTurnItIs());
 					
-
 				}
 				
 				else if (tradeProperty == false){

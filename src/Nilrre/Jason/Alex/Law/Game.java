@@ -93,13 +93,16 @@ public class Game {
 			Player.setMoney(four, 1500);
 		} else if (playerNumber == 5) {
 			Player.setPiece(five);
-			Pla
+			Player.setMoney(five, 1500);
 		} else if (playerNumber == 6) {
 			Player.setPiece(six);
+			Player.setMoney(six, 1500);
 		} else if (playerNumber == 7) {
 			Player.setPiece(seven);
+			Player.setMoney(seven, 1500);
 		} else if (playerNumber == 8) {
 			Player.setPiece(eight);
+			Player.setMoney(eight, 1500);
 		}
 	}
 
