@@ -19,6 +19,15 @@ public class Player {
 	private boolean myTurn = false;
 	private boolean playingGame = false;
 	private int amountOnDie;
+	private int railroadsOwned;
+	
+	public static int getRailroadsOwned(Player railroad){
+		return railroad.railroadsOwned;
+	}
+	
+	public static void setRailroadsOwned(Player railroad, int railroadsToAdd){
+		railroad.railroadsOwned =+ railroadsToAdd;
+	}
 	
 	public static int getAmountOnDie(Player rolling){
 		return rolling.amountOnDie;

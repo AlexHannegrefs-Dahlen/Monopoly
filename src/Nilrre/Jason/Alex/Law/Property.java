@@ -443,18 +443,57 @@ public class Property {
 		return rent;
 	}
 
-	/*public int Railroad(int railroad) {
-		if (railroad == 1) {
+	public int ReadingRailroad() {
+		if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[10][5])) == 1){
 			rent = 25;
-		} else if (railroad == 2) {
+		} else if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[10][5])) == 2){
 			rent = 50;
-		} else if (railroad == 3) {
+		} else if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[10][5])) == 3){
 			rent = 100;
-		} else if (railroad == 4) {
+		} else if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[10][5])) == 4){
 			rent = 200;
 		}
 		return rent;
-	}*/
+	}
+	
+	public int PennsylvaniaRailroad() {
+		if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[5][0])) == 1){
+			rent = 25;
+		} else if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[5][0])) == 2){
+			rent = 50;
+		} else if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[5][0])) == 3){
+			rent = 100;
+		} else if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[5][0])) == 4){
+			rent = 200;
+		}
+		return rent;
+	}
+	
+	public int BandORailroad() {
+		if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[0][5])) == 1){
+			rent = 25;
+		} else if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[0][5])) == 2){
+			rent = 50;
+		} else if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[0][5])) == 3){
+			rent = 100;
+		} else if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[0][5])) == 4){
+			rent = 200;
+		}
+		return rent;
+	}
+	
+	public int ShortLineRailroad() {
+		if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[5][10])) == 1){
+			rent = 25;
+		} else if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[5][10])) == 2){
+			rent = 50;
+		} else if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[5][10])) == 3){
+			rent = 100;
+		} else if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[5][10])) == 4){
+			rent = 200;
+		}
+		return rent;
+	}
 
 	public void LuxuryTax() {
 		Player.setMoney(Game.getPlayerWhosTurnItIs(), -75);
