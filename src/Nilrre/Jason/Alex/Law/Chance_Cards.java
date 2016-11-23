@@ -6,7 +6,7 @@ import Nilrre.Jason.Alex.Law.Player;
 
 public class Chance_Cards {
 	ArrayList<String> CARDS = new ArrayList<>();
-
+	private int UsedCardJail;
 	private static int nextDrawIndex = 0;
 
 	public void Make_Cards() {
@@ -23,15 +23,16 @@ public class Chance_Cards {
 		CARDS.add("ADV2NEARRAIL");
 		CARDS.add("ADV2READRAIL");
 		CARDS.add("ADV3");
-		CARDS.add("ADV4");
+		CARDS.add("ADV2NEARUTIL");
 		CARDS.add("C150");
-		CARDS.add("ADV5");
+		CARDS.add("C100");
 		CARDS.add("GETOUT");
 		CARDS.add("P25HOUSEPHOTEL100");
 
 	}
 
 	public void Shuffle() {
+		UsedCardJail = 0;
 		for (int i = 0; i < 100; i++) {
 			Random NUM = new Random();
 			int number = NUM.nextInt(CARDS.size());
@@ -138,17 +139,40 @@ public class Chance_Cards {
 				System.out.println("You've advanced to St.Charles Place");
 			}
 		}
-		if (retVal == "ADV4") {
-			Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), );
-			System.out.println("You've advanced to ");
+		if (retVal == "ADV2NEARUTIL") {//WIP check if owned and pay extra if it is
+			if (Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) == 7) {
+				Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 12);
+			}
+
+			if (Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) == 22) {
+				Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 28);
+			}
+			if (Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) == 36) {
+				Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 12);
+				Player.setMoney(Game.getPlayerWhosTurnItIs(), 200);
+			}
 		}
 		if (retVal == "C150") {
+			Player.setMoney(Game.getPlayerWhosTurnItIs(),150);
 		}
-		if (retVal == "ADV5") {
+		if (retVal == "C100") {
+			Player.setMoney(Game.getPlayerWhosTurnItIs(), 100);
 		}
 		if (retVal == "GETOUT") {
+			if(UsedCardJail==0){
+				Player.setGetOutOfJailChance(Game.getPlayerWhosTurnItIs(), true);
+				UsedCardJail++;
+				}
+			if(UsedCardJail > 0){
+				DRAW();
+			}
+				
 		}
-		if (retVal == "P25HOUSEPHOTEL100") {
+		if (retVal == "P25HOUSEPHOTEL100") {//WIP
+			int house = -25 * (NumberofHouses);
+			int hotel = -100 * (NumberofHotels);
+			int total = house + hotel;
+			Player.setMoney(Game.getPlayerWhosTurnItIs(), total);
 		}
 	}
 }
