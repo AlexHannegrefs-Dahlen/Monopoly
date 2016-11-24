@@ -169,10 +169,10 @@ public class Chance_Cards {
 				
 		}
 		if (retVal == "P25HOUSEPHOTEL100") {//WIP
-			int house = -25 * (NumberofHouses);
-			int hotel = -100 * (NumberofHotels);
-			int total = house + hotel;
-			Player.setMoney(Game.getPlayerWhosTurnItIs(), total);
+			//int house = -25 * (NumberofHouses);
+			//int hotel = -100 * (NumberofHotels);
+			//int total = house + hotel;
+			//Player.setMoney(Game.getPlayerWhosTurnItIs(), total);
 		}
 	}
 }

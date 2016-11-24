@@ -74,7 +74,7 @@ public class Game {
 				} else if (i == 8) {
 					turn(eight);
 				}
-				b.printBoard(b.board);
+				b.printBoard(Board.board);
 			}
 		} while (gameRunning);
 
