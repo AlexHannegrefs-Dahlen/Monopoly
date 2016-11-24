@@ -49,7 +49,9 @@ public class Game {
 	public static void RunGame() throws IOException {
 		GamePieces.makeGamePieces();
 		amountOfPlayers = ConsoleUI.promptForInt("How many players?", 2, 8);
-
+		Board b = new Board();
+		b.createBoard();
+		
 		for (int i = 1; i <= amountOfPlayers; i++) {
 			makePlayer(i);
 		}
@@ -72,6 +74,7 @@ public class Game {
 				} else if (i == 8) {
 					turn(eight);
 				}
+				b.printBoard(b.board);
 			}
 		} while (gameRunning);
 
