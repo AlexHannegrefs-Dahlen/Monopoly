@@ -62,11 +62,13 @@ public class Game {
 					System.out.println("\nMoney: " + Player.getMoney(one));
 					System.out.println("Jail Cards Owned: " + Player.getJailcard(one));
 					System.out.println("Land Owned: " + Player.getland(one) + "\n");
+
 				} else if (i == 2) {
 					turn(two);
 					System.out.println("\nMoney: " + Player.getMoney(two));
 					System.out.println("Jail Cards Owned: " + Player.getJailcard(two));
 					System.out.println("Land Owned: " + Player.getland(two) + "\n");
+					
 				} else if (i == 3) {
 					turn(three);
 					System.out.println("\nMoney: " + Player.getMoney(three));
@@ -97,6 +99,8 @@ public class Game {
 					System.out.println("\nMoney: " + Player.getMoney(eight));
 					System.out.println("Jail Cards Owned: " + Player.getJailcard(eight));
 					System.out.println("Land Owned: " + Player.getland(eight) + "\n");
+					
+					
 					if(Player.getPlayingGame(one))
 						turn(one);
 					else
@@ -137,7 +141,7 @@ public class Game {
 					else
 						break;
 				}
-				b.printBoard(Board.board);
+//				b.printBoard(Board.board);
 			}
 		} while (gameRunning);
 

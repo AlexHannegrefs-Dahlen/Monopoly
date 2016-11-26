@@ -10,12 +10,12 @@ public class Board {
 
 	public void createBoard() {
 
-		for(int i = 0; i < 11; i++){
-			for(int j = 0; j< 11; j++){
+		for (int i = 0; i < 11; i++) {
+			for (int j = 0; j < 11; j++) {
 				board[i][j] = new BoardSpaces();
 			}
 		}
-		
+
 		// Bottom row
 		b.makeSpace(board[10][10], SpaceColor.Blank, "GO", 0, 0, 0, false, SpaceType.Go, 0);
 		b.makeSpace(board[10][9], SpaceColor.Purple, "Mediteranian Avenue", 2, 30, 50, true, SpaceType.Property, 1);
@@ -74,18 +74,17 @@ public class Board {
 		}
 
 	}
-	
-	public void actualRent(BoardSpaces spaceNumber){
+
+	public void actualRent(BoardSpaces spaceNumber) {
 		b.getBoardSpaceNumber(spaceNumber);
 		b.getHouses(spaceNumber);
 		b.getHotel(spaceNumber);
-		
+
 	}
 
 	public void printBoard(BoardSpaces[][] board) {
-
 		for (int i = 0; i < 11; i++) {
-			for (int j = 0; j < 11; j++) {
+			for (int j = 0; j < 11; j++) {				
 				System.out.print(board[i][j]);
 			}
 			System.out.println();
