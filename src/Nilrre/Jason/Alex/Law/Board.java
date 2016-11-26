@@ -31,7 +31,6 @@ public class Board {
 		// Left Column
 		b.makeSpace(board[10][0], SpaceColor.Blank, "Jail", 0, 0, 0, false, SpaceType.Jail, 10);
 		b.makeSpace(board[9][0], SpaceColor.Pink, "St. Charles Place", 10, 70, 100, true, SpaceType.Property, 11);
-		// Look up electric company rules
 		b.makeSpace(board[8][0], SpaceColor.Utilities, "Electric Company", 0, 0, 0, true, SpaceType.Utilities, 12);
 		b.makeSpace(board[7][0], SpaceColor.Pink, "States Avenue", 10, 70, 100, true, SpaceType.Property, 13);
 		b.makeSpace(board[6][0], SpaceColor.Pink, "Virgina Avenue", 12, 80, 100, true, SpaceType.Property, 14);

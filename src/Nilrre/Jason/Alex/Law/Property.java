@@ -4,7 +4,7 @@ public class Property {
 	int rent;
 
 	public int MediteranianAvenue(int houses, int hotels) {
-		
+
 		if (hotels == 1) {
 			rent = 250;
 		} else if (houses == 0) {
@@ -144,7 +144,7 @@ public class Property {
 	}
 
 	public int VirginiaAvenue(int houses, int hotels) {
-		
+
 		if (hotels == 1) {
 			rent = 900;
 		} else if (houses == 0) {
@@ -164,7 +164,7 @@ public class Property {
 	}
 
 	public int StJamesPlace(int houses, int hotels) {
-		
+
 		if (hotels == 1) {
 			rent = 950;
 		} else if (houses == 0) {
@@ -184,7 +184,7 @@ public class Property {
 	}
 
 	public int TennesseeAvenue(int houses, int hotels) {
-		
+
 		if (hotels == 1) {
 			rent = 950;
 		} else if (houses == 0) {
@@ -204,7 +204,7 @@ public class Property {
 	}
 
 	public int NewYorkAvenue(int houses, int hotels) {
-		
+
 		if (hotels == 1) {
 			rent = 1000;
 		} else if (houses == 0) {
@@ -224,7 +224,7 @@ public class Property {
 	}
 
 	public int KentuckyAvenue(int houses, int hotels) {
-		
+
 		if (hotels == 1) {
 			rent = 1050;
 		} else if (houses == 0) {
@@ -244,7 +244,7 @@ public class Property {
 	}
 
 	public int IndianaAvenue(int houses, int hotels) {
-		
+
 		if (hotels == 1) {
 			rent = 1050;
 		} else if (houses == 0) {
@@ -264,7 +264,7 @@ public class Property {
 	}
 
 	public int IllinoisAvenue(int houses, int hotels) {
-		
+
 		if (hotels == 1) {
 			rent = 1100;
 		} else if (houses == 0) {
@@ -284,7 +284,7 @@ public class Property {
 	}
 
 	public int AtlanticAvenue(int houses, int hotels) {
-		
+
 		if (hotels == 1) {
 			rent = 1150;
 		} else if (houses == 0) {
@@ -304,7 +304,7 @@ public class Property {
 	}
 
 	public int VentnorAvenue(int houses, int hotels) {
-		
+
 		if (hotels == 1) {
 			rent = 1150;
 		} else if (houses == 0) {
@@ -324,7 +324,7 @@ public class Property {
 	}
 
 	public int MarvinGardens(int houses, int hotels) {
-		
+
 		if (hotels == 1) {
 			rent = 1200;
 		} else if (houses == 0) {
@@ -344,7 +344,7 @@ public class Property {
 	}
 
 	public int PacificAvenue(int houses, int hotels) {
-		
+
 		if (hotels == 1) {
 			rent = 1275;
 		} else if (houses == 0) {
@@ -364,7 +364,7 @@ public class Property {
 	}
 
 	public int NorthCarolinaAvenue(int houses, int hotels) {
-		
+
 		if (hotels == 1) {
 			rent = 1275;
 		} else if (houses == 0) {
@@ -384,7 +384,7 @@ public class Property {
 	}
 
 	public int PennsylvaniaAvenue(int houses, int hotels) {
-		
+
 		if (hotels == 1) {
 			rent = 1400;
 		} else if (houses == 0) {
@@ -404,7 +404,7 @@ public class Property {
 	}
 
 	public int ParkPlace(int houses, int hotels) {
-		
+
 		if (hotels == 1) {
 			rent = 1500;
 		} else if (houses == 0) {
@@ -424,7 +424,7 @@ public class Property {
 	}
 
 	public int Boardwalk(int houses, int hotels) {
-		
+
 		if (hotels == 1) {
 			rent = 2000;
 		} else if (houses == 0) {
@@ -444,52 +444,52 @@ public class Property {
 	}
 
 	public int ReadingRailroad() {
-		if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[10][5])) == 1){
+		if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[10][5])) == 1) {
 			rent = 25;
-		} else if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[10][5])) == 2){
+		} else if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[10][5])) == 2) {
 			rent = 50;
-		} else if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[10][5])) == 3){
+		} else if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[10][5])) == 3) {
 			rent = 100;
-		} else if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[10][5])) == 4){
+		} else if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[10][5])) == 4) {
 			rent = 200;
 		}
 		return rent;
 	}
-	
+
 	public int PennsylvaniaRailroad() {
-		if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[5][0])) == 1){
+		if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[5][0])) == 1) {
 			rent = 25;
-		} else if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[5][0])) == 2){
+		} else if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[5][0])) == 2) {
 			rent = 50;
-		} else if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[5][0])) == 3){
+		} else if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[5][0])) == 3) {
 			rent = 100;
-		} else if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[5][0])) == 4){
+		} else if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[5][0])) == 4) {
 			rent = 200;
 		}
 		return rent;
 	}
-	
+
 	public int BandORailroad() {
-		if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[0][5])) == 1){
+		if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[0][5])) == 1) {
 			rent = 25;
-		} else if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[0][5])) == 2){
+		} else if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[0][5])) == 2) {
 			rent = 50;
-		} else if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[0][5])) == 3){
+		} else if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[0][5])) == 3) {
 			rent = 100;
-		} else if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[0][5])) == 4){
+		} else if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[0][5])) == 4) {
 			rent = 200;
 		}
 		return rent;
 	}
-	
+
 	public int ShortLineRailroad() {
-		if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[5][10])) == 1){
+		if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[5][10])) == 1) {
 			rent = 25;
-		} else if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[5][10])) == 2){
+		} else if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[5][10])) == 2) {
 			rent = 50;
-		} else if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[5][10])) == 3){
+		} else if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[5][10])) == 3) {
 			rent = 100;
-		} else if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[5][10])) == 4){
+		} else if (Player.getRailroadsOwned(Board.b.getOwnedBy(Board.board[5][10])) == 4) {
 			rent = 200;
 		}
 		return rent;

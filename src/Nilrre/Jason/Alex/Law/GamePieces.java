@@ -24,7 +24,7 @@ public class GamePieces {
 		GamePieces.pieces[6] = GamePieces.diffPieces.Battleship;
 		GamePieces.pieces[7] = GamePieces.diffPieces.Tophat;
 	}
-
+	
 	public static boolean checkIfTaken(GamePieces.diffPieces piece) {
 		if (piece.taken) {
 			return true;
