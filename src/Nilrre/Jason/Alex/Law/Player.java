@@ -182,7 +182,96 @@ public class Player {
 			System.out.println("You passed go Collect $200. Current funds: $" + moving.money);
 		}
 		System.out.println("Moved to space " + moving.spaceCurrentlyOn);
-		
+		spaceNumberTo2dArray(moving);
+	}
+	
+	public static void spaceNumberTo2dArray(Player moved){
+		int space = moved.spaceCurrentlyOn;
+		if(space == 1){
+			//[10][9] property
+		} else if (space == 2) {
+			//[10][8] com chest
+		} else if (space == 3) {
+			//[10][7] property
+		} else if (space == 4) {
+			//[10][6] income tax
+		} else if (space == 5) {
+			//[10][5] prop rail
+		} else if (space == 6) {
+			//[10][4] prop
+		} else if (space == 7) {
+			//10 3 chance
+		} else if (space == 8) {
+			// 10 2 prop
+		} else if (space == 9) {
+			//10 2 prop
+		} else if (space == 11) {
+			//9 0 prop
+		} else if (space == 12) {
+			//8 0 util
+		} else if (space == 13) {
+			//7 0 prop
+		} else if (space == 14) {
+			//6 0 prop
+		} else if (space == 15) {
+			//5 0 prop
+		} else if (space == 16) {
+			//4 0 prop
+		} else if (space == 17) {
+			//3 0 com chest
+		} else if (space == 18) {
+			//2 0 prop
+		} else if (space == 19) {
+			//1 0 prop
+		} else if (space == 21) {
+			//0 1 prop
+		} else if (space == 22) {
+			//0 2 chance
+		} else if (space == 23) {
+			//0 3 prop
+		} else if (space == 24) {
+			//0 4 prop
+		} else if (space == 25) {
+			//0 5 prop rail
+		} else if (space == 26) {
+			//0 6 prop
+		} else if (space == 27) {
+			//0 7 prop
+		} else if (space == 28) {
+			//0 8 prop util
+		} else if (space == 29) {
+			//0 9 prop
+		} else if (space == 30) {
+			//0 10 got to jail
+		} else if (space == 31) {
+			//1 10 prop
+		} else if (space == 32) {
+			//2 10 prop
+		} else if (space == 33) {
+			//3 10 com chest
+		} else if (space == 34) {
+			//4 10 prop
+		} else if (space == 35) {
+			//5 10 prop rail
+		} else if (space == 36) {
+			//6 10 Chance
+		}else if (space == 37) {
+			//7 10 prop
+		}else if (space == 38) {
+			//8 10 lux tax
+		}else if (space == 39) {
+			//9 10 prop
+		}
+	}
+	
+	public static void checkSpaceMovedToForOwner(int row, int col, Player moved){
+		if(Board.b.getIsAvailable(Board.board[row][col])){
+			//prop avail
+		} else{
+			Player owner = Board.b.getOwnedBy(Board.board[row][col]);
+			Player.setMoney(moved, -Board.board[row][col].getRent(Board.board[row][col]));			
+			Player.setMoney(owner, Board.board[row][col].getRent(Board.board[row][col]));
+		}
 	}
 
 	private static boolean checkForDoubles(int dieOne, int dieTwo) {

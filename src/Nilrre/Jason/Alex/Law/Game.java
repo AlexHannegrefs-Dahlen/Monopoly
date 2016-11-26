@@ -58,21 +58,45 @@ public class Game {
 		do {
 			for (int i = 1; i <= amountOfPlayers; i++) {
 				if (i == 1) {
-					turn(one);
+					if(Player.getPlayingGame(one))
+						turn(one);
+					else
+						break;
 				} else if (i == 2) {
-					turn(two);
+					if(Player.getPlayingGame(two))
+						turn(two);
+					else
+						break;
 				} else if (i == 3) {
-					turn(three);
+					if(Player.getPlayingGame(three))
+						turn(three);
+					else
+						break;
 				} else if (i == 4) {
-					turn(four);
+					if(Player.getPlayingGame(four))
+						turn(four);
+					else
+						break;
 				} else if (i == 5) {
-					turn(five);
+					if(Player.getPlayingGame(five))
+						turn(five);
+					else
+						break;
 				} else if (i == 6) {
-					turn(six);
+					if(Player.getPlayingGame(six))
+						turn(six);
+					else
+						break;
 				} else if (i == 7) {
-					turn(seven);
+					if(Player.getPlayingGame(seven))
+						turn(seven);
+					else
+						break;
 				} else if (i == 8) {
-					turn(eight);
+					if(Player.getPlayingGame(eight))
+						turn(eight);
+					else
+						break;
 				}
 				b.printBoard(Board.board);
 			}
