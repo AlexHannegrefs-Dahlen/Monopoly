@@ -1,5 +1,6 @@
 package Nilrre.Jason.Alex.Law;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import Nilrre.Jason.Alex.Law.Player;
@@ -54,7 +55,7 @@ public class Chance_Cards {
 
 	}
 
-	public void CardEffects(String retVal) {
+	public void CardEffects(String retVal) throws IOException {
 
 		if (retVal == "GTG") {
 			System.out.println("Advance to go (Get to  Two Hundred)");

@@ -1,5 +1,7 @@
 package Nilrre.Jason.Alex.Law;
 
+import java.io.IOException;
+
 public class Property {
 	int rent;
 
@@ -495,11 +497,11 @@ public class Property {
 		return rent;
 	}
 
-	public void LuxuryTax() {
+	public void LuxuryTax() throws IOException {
 		Player.setMoney(Game.getPlayerWhosTurnItIs(), -75);
 	}
 
-	public void ElectricCompany() {
+	public void ElectricCompany() throws IOException {
 		if (Board.b.getOwnedBy(Board.board[8][0]) == Board.b.getOwnedBy(Board.board[0][8])) {
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), -(10 * Player.getAmountOnDie(Game.getPlayerWhosTurnItIs())));
 			Player.setMoney(Board.b.getOwnedBy(Board.board[8][0]),
@@ -511,7 +513,7 @@ public class Property {
 		}
 	}
 
-	public void WaterWorks() {
+	public void WaterWorks() throws IOException {
 		if (Board.b.getOwnedBy(Board.board[8][0]) == Board.b.getOwnedBy(Board.board[0][8])) {
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), -(10 * Player.getAmountOnDie(Game.getPlayerWhosTurnItIs())));
 			Player.setMoney(Board.b.getOwnedBy(Board.board[0][8]),
