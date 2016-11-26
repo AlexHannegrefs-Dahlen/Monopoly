@@ -3,7 +3,7 @@ package Nilrre.Jason.Alex.Law;
 public class GamePieces {
 
 	enum diffPieces {
-		Thimble, Wheel_Barrow, Boot, Dog, RaceCar, Iron, Battleship, Tophat;
+		Exclamaion_Point, Question_Mark, Asterisk, At_Symbol, Hashtag, Dollar_Sign, Ampersand, SemiColon;
 
 		private boolean taken;
 	}
@@ -14,15 +14,37 @@ public class GamePieces {
 		return GamePieces.diffPieces.values();
 	}
 
+	public static String getGamePieces(diffPieces type) {
+		String ReturnSymbol = null;
+		if (pieces[0] == type) {
+			ReturnSymbol = "!";
+		} else if (pieces[1] == type) {
+			ReturnSymbol = "?";
+		} else if (pieces[2] == type) {
+			ReturnSymbol = "*";
+		} else if (pieces[3] == type) {
+			ReturnSymbol = "@";
+		} else if (pieces[4] == type) {
+			ReturnSymbol = "#";
+		} else if (pieces[5] == type) {
+			ReturnSymbol = "$";
+		} else if (pieces[6] == type) {
+			ReturnSymbol = "&";
+		} else if (pieces[7] == type) {
+			ReturnSymbol = ";";
+		}
+		return ReturnSymbol;
+	}
+
 	public static void makeGamePieces() {
-		GamePieces.pieces[0] = GamePieces.diffPieces.Thimble;
-		GamePieces.pieces[1] = GamePieces.diffPieces.Wheel_Barrow;
-		GamePieces.pieces[2] = GamePieces.diffPieces.Boot;
-		GamePieces.pieces[3] = GamePieces.diffPieces.Dog;
-		GamePieces.pieces[4] = GamePieces.diffPieces.RaceCar;
-		GamePieces.pieces[5] = GamePieces.diffPieces.Iron;
-		GamePieces.pieces[6] = GamePieces.diffPieces.Battleship;
-		GamePieces.pieces[7] = GamePieces.diffPieces.Tophat;
+		GamePieces.pieces[0] = GamePieces.diffPieces.Exclamaion_Point;
+		GamePieces.pieces[1] = GamePieces.diffPieces.Question_Mark;
+		GamePieces.pieces[2] = GamePieces.diffPieces.Asterisk;
+		GamePieces.pieces[3] = GamePieces.diffPieces.At_Symbol;
+		GamePieces.pieces[4] = GamePieces.diffPieces.Hashtag;
+		GamePieces.pieces[5] = GamePieces.diffPieces.Dollar_Sign;
+		GamePieces.pieces[6] = GamePieces.diffPieces.Ampersand;
+		GamePieces.pieces[7] = GamePieces.diffPieces.SemiColon;
 	}
 
 	public static boolean checkIfTaken(GamePieces.diffPieces piece) {
@@ -35,4 +57,5 @@ public class GamePieces {
 	public static void takePiece(GamePieces.diffPieces piece) {
 		piece.taken = true;
 	}
+
 }

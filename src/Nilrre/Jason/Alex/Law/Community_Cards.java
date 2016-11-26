@@ -1,5 +1,6 @@
 package Nilrre.Jason.Alex.Law;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
@@ -34,6 +35,7 @@ public class Community_Cards {
 
 	}
 
+
 	public static void Shuffle1(ArrayList<String> comCards) {//Not sure if it works		
 		Random Rnum = new Random();
 		int Namber = Rnum.nextInt(6) + 5;
@@ -54,22 +56,23 @@ public class Community_Cards {
 	public static void effects(){
 		
 	}
-	public static void advanceToGo() {
+	
+	public static void advanceToGo() throws IOException {
 		Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 0);
 		Player.setMoney(Game.getPlayerWhosTurnItIs(), 200);
 		// 200
 	}
 
-	public static void bankError() {
+	public static void bankError() throws IOException {
 		Player.setMoney(Game.getPlayerWhosTurnItIs(), Player.getMoney(Game.getPlayerWhosTurnItIs()) + 200);
 	}
 
-	public static void saleStock() {
+	public static void saleStock() throws IOException {
 		Player.setMoney(Game.getPlayerWhosTurnItIs(), Player.getMoney(Game.getPlayerWhosTurnItIs()) + 50);
 
 	}
 
-	public static void doctorFees() {
+	public static void doctorFees() throws IOException {
 		Player.setMoney(Game.getPlayerWhosTurnItIs(), Player.getMoney(Game.getPlayerWhosTurnItIs()) - 50);
 		// 50
 	}
@@ -82,7 +85,7 @@ public class Community_Cards {
 		Player.setInJail(Game.getPlayerWhosTurnItIs(), true);
 	}
 
-	public static void grandOperaNight() {
+	public static void grandOperaNight() throws IOException {
 		int total = 0;
 		// How do i check to see each individual character
 		Player night = Game.getPlayerWhosTurnItIs();
@@ -115,39 +118,39 @@ public class Community_Cards {
 		Player.setMoney(Game.getPlayerWhosTurnItIs(), total);
 	}
 
-	public static void holidayFundMatures() {
+	public static void holidayFundMatures() throws IOException {
 		Player.setMoney(Game.getPlayerWhosTurnItIs(), Player.getMoney(Game.getPlayerWhosTurnItIs()) + 50);
 	}
 
-	public static void incomeTaxReturn() {
+	public static void incomeTaxReturn() throws IOException {
 		Player.setMoney(Game.getPlayerWhosTurnItIs(), Player.getMoney(Game.getPlayerWhosTurnItIs()) + 20);
 	}
 
-	public static void lifeInsuranceFunds() {
+	public static void lifeInsuranceFunds() throws IOException {
 		Player.setMoney(Game.getPlayerWhosTurnItIs(), Player.getMoney(Game.getPlayerWhosTurnItIs()) + 100);
 	}
 
-	public static void hospitalBill() {
+	public static void hospitalBill() throws IOException {
 		Player.setMoney(Game.getPlayerWhosTurnItIs(), Player.getMoney(Game.getPlayerWhosTurnItIs()) - 100);
 	}
 
-	public static void schoolFee() {
+	public static void schoolFee() throws IOException {
 		Player.setMoney(Game.getPlayerWhosTurnItIs(), Player.getMoney(Game.getPlayerWhosTurnItIs()) - 150);
 	}
 
-	public static void serviceFee() {
+	public static void serviceFee() throws IOException {
 		Player.setMoney(Game.getPlayerWhosTurnItIs(), Player.getMoney(Game.getPlayerWhosTurnItIs()) + 25);
 	}
 
-	public static void beautyContest() {
+	public static void beautyContest() throws IOException {
 		Player.setMoney(Game.getPlayerWhosTurnItIs(), Player.getMoney(Game.getPlayerWhosTurnItIs()) + 10);
 	}
 
-	public static void inheritance() {
+	public static void inheritance() throws IOException {
 		Player.setMoney(Game.getPlayerWhosTurnItIs(), Player.getMoney(Game.getPlayerWhosTurnItIs()) + 100);
 	}
 
-	public static void streetRepairs() {
+	public static void streetRepairs() throws IOException {
 		int cost = 0;
 		for (int i = 0; i < Player.getland(Game.getPlayerWhosTurnItIs()).size(); i++) {
 			cost += Player.getland(Game.getPlayerWhosTurnItIs()).get(i)

@@ -10,18 +10,18 @@ public class Board {
 
 	public void createBoard() {
 
-		for(int i = 0; i < 11; i++){
-			for(int j = 0; j< 11; j++){
+		for (int i = 0; i < 11; i++) {
+			for (int j = 0; j < 11; j++) {
 				board[i][j] = new BoardSpaces();
 			}
 		}
-		
+
 		// Bottom row
 		b.makeSpace(board[10][10], SpaceColor.Blank, "GO", 0, 0, 0, false, SpaceType.Go, 0);
 		b.makeSpace(board[10][9], SpaceColor.Purple, "Mediteranian Avenue", 2, 30, 50, true, SpaceType.Property, 1);
 		b.makeSpace(board[10][8], SpaceColor.Blank, "Community Chest", 0, 0, 0, false, SpaceType.CardDraw, 2);
 		b.makeSpace(board[10][7], SpaceColor.Purple, "Baltic Avenue", 4, 30, 50, true, SpaceType.Property, 3);
-		b.makeSpace(board[10][6], SpaceColor.Blank, "Income Tax", 0, 0, 0, false, SpaceType.Tax, 4);
+		b.makeSpace(board[10][6], SpaceColor.Blank, "Income Tax", 200, 0, 0, false, SpaceType.Tax, 4);
 		b.makeSpace(board[10][5], SpaceColor.Railroad, "Reading Railroad", 25, 100, 0, true, SpaceType.Property, 5);
 		b.makeSpace(board[10][4], SpaceColor.Silver, "Oriental Avenue", 6, 50, 50, true, SpaceType.Property, 6);
 		b.makeSpace(board[10][3], SpaceColor.Blank, "Chance", 0, 0, 0, true, SpaceType.CardDraw, 7);
@@ -31,7 +31,6 @@ public class Board {
 		// Left Column
 		b.makeSpace(board[10][0], SpaceColor.Blank, "Jail", 0, 0, 0, false, SpaceType.Jail, 10);
 		b.makeSpace(board[9][0], SpaceColor.Pink, "St. Charles Place", 10, 70, 100, true, SpaceType.Property, 11);
-		// Look up electric company rules
 		b.makeSpace(board[8][0], SpaceColor.Utilities, "Electric Company", 0, 0, 0, true, SpaceType.Utilities, 12);
 		b.makeSpace(board[7][0], SpaceColor.Pink, "States Avenue", 10, 70, 100, true, SpaceType.Property, 13);
 		b.makeSpace(board[6][0], SpaceColor.Pink, "Virgina Avenue", 12, 80, 100, true, SpaceType.Property, 14);
@@ -75,18 +74,17 @@ public class Board {
 		}
 
 	}
-	
-	public void actualRent(BoardSpaces spaceNumber){
+
+	public void actualRent(BoardSpaces spaceNumber) {
 		b.getBoardSpaceNumber(spaceNumber);
 		b.getHouses(spaceNumber);
 		b.getHotel(spaceNumber);
-		
+
 	}
 
 	public void printBoard(BoardSpaces[][] board) {
-
 		for (int i = 0; i < 11; i++) {
-			for (int j = 0; j < 11; j++) {
+			for (int j = 0; j < 11; j++) {				
 				System.out.print(board[i][j]);
 			}
 			System.out.println();

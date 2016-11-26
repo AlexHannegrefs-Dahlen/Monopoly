@@ -1,12 +1,13 @@
 package Nilrre.Jason.Alex.Law;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import Nilrre.Jason.Alex.Law.Player;
 
 public class Chance_Cards {
-	ArrayList<String> CARDS = new ArrayList<>();
-	private int UsedCardJail;
+	static ArrayList<String> CARDS = new ArrayList<>();
+	private static int UsedCardJail;
 	private static int nextDrawIndex = 0;
 
 	public void Make_Cards() {
@@ -31,7 +32,7 @@ public class Chance_Cards {
 
 	}
 
-	public void Shuffle() {
+	public static void Shuffle() {
 		UsedCardJail = 0;
 		for (int i = 0; i < 100; i++) {
 			Random NUM = new Random();
@@ -43,7 +44,7 @@ public class Chance_Cards {
 		}
 	}
 
-	public String DRAW() {
+	static public String DRAW() {
 		String retVal = CARDS.get(nextDrawIndex);
 		nextDrawIndex++;
 		if (nextDrawIndex >= CARDS.size()) {
@@ -54,7 +55,7 @@ public class Chance_Cards {
 
 	}
 
-	public void CardEffects(String retVal) {
+	public void CardEffects(String retVal) throws IOException {
 
 		if (retVal == "GTG") {
 			System.out.println("Advance to go (Get to  Two Hundred)");

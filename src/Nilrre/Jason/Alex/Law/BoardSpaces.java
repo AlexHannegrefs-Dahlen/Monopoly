@@ -22,35 +22,34 @@ public class BoardSpaces {
 	private int railroad;
 	private Player ownedBy;
 	private boolean mortgaged;
-	
-	public boolean getMortgaged(BoardSpaces space){
+
+	public boolean getMortgaged(BoardSpaces space) {
 		return space.mortgaged;
 	}
-	
-	public void setMortgaged(BoardSpaces space, boolean mort){
+
+	public void setMortgaged(BoardSpaces space, boolean mort) {
 		space.mortgaged = mort;
 	}
-	
-	public Player getOwnedBy(BoardSpaces space){
+
+	public Player getOwnedBy(BoardSpaces space) {
 		return space.ownedBy;
 	}
-	
-	public void setOwnedBy(Player buying, BoardSpaces space){
+
+	public void setOwnedBy(Player buying, BoardSpaces space) {
 		space.ownedBy = buying;
 	}
 
-	public int getRailroad(BoardSpaces space){
+	public int getRailroad(BoardSpaces space) {
 		return space.railroad;
 	}
-	
-	public void setRailroad(BoardSpaces space, int numberOfRailroads){
+
+	public void setRailroad(BoardSpaces space, int numberOfRailroads) {
 		space.railroad = numberOfRailroads;
 	}
-	
+
 	public int getHouses(BoardSpaces space) {
 		return space.houses;
 	}
-	
 
 	public void setHouses(BoardSpaces space, int numberOfHouses) {
 		space.houses = numberOfHouses;
@@ -96,7 +95,6 @@ public class BoardSpaces {
 		return space.boardSpaceNumber;
 
 	}
-	
 
 	public void makeSpace(BoardSpaces space, SpaceColor color, String name, int rent, int morgage, int housePrice,
 			boolean isAvail, SpaceType Type, int boardSpaceNumber) {
@@ -117,13 +115,20 @@ public class BoardSpaces {
 	@Override
 	public String toString() {
 		String whatever = "   ";
-		if (name != whatever) {
-			whatever = " " + Integer.toString(boardSpaceNumber);
-			if (boardSpaceNumber >= 0 && boardSpaceNumber <= 9) {
-				whatever = "  " + Integer.toString(boardSpaceNumber);
+
+		for (int i = 0; i < 11; i++) {
+			for (int j = 0; j < 11; j++) {
+				if (name != whatever) {
+					whatever = " " + Integer.toString(boardSpaceNumber);
+					if (boardSpaceNumber >= 0 && boardSpaceNumber <= 9) {
+						whatever = "  " + Integer.toString(boardSpaceNumber);
+					}
+					if (Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) == Board.b.getBoardSpaceNumber(Board.board[i][j])) {
+						whatever = GamePieces.getGamePieces(Player.getPiece(Game.getPlayerWhosTurnItIs()));
+					}
+				}
 			}
 		}
-
 		return whatever;
 	}
 
