@@ -21,6 +21,15 @@ public class BoardSpaces {
 	private int hotel;
 	private int railroad;
 	private Player ownedBy;
+	private boolean mortgaged;
+	
+	public boolean getMortgaged(BoardSpaces space){
+		return space.mortgaged;
+	}
+	
+	public void setMortgaged(BoardSpaces space, boolean mort){
+		space.mortgaged = mort;
+	}
 	
 	public Player getOwnedBy(BoardSpaces space){
 		return space.ownedBy;

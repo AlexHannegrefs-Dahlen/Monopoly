@@ -97,6 +97,45 @@ public class Game {
 					System.out.println("\nMoney: " + Player.getMoney(eight));
 					System.out.println("Jail Cards Owned: " + Player.getJailcard(eight));
 					System.out.println("Land Owned: " + Player.getland(eight) + "\n");
+					if(Player.getPlayingGame(one))
+						turn(one);
+					else
+						break;
+				} else if (i == 2) {
+					if(Player.getPlayingGame(two))
+						turn(two);
+					else
+						break;
+				} else if (i == 3) {
+					if(Player.getPlayingGame(three))
+						turn(three);
+					else
+						break;
+				} else if (i == 4) {
+					if(Player.getPlayingGame(four))
+						turn(four);
+					else
+						break;
+				} else if (i == 5) {
+					if(Player.getPlayingGame(five))
+						turn(five);
+					else
+						break;
+				} else if (i == 6) {
+					if(Player.getPlayingGame(six))
+						turn(six);
+					else
+						break;
+				} else if (i == 7) {
+					if(Player.getPlayingGame(seven))
+						turn(seven);
+					else
+						break;
+				} else if (i == 8) {
+					if(Player.getPlayingGame(eight))
+						turn(eight);
+					else
+						break;
 				}
 				b.printBoard(Board.board);
 			}

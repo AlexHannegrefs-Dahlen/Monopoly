@@ -21,7 +21,7 @@ public class Board {
 		b.makeSpace(board[10][9], SpaceColor.Purple, "Mediteranian Avenue", 2, 30, 50, true, SpaceType.Property, 1);
 		b.makeSpace(board[10][8], SpaceColor.Blank, "Community Chest", 0, 0, 0, false, SpaceType.CardDraw, 2);
 		b.makeSpace(board[10][7], SpaceColor.Purple, "Baltic Avenue", 4, 30, 50, true, SpaceType.Property, 3);
-		b.makeSpace(board[10][6], SpaceColor.Blank, "Income Tax", 0, 0, 0, false, SpaceType.Tax, 4);
+		b.makeSpace(board[10][6], SpaceColor.Blank, "Income Tax", 200, 0, 0, false, SpaceType.Tax, 4);
 		b.makeSpace(board[10][5], SpaceColor.Railroad, "Reading Railroad", 25, 100, 0, true, SpaceType.Property, 5);
 		b.makeSpace(board[10][4], SpaceColor.Silver, "Oriental Avenue", 6, 50, 50, true, SpaceType.Property, 6);
 		b.makeSpace(board[10][3], SpaceColor.Blank, "Chance", 0, 0, 0, true, SpaceType.CardDraw, 7);

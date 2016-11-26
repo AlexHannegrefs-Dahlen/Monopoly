@@ -6,7 +6,7 @@ public class testPrint {
 		Board b = new Board();
 		
 		b.createBoard();
-		b.printBoard(b.board);
+		b.printBoard(Board.board);
 	}
 
 }
