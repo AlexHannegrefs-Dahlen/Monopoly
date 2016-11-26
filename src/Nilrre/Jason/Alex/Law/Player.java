@@ -117,8 +117,12 @@ public class Player {
 		return moneyFinder.money;
 	}
 
-	public static void setMoney(Player moneyVal, int valuetoadd) {
+	public static void setMoney(Player moneyVal, int valuetoadd) throws IOException {
 		moneyVal.money =+ valuetoadd;
+		if(moneyVal.money < 0){
+			System.out.println("You must mortgage to afford this payment. What would you like to mortgage?");
+			moneyVal.land.get(ConsoleUI.promptForInt(moneyVal.land.toString() + "Enter number of property", 1, moneyVal.land.size()) - 1).setMortgaged(space, mort);;
+		}
 	}
 
 	public static diffPieces getPiece(Player pieceFinder) {
