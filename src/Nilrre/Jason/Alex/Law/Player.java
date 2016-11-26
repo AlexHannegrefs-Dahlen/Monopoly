@@ -187,8 +187,12 @@ public class Player {
 	
 	public static void spaceNumberTo2dArray(Player moved){
 		int space = moved.spaceCurrentlyOn;
+		int row = 0;
+		int col = 0;
 		if(space == 1){
-			//[10][9] property
+			row = 10;
+			col = 9;
+			checkSpaceMovedToForOwner(row, col, moved);
 		} else if (space == 2) {
 			//[10][8] com chest
 		} else if (space == 3) {
