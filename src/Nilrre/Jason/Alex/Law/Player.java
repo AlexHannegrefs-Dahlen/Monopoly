@@ -189,8 +189,8 @@ public class Player {
 		System.out.println("Moving");
 		int movement = dieOne + dieTwo;	
 		moving.spaceCurrentlyOn += movement;
-		if((moving.spaceCurrentlyOn) > 40){
-			moving.spaceCurrentlyOn -= 40;
+		if((moving.spaceCurrentlyOn) > 41){
+			moving.spaceCurrentlyOn -= 41;
 			moving.money =+ 200;
 			System.out.println("You passed go Collect $200. Current funds: $" + moving.money);
 		}

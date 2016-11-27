@@ -1,6 +1,7 @@
 package Nilrre.Jason.Alex.Law;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Game {
 	private static final Player one = new Player();
@@ -11,6 +12,7 @@ public class Game {
 	private static final Player six = new Player();
 	private static final Player seven = new Player();
 	private static final Player eight = new Player();
+	private static ArrayList<Player> players = new ArrayList<>();
 	static int amountOfPlayers;
 	private static boolean gameRunning = true;
 
@@ -152,27 +154,43 @@ public class Game {
 		if (playerNumber == 1) {
 			Player.setPiece(one);
 			Player.setMoney(one, 1500);
+			Player.setSpaceCurrentlyOn(one, 1);
+			players.add(one);
 		} else if (playerNumber == 2) {
 			Player.setPiece(two);
 			Player.setMoney(two, 1500);
+			players.add(two);
+			Player.setSpaceCurrentlyOn(two, 1);
 		} else if (playerNumber == 3) {
 			Player.setPiece(three);
 			Player.setMoney(three, 1500);
+			Player.setSpaceCurrentlyOn(three, 1);
+			players.add(three);
 		} else if (playerNumber == 4) {
 			Player.setPiece(four);
 			Player.setMoney(four, 1500);
+			Player.setSpaceCurrentlyOn(four, 1);
+			players.add(four);
 		} else if (playerNumber == 5) {
 			Player.setPiece(five);
 			Player.setMoney(five, 1500);
+			Player.setSpaceCurrentlyOn(five, 1);
+			players.add(five);
 		} else if (playerNumber == 6) {
 			Player.setPiece(six);
 			Player.setMoney(six, 1500);
+			Player.setSpaceCurrentlyOn(six, 1);
+			players.add(six);
 		} else if (playerNumber == 7) {
 			Player.setPiece(seven);
 			Player.setMoney(seven, 1500);
+			Player.setSpaceCurrentlyOn(seven, 1);
+			players.add(seven);
 		} else if (playerNumber == 8) {
 			Player.setPiece(eight);
 			Player.setMoney(eight, 1500);
+			Player.setSpaceCurrentlyOn(eight, 1);
+			players.add(eight);
 		}
 	}
 
