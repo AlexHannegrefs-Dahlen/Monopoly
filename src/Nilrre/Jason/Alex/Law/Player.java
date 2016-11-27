@@ -394,7 +394,7 @@ public class Player {
 		UpgradeLand.buyHousesOrHotel(upgrading);
 	}
 
-	public static void trade(Player trading) {
+	public static void trade(Player trading) throws IOException {
 		Trade.whatPlayerToTradeWith();
 	}
 
