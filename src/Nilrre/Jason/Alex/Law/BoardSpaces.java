@@ -119,7 +119,7 @@ public class BoardSpaces {
 		if (name != whatever) {
 
 			whatever = " " + Integer.toString(boardSpaceNumber);
-			if (boardSpaceNumber >= 1 && boardSpaceNumber <= 10) {
+			if (boardSpaceNumber >= 1 && boardSpaceNumber <= 9) {
 				whatever = "  " + Integer.toString(boardSpaceNumber);
 
 			}
