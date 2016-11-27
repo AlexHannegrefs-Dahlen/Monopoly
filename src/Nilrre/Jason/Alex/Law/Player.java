@@ -15,11 +15,20 @@ public class Player {
 	private boolean GetOutOfJailChest = false;
 	private boolean inJail = false;
 	private int spaceCurrentlyOn;
+	private String nameOfSpaceOn;
 	private int rolledDoubles;
 	private boolean myTurn = false;
 	private boolean playingGame = false;
 	private int amountOnDie;
 	private int railroadsOwned;
+	
+	public static String getNameOfSpaceOn(Player space){
+		return space.nameOfSpaceOn;
+	}
+	
+	public static void setNameOfSpaceOn(Player space, String spaceName){
+		space.nameOfSpaceOn = spaceName;
+	}
 	
 	public static int getRailroadsOwned(Player railroad){
 		return railroad.railroadsOwned;
@@ -185,14 +194,19 @@ public class Player {
 			moving.money =+ 200;
 			System.out.println("You passed go Collect $200. Current funds: $" + moving.money);
 		}
-		System.out.println("Moved to space " + moving.spaceCurrentlyOn);
 		spaceNumberTo2dArray(moving);
+	}
+	
+	public static void printSpaceNameMovedTo(int row, int col, Player moved){
+		Player.setNameOfSpaceOn(moved, Board.board[row][col].getName(Board.board[row][col]));
+		System.out.println("You moved to space " + moved.nameOfSpaceOn);
 	}
 	
 	public static void spaceNumberTo2dArray(Player moved) throws IOException{
 		int space = moved.spaceCurrentlyOn;
 		int row = 0;
 		int col = 0;
+		System.out.println("Moved to space " + moved.nameOfSpaceOn);
 		if(space == 1){
 			row = 10;
 			col = 9;
