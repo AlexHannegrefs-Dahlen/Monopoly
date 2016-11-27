@@ -15,7 +15,7 @@ public class GamePieces {
 	}
 
 	public static String getGamePieces(diffPieces type) {
-		String ReturnSymbol = null;
+		String ReturnSymbol;
 		if (pieces[0] == type) {
 			ReturnSymbol = "!";
 		} else if (pieces[1] == type) {
@@ -32,7 +32,10 @@ public class GamePieces {
 			ReturnSymbol = "&";
 		} else if (pieces[7] == type) {
 			ReturnSymbol = ";";
+		}else {
+			ReturnSymbol = " 1";
 		}
+		
 		return ReturnSymbol;
 	}
 

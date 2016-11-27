@@ -14,7 +14,7 @@ public class Player {
 	private boolean GetOutOfJailChance = false;
 	private boolean GetOutOfJailChest = false;
 	private boolean inJail = false;
-	private int spaceCurrentlyOn;
+	private int spaceCurrentlyOn = 1;
 	private int rolledDoubles;
 	private boolean myTurn = false;
 	private boolean playingGame = false;
@@ -121,7 +121,7 @@ public class Player {
 		moneyVal.money =+ valuetoadd;
 		if(moneyVal.money < 0){
 			System.out.println("You must mortgage to afford this payment. What would you like to mortgage?");
-			//moneyVal.land.get(ConsoleUI.promptForInt(moneyVal.land.toString() + "Enter number of property", 1, moneyVal.land.size()) - 1).setMortgaged(space, mort);;
+//			moneyVal.land.get(ConsoleUI.promptForInt(moneyVal.land.toString() + "Enter number of property", 1, moneyVal.land.size()) - 1).setMortgaged(space, mort);;
 		}
 	}
 

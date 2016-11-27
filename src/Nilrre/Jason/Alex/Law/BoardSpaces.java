@@ -116,18 +116,14 @@ public class BoardSpaces {
 	public String toString() {
 		String whatever = "   ";
 
-		for (int i = 0; i < 11; i++) {
-			for (int j = 0; j < 11; j++) {
-				if (name != whatever) {
-					whatever = " " + Integer.toString(boardSpaceNumber);
-					if (boardSpaceNumber >= 0 && boardSpaceNumber <= 9) {
-						whatever = "  " + Integer.toString(boardSpaceNumber);
-					}
-					if (Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) == Board.b.getBoardSpaceNumber(Board.board[i][j])) {
-						whatever = GamePieces.getGamePieces(Player.getPiece(Game.getPlayerWhosTurnItIs()));
-					}
-				}
+		if (name != whatever) {
+
+			whatever = " " + Integer.toString(boardSpaceNumber);
+			if (boardSpaceNumber >= 1 && boardSpaceNumber <= 10) {
+				whatever = "  " + Integer.toString(boardSpaceNumber);
+
 			}
+
 		}
 		return whatever;
 	}

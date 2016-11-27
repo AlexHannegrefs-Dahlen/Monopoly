@@ -141,7 +141,7 @@ public class Game {
 					else
 						break;
 				}
-//				b.printBoard(Board.board);
+				b.printBoard(Board.board);
 			}
 		} while (gameRunning);
 
