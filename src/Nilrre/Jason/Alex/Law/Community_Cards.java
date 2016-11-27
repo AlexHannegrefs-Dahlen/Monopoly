@@ -6,8 +6,9 @@ import java.util.Collections;
 import java.util.Random;
 
 public class Community_Cards {
+	private static int ReShuffle = 0;
 
-	public static int communityCards() {
+	public static void communityCards() {
 		ArrayList<String> comCards = new ArrayList<String>();
 		comCards.add("Advance to go"); // Collect 200
 		comCards.add("Bank error in your favor"); // Collect 200
@@ -31,13 +32,31 @@ public class Community_Cards {
 																		// 10
 		comCards.add("You inherit $100"); // Collect 100
 		// Randomly select each card
-		long which_Card = System.nanoTime();
-		Collections.shuffle(comCards, new Random(which_Card));
-		System.out.println(which_Card);
-		return (int) which_Card;
 
 	}
 
+
+	public static void Shuffle1(ArrayList<String> comCards) {//Not sure if it works		
+		Random Rnum = new Random();
+		int Namber = Rnum.nextInt(6) + 5;
+		for (int i = 0; i < Namber; i++) {
+			Collections.shuffle(comCards);
+		}
+	}
+
+	public static String draw(ArrayList<String> comCards){
+			String getCard = comCards.get(ReShuffle);
+			ReShuffle++;
+			if (ReShuffle >= comCards.size()){
+				Shuffle1(comCards);
+				ReShuffle = 0;
+			}
+			return getCard;
+	}
+	public static void effects(){
+		
+	}
+	
 	public static void advanceToGo() throws IOException {
 		Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 0);
 		Player.setMoney(Game.getPlayerWhosTurnItIs(), 200);
