@@ -66,7 +66,7 @@ public class BoardSpaces {
 	}
 
 	public void setHouses(BoardSpaces space, int numberOfHouses) {
-		space.houses = numberOfHouses;
+		space.houses += numberOfHouses;
 	}
 
 	public int getHotel(BoardSpaces space) {
@@ -74,7 +74,7 @@ public class BoardSpaces {
 	}
 
 	public void setHotel(BoardSpaces space, int numberOfHotels) {
-		space.hotel = numberOfHotels;
+		space.hotel += numberOfHotels;
 	}
 
 	public SpaceType getType(BoardSpaces space) {
