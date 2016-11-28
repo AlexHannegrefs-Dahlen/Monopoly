@@ -106,8 +106,9 @@ public class Player {
 		land.land.remove(property);
 	}
 
-	public static void buyLand(Player land, BoardSpaces property) {
+	public static void buyLand(Player land, BoardSpaces property, int price) throws IOException {
 		land.land.add(property);
+		Player.setMoney(land, -price);
 	}
 
 	public static int getJailcard(Player jailcard) {
@@ -126,8 +127,8 @@ public class Player {
 		return moneyFinder.money;
 	}
 
-	public static void setMoney(Player moneyVal, int valuetoadd) throws IOException {
-		moneyVal.money =+ valuetoadd;
+	public static void setMoney(Player moneyVal, double valuetoadd) throws IOException {
+		moneyVal.money =(int) + valuetoadd;
 		if(moneyVal.money < 0){
 			System.out.println("You must mortgage to afford this payment. What would you like to mortgage?");
 			moneyVal.land.get(ConsoleUI.promptForInt(moneyVal.land.toString() + "Enter number of property", 1, moneyVal.land.size()) - 1);
@@ -206,40 +207,47 @@ public class Player {
 		int space = moved.spaceCurrentlyOn;
 		int row = 0;
 		int col = 0;
-		System.out.println("Moved to space " + moved.nameOfSpaceOn);
 		if(space == 2){
 			row = 10;
 			col = 9;
+			printSpaceNameMovedTo(row, col, moved);
 			checkSpaceMovedToForOwner(row, col, moved);
 		} else if (space == 3) {
+			printSpaceNameMovedTo(row, col, moved);
 			//[10][8] com chest
 		} else if (space == 4) {
 			row = 10;
 			col = 7;
+			printSpaceNameMovedTo(row, col, moved);
 			checkSpaceMovedToForOwner(row, col, moved);
 		} else if (space == 5) {
 			Player.setMoney(moved, -200);
 		} else if (space == 6) {
 			row = 10;
 			col = 5;
+			printSpaceNameMovedTo(row, col, moved);
 			checkSpaceMovedToForOwner(row, col, moved);
 		} else if (space == 7) {
 			row = 10;
 			col = 4;
+			printSpaceNameMovedTo(row, col, moved);
 			checkSpaceMovedToForOwner(row, col, moved);
 		} else if (space == 8) {
 			Chance_Cards.DRAW();
 		} else if (space == 9) {
 			row = 10;
-		col = 2;
+			col = 2;
+			printSpaceNameMovedTo(row, col, moved);
 		checkSpaceMovedToForOwner(row, col, moved);
 		} else if (space == 10) {
 			row = 10;
 			col = 1;
+			printSpaceNameMovedTo(row, col, moved);
 			checkSpaceMovedToForOwner(row, col, moved);
 		} else if (space == 12) {
 			row = 9;
 			col = 0;
+			printSpaceNameMovedTo(row, col, moved);
 			checkSpaceMovedToForOwner(row, col, moved);
 		} else if (space == 13) {
 			row = 8;
@@ -369,13 +377,14 @@ public class Player {
 	public static void checkSpaceMovedToForOwner(int row, int col, Player moved) throws IOException{
 		if(Board.b.getIsAvailable(Board.board[row][col])){
 			if(ConsoleUI.promptForBool("Woud you like to buy " + Board.b.getName(Board.board[row][col]) + " [y/n]", "y", "n")){
-				Player.buyLand(moved, Board.board[row][col]);
+				Player.buyLand(moved, Board.board[row][col], Board.board[row][col].getLandValue);
 			}
 			else{
 				//do an auction
 			}
 		} else if(!Board.b.getMortgaged(Board.board[row][col])){
 			Player owner = Board.b.getOwnedBy(Board.board[row][col]);
+			System.out.println("You owe " + owner + ".");
 			Player.setMoney(moved, -Board.board[row][col].getRent(Board.board[row][col]));			
 			Player.setMoney(owner, Board.board[row][col].getRent(Board.board[row][col]));
 		}
