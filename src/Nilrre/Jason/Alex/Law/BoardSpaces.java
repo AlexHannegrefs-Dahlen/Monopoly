@@ -28,6 +28,11 @@ public class BoardSpaces {
 	}
 
 	public void setMortgaged(BoardSpaces space, boolean mort) {
+		if(mort){
+			//give money to player
+		}else{
+			//take 110% or mort value
+		}
 		space.mortgaged = mort;
 	}
 
