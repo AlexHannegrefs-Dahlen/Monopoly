@@ -22,7 +22,16 @@ public class BoardSpaces {
 	private int railroad;
 	private Player ownedBy;
 	private boolean mortgaged;
+	private int landValue;
 
+	public int getLandValue(BoardSpaces space){
+		return space.landValue;
+	}
+	
+	public void setLandValue(BoardSpaces space, int value){
+		space.landValue = value;
+	}
+	
 	public boolean getMortgaged(BoardSpaces space) {
 		return space.mortgaged;
 	}
@@ -101,7 +110,7 @@ public class BoardSpaces {
 
 	}
 
-	public void makeSpace(BoardSpaces space, SpaceColor color, String name, int rent, int morgage, int housePrice,
+	public void makeSpace(BoardSpaces space, SpaceColor color, String name, int rent, int morgage, int housePrice, int PropertyValue,
 			boolean isAvail, SpaceType Type, int boardSpaceNumber) {
 		space.isAvailable = isAvail;
 		space.color = color;
