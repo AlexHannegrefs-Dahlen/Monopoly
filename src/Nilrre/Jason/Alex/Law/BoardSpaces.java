@@ -1,5 +1,7 @@
 package Nilrre.Jason.Alex.Law;
 
+import java.io.IOException;
+
 public class BoardSpaces {
 	enum SpaceType {
 		Property, Jail, Go, FreeParking, GoToJail, CardDraw, Tax, Utilities, Nothing
@@ -36,13 +38,17 @@ public class BoardSpaces {
 		return space.mortgaged;
 	}
 
-	public void setMortgaged(BoardSpaces space, boolean mort) {
-		if(mort){
-			//give money to player
-		}else{
-			//take 110% or mort value
+	public void setMortgaged(BoardSpaces space, boolean mort) throws IOException {
+		if (space.houses == 0 && space.hotel == 0) {
+			if (mort && !space.mortgaged) {
+				Player.setMoney(space.ownedBy, space.morgageValue);
+			} else {
+				Player.setMoney(space.ownedBy, space.morgageValue * 1.1);
+			}
+			space.mortgaged = mort;
+		} else {
+			System.out.println("You must sell all houses or hotel on this property before mortgaging it");
 		}
-		space.mortgaged = mort;
 	}
 
 	public Player getOwnedBy(BoardSpaces space) {
@@ -120,6 +126,7 @@ public class BoardSpaces {
 		space.housePrice = housePrice;
 		space.type = Type;
 		space.boardSpaceNumber = boardSpaceNumber;
+		space.landValue = PropertyValue;
 	}
 
 	public void makeSpaceBlank(BoardSpaces space) {
