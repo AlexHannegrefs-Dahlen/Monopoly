@@ -22,7 +22,7 @@ public class Community_Cards {
 		comCards.add("Holiday fund matures"); // Collect 100
 		comCards.add("Income tax refund"); // Collect 20
 		comCards.add("Life insurance matures"); // Collect 100
-*		comCards.add("Pay hospital funds of $100"); // Pay 100
+		comCards.add("Pay hospital funds of $100"); // Pay 100
 		comCards.add("Pay school fees of $150"); // Pay 150
 		comCards.add("Recieve $25 consultabcy fee"); // Collect 25
 		comCards.add("You are accessed for street repairs"); // Pay 40 per house
@@ -115,11 +115,11 @@ public class Community_Cards {
 			Player.setMoney(Game.getPlayerWhosTurnItIs(),25);
 		}
 		if(getCard == "You are accessed for street repairs"){
-			for (int i = 0; i < Player.getland(Game.getPlayerWhosTurnItIs()); i++) {
+//			for (int i = 0; i < Player.getland(Game.getPlayerWhosTurnItIs()); i++) {
 						
 		}
 	}
-	}
+//	}
 	
 	public static void beautyContest() throws IOException {
 		Player.setMoney(Game.getPlayerWhosTurnItIs(), Player.getMoney(Game.getPlayerWhosTurnItIs()) + 10);
