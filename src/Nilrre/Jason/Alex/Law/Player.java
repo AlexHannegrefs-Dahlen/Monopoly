@@ -231,7 +231,7 @@ public class Player {
 			Chance_Cards.DRAW();
 		} else if (space == 8) {
 			row = 10;
-		col = 2;
+			col = 2;
 		checkSpaceMovedToForOwner(row, col, moved);
 		} else if (space == 9) {
 			row = 10;
