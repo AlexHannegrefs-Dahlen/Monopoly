@@ -21,9 +21,12 @@ public class LandValue {
 						Board.board[10][9].setHouses(Board.board[10][9], 1);
 						house--;
 						spaceSelected = 2;
+						Game.getPlayerWhosTurnItIs();
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), 1);
 					} else if (spaceSelected == 2){
 						Board.board[10][7].setHouses(Board.board[10][7], 1);
 						house--;
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), 1);
 						spaceSelected = 1;
 					}
 				}while(house > 0);
@@ -38,10 +41,14 @@ public class LandValue {
 					if(spaceSelected == 1){
 						Board.board[10][9].setHotel(Board.board[10][9], 1);
 						hotel--;
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), -4);
+						Player.setHotelsOwned(Game.getPlayerWhosTurnItIs(), 1);
 						spaceSelected = 2;
 					} else if (spaceSelected == 2){
 						Board.board[10][7].setHotel(Board.board[10][7], 1);
 						hotel--;
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), -4);
+						Player.setHotelsOwned(Game.getPlayerWhosTurnItIs(), 1);
 						spaceSelected = 1;
 					}
 				}while(hotel > 0);
@@ -66,14 +73,17 @@ public class LandValue {
 					if(spaceSelected == 1){
 						Board.board[10][4].setHouses(Board.board[10][4], 1);
 						house--;
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), 1);
 						spaceSelected = 2;
 					} else if (spaceSelected == 2){
 						Board.board[10][2].setHouses(Board.board[10][2], 1);
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), 1);
 						house--;
 						spaceSelected = 3;
 					} else if (spaceSelected == 3){
 						Board.board[10][1].setHouses(Board.board[10][1], 1);
 						house--;
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), 1);
 						spaceSelected = 1;
 					}
 				}while(house > 0);
@@ -88,14 +98,20 @@ public class LandValue {
 					if(spaceSelected == 1){
 						Board.board[10][4].setHotel(Board.board[10][4], 1);
 						hotel--;
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), -4);
+						Player.setHotelsOwned(Game.getPlayerWhosTurnItIs(), 1);
 						spaceSelected = 2;
 					} else if (spaceSelected == 2){
 						Board.board[10][2].setHotel(Board.board[10][2], 1);
 						hotel--;
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), -4);
+						Player.setHotelsOwned(Game.getPlayerWhosTurnItIs(), 1);
 						spaceSelected = 3;
 					}else if (spaceSelected == 3){
 						Board.board[10][1].setHotel(Board.board[10][1], 1);
 						hotel--;
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), -4);
+						Player.setHotelsOwned(Game.getPlayerWhosTurnItIs(), 1);
 						spaceSelected = 1;
 					}
 				}while(hotel > 0);
@@ -120,14 +136,17 @@ public class LandValue {
 					if(spaceSelected == 1){
 						Board.board[9][0].setHouses(Board.board[9][0], 1);
 						house--;
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), 1);
 						spaceSelected = 2;
 					} else if (spaceSelected == 2){
 						Board.board[7][0].setHouses(Board.board[7][0], 1);
 						house--;
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), 1);
 						spaceSelected = 3;
 					} else if (spaceSelected == 3){
 						Board.board[6][0].setHouses(Board.board[6][0], 1);
 						house--;
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), 1);
 						spaceSelected = 1;
 					}
 				}while(house > 0);
@@ -142,14 +161,20 @@ public class LandValue {
 					if(spaceSelected == 1){
 						Board.board[9][0].setHotel(Board.board[9][0], 1);
 						hotel--;
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), -4);
+						Player.setHotelsOwned(Game.getPlayerWhosTurnItIs(), 1);
 						spaceSelected = 2;
 					} else if (spaceSelected == 2){
 						Board.board[7][0].setHotel(Board.board[7][0], 1);
 						hotel--;
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), -4);
+						Player.setHotelsOwned(Game.getPlayerWhosTurnItIs(), 1);
 						spaceSelected = 3;
 					}else if (spaceSelected == 3){
 						Board.board[6][0].setHotel(Board.board[6][0], 1);
 						hotel--;
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), -4);
+						Player.setHotelsOwned(Game.getPlayerWhosTurnItIs(), 1);
 						spaceSelected = 1;
 					}
 				}while(hotel > 0);
@@ -174,14 +199,17 @@ public class LandValue {
 					if(spaceSelected == 1){
 						Board.board[4][0].setHouses(Board.board[4][0], 1);
 						house--;
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), 1);
 						spaceSelected = 2;
 					} else if (spaceSelected == 2){
 						Board.board[2][0].setHouses(Board.board[2][0], 1);
 						house--;
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), 1);
 						spaceSelected = 3;
 					} else if (spaceSelected == 3){
 						Board.board[1][0].setHouses(Board.board[1][0], 1);
 						house--;
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), 1);
 						spaceSelected = 1;
 					}
 				}while(house > 0);
@@ -196,14 +224,20 @@ public class LandValue {
 					if(spaceSelected == 1){
 						Board.board[4][0].setHotel(Board.board[4][0], 1);
 						hotel--;
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), -4);
+						Player.setHotelsOwned(Game.getPlayerWhosTurnItIs(), 1);
 						spaceSelected = 2;
 					} else if (spaceSelected == 2){
 						Board.board[2][0].setHotel(Board.board[2][0], 1);
 						hotel--;
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), -4);
+						Player.setHotelsOwned(Game.getPlayerWhosTurnItIs(), 1);
 						spaceSelected = 3;
 					}else if (spaceSelected == 3){
 						Board.board[1][0].setHotel(Board.board[1][0], 1);
 						hotel--;
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), -4);
+						Player.setHotelsOwned(Game.getPlayerWhosTurnItIs(), 1);
 						spaceSelected = 1;
 					}
 				}while(hotel > 0);
@@ -228,14 +262,17 @@ public class LandValue {
 					if(spaceSelected == 1){
 						Board.board[0][1].setHouses(Board.board[0][1], 1);
 						house--;
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), 1);
 						spaceSelected = 2;
 					} else if (spaceSelected == 2){
 						Board.board[0][3].setHouses(Board.board[0][3], 1);
 						house--;
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), 1);
 						spaceSelected = 3;
 					} else if (spaceSelected == 3){
 						Board.board[0][4].setHouses(Board.board[0][4], 1);
 						house--;
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), 1);
 						spaceSelected = 1;
 					}
 				}while(house > 0);
@@ -250,14 +287,20 @@ public class LandValue {
 					if(spaceSelected == 1){
 						Board.board[0][1].setHotel(Board.board[0][1], 1);
 						hotel--;
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), -4);
+						Player.setHotelsOwned(Game.getPlayerWhosTurnItIs(), 1);
 						spaceSelected = 2;
 					} else if (spaceSelected == 2){
 						Board.board[0][3].setHotel(Board.board[0][3], 1);
 						hotel--;
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), -4);
+						Player.setHotelsOwned(Game.getPlayerWhosTurnItIs(), 1);
 						spaceSelected = 3;
 					}else if (spaceSelected == 3){
 						Board.board[0][4].setHotel(Board.board[0][4], 1);
 						hotel--;
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), -4);
+						Player.setHotelsOwned(Game.getPlayerWhosTurnItIs(), 1);
 						spaceSelected = 1;
 					}
 				}while(hotel > 0);
@@ -282,14 +325,17 @@ public class LandValue {
 					if(spaceSelected == 1){
 						Board.board[0][6].setHouses(Board.board[0][6], 1);
 						house--;
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), 1);
 						spaceSelected = 2;
 					} else if (spaceSelected == 2){
 						Board.board[0][7].setHouses(Board.board[0][7], 1);
 						house--;
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), 1);
 						spaceSelected = 3;
 					} else if (spaceSelected == 3){
 						Board.board[0][9].setHouses(Board.board[0][9], 1);
 						house--;
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), 1);
 						spaceSelected = 1;
 					}
 				}while(house > 0);
@@ -304,14 +350,20 @@ public class LandValue {
 					if(spaceSelected == 1){
 						Board.board[0][6].setHotel(Board.board[0][6], 1);
 						hotel--;
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), -4);
+						Player.setHotelsOwned(Game.getPlayerWhosTurnItIs(), 1);
 						spaceSelected = 2;
 					} else if (spaceSelected == 2){
 						Board.board[0][7].setHotel(Board.board[0][7], 1);
 						hotel--;
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), -4);
+						Player.setHotelsOwned(Game.getPlayerWhosTurnItIs(), 1);
 						spaceSelected = 3;
 					}else if (spaceSelected == 3){
 						Board.board[0][9].setHotel(Board.board[0][9], 1);
 						hotel--;
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), -4);
+						Player.setHotelsOwned(Game.getPlayerWhosTurnItIs(), 1);
 						spaceSelected = 1;
 					}
 				}while(hotel > 0);
@@ -336,14 +388,17 @@ public class LandValue {
 					if(spaceSelected == 1){
 						Board.board[1][10].setHouses(Board.board[1][10], 1);
 						house--;
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), 1);
 						spaceSelected = 2;
 					} else if (spaceSelected == 2){
 						Board.board[2][10].setHouses(Board.board[2][10], 1);
 						house--;
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), 1);
 						spaceSelected = 3;
 					} else if (spaceSelected == 3){
 						Board.board[4][10].setHouses(Board.board[4][10], 1);
 						house--;
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), 1);
 						spaceSelected = 1;
 					}
 				}while(house > 0);
@@ -358,14 +413,20 @@ public class LandValue {
 					if(spaceSelected == 1){
 						Board.board[1][10].setHotel(Board.board[1][10], 1);
 						hotel--;
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), -4);
+						Player.setHotelsOwned(Game.getPlayerWhosTurnItIs(), 1);
 						spaceSelected = 2;
 					} else if (spaceSelected == 2){
 						Board.board[2][10].setHotel(Board.board[2][10], 1);
 						hotel--;
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), -4);
+						Player.setHotelsOwned(Game.getPlayerWhosTurnItIs(), 1);
 						spaceSelected = 3;
 					}else if (spaceSelected == 3){
 						Board.board[4][10].setHotel(Board.board[4][10], 1);
 						hotel--;
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), -4);
+						Player.setHotelsOwned(Game.getPlayerWhosTurnItIs(), 1);
 						spaceSelected = 1;
 					}
 				}while(hotel > 0);
@@ -390,10 +451,12 @@ public class LandValue {
 					if(spaceSelected == 1){
 						Board.board[7][10].setHouses(Board.board[7][10], 1);
 						house--;
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), 1);
 						spaceSelected = 2;
 					} else if (spaceSelected == 2){
 						Board.board[9][10].setHouses(Board.board[9][10], 1);
 						house--;
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), 1);
 						spaceSelected = 1;
 					}
 				}while(house > 0);
@@ -408,10 +471,14 @@ public class LandValue {
 					if(spaceSelected == 1){
 						Board.board[7][10].setHotel(Board.board[7][10], 1);
 						hotel--;
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), -4);
+						Player.setHotelsOwned(Game.getPlayerWhosTurnItIs(), 1);
 						spaceSelected = 2;
 					} else if (spaceSelected == 2){
 						Board.board[9][10].setHotel(Board.board[9][10], 1);
 						hotel--;
+						Player.setHousesOwned(Game.getPlayerWhosTurnItIs(), -4);
+						Player.setHotelsOwned(Game.getPlayerWhosTurnItIs(), 1);
 						spaceSelected = 1;
 					}
 				}while(hotel > 0);
@@ -419,5 +486,4 @@ public class LandValue {
 			}
 		}
 	}
-
 }

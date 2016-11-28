@@ -21,6 +21,24 @@ public class Player {
 	private boolean playingGame = false;
 	private int amountOnDie;
 	private int railroadsOwned;
+	private int housesOwned;
+	private int hotelsOwned;
+	
+	public static int getHousesOwned(Player houses){
+		return houses.housesOwned;
+	}
+	
+	public static void setHousesOwned(Player houses, int amounttoadd){
+		houses.housesOwned += amounttoadd;
+	}
+	
+	public static int getHotelsOwned(Player hotels){
+		return hotels.hotelsOwned;
+	}
+	
+	public static void setHotelsOwned(Player hotels, int amounttoadd){
+		hotels.hotelsOwned += amounttoadd;
+	}
 	
 	public static String getNameOfSpaceOn(Player space){
 		return space.nameOfSpaceOn;
