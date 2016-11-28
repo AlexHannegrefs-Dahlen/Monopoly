@@ -238,7 +238,7 @@ public class Player {
 			row = 10;
 			col = 2;
 			printSpaceNameMovedTo(row, col, moved);
-		checkSpaceMovedToForOwner(row, col, moved);
+			checkSpaceMovedToForOwner(row, col, moved);
 		} else if (space == 10) {
 			row = 10;
 			col = 1;
@@ -377,7 +377,7 @@ public class Player {
 	public static void checkSpaceMovedToForOwner(int row, int col, Player moved) throws IOException{
 		if(Board.b.getIsAvailable(Board.board[row][col])){
 			if(ConsoleUI.promptForBool("Woud you like to buy " + Board.b.getName(Board.board[row][col]) + " [y/n]", "y", "n")){
-				Player.buyLand(moved, Board.board[row][col], Board.board[row][col].getLandValue);
+				Player.buyLand(moved, Board.board[row][col], Board.board[row][col].getLandValue(Board.board[row][col]));
 			}
 			else{
 				//do an auction
