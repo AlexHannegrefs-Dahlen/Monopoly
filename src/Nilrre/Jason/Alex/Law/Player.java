@@ -175,7 +175,7 @@ public class Player {
 	}
 
 	public static void setMoney(Player moneyVal, double valuetoadd) throws IOException {
-		moneyVal.money = (int) + valuetoadd;
+		moneyVal.money += (int) + valuetoadd;
 		if(moneyVal.money < 0){
 			System.out.println("You must mortgage to afford this payment. What would you like to mortgage?");
 			ConsoleUI.promptForInt(moneyVal.land.toString() + "Enter number of property", 1, 40);
