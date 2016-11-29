@@ -69,12 +69,13 @@ public class Chance_Cards {
 		}
 		if (retVal == "C50") {
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), 50);
-			
+			System.out.println("Bank pays you dividend of $50");
 		}
 		if (retVal == "GB3") {
 			Game.getPlayerWhosTurnItIs();
 			Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(),
 					(Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs())) - 3);
+			System.out.println("Go Back 3 Steps");
 		}
 		if (retVal == "ADV1") {
 			Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 39);
@@ -82,10 +83,19 @@ public class Chance_Cards {
 		}
 		if (retVal == "P15") {
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), -15);
+			System.out.println("Pay the poor tax, Pay $15");
 		}
 		if (retVal == "ADV2") {
+			if (Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) == 37){
+			Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 24);
+			Player.setMoney(Game.getPlayerWhosTurnItIs(), 200);
+			System.out.println("You advanced to Illinois Ave. and You've Passed GO");
+			System.out.println("Collect $200");			
+			}
+			else{
 			Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 24);
 			System.out.println("You advanced to Illinois Ave.");
+			}
 		}
 		if (retVal == "PEP50") {
 			for (int i = 1; i < Game.amountOfPlayers; i++) {
@@ -109,19 +119,25 @@ public class Chance_Cards {
 
 			}
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), -50 * (Game.amountOfPlayers-1));
-
+			System.out.println("You been Elected Chairman of the Board, Each player gets $50 form you");
+			System.out.println("You've Lost $" + (-50 * (Game.amountOfPlayers-1)));
 		}
 		if (retVal == "ADV2NEARRAIL") {
-			if (Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) == 7) {
-				Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 15);
+			if (Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) == 8) {
+				Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 16);
+				System.out.println("You've Advanced to Pennsylvania RailRoad");
 			}
 
-			if (Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) == 22) {
-				Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 25);
+			if (Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) == 23) {
+				Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 26);
+				System.out.println("You've Advanced to B & O Railroad");
 			}
-			if (Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) == 36) {
-				Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 5);
+			if (Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) == 37) {
+				Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 6);
 				Player.setMoney(Game.getPlayerWhosTurnItIs(), 200);
+				System.out.println("You've Advanced to Reading Railroad, and you've passed GO");
+				System.out.println("Collect $200");
+				
 			}
 
 		}
