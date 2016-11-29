@@ -14,7 +14,6 @@ public class Game {
 	private static final Player eight = new Player();
 	private static ArrayList<Player> players = new ArrayList<>();
 	static int amountOfPlayers;
-	private static boolean gameRunning = true;
 
 	public static Player returnPlayerOne() {
 		return one;
@@ -57,96 +56,59 @@ public class Game {
 		for (int i = 1; i <= amountOfPlayers; i++) {
 			makePlayer(i);
 		}
+		boolean noOneHasWon = true;
 		do {
 			for (int i = 1; i <= amountOfPlayers; i++) {
-				if (i == 1) {
+				if (players.size() == 1) {
+					System.out.println("Congrats " + players.get(0).toString() + ". You Won!");
+					noOneHasWon = false;
+				} else if (i == 1 && players.contains(one)) {
 					turn(one);
 					System.out.println("\nMoney: " + Player.getMoney(one));
 					System.out.println("Jail Cards Owned: " + Player.getJailcard(one));
 					System.out.println("Land Owned: " + Player.getland(one) + "\n");
 
-				} else if (i == 2) {
+				} else if (i == 2 && players.contains(two)) {
 					turn(two);
 					System.out.println("\nMoney: " + Player.getMoney(two));
 					System.out.println("Jail Cards Owned: " + Player.getJailcard(two));
 					System.out.println("Land Owned: " + Player.getland(two) + "\n");
-					
-				} else if (i == 3) {
+
+				} else if (i == 3 && players.contains(three)) {
 					turn(three);
 					System.out.println("\nMoney: " + Player.getMoney(three));
 					System.out.println("Jail Cards Owned: " + Player.getJailcard(three));
 					System.out.println("Land Owned: " + Player.getland(three) + "\n");
-				} else if (i == 4) {
+				} else if (i == 4 && players.contains(four)) {
 					turn(four);
 					System.out.println("\nMoney: " + Player.getMoney(four));
 					System.out.println("Jail Cards Owned: " + Player.getJailcard(four));
 					System.out.println("Land Owned: " + Player.getland(four) + "\n");
-				} else if (i == 5) {
+				} else if (i == 5 && players.contains(five)) {
 					turn(five);
 					System.out.println("\nMoney: " + Player.getMoney(five));
 					System.out.println("Jail Cards Owned: " + Player.getJailcard(five));
 					System.out.println("Land Owned: " + Player.getland(five) + "\n");
-				} else if (i == 6) {
+				} else if (i == 6 && players.contains(six)) {
 					turn(six);
 					System.out.println("\nMoney: " + Player.getMoney(six));
 					System.out.println("Jail Cards Owned: " + Player.getJailcard(six));
 					System.out.println("Land Owned: " + Player.getland(six) + "\n");
-				} else if (i == 7) {
+				} else if (i == 7 && players.contains(seven)) {
 					turn(seven);
 					System.out.println("\nMoney: " + Player.getMoney(seven));
 					System.out.println("Jail Cards Owned: " + Player.getJailcard(seven));
 					System.out.println("Land Owned: " + Player.getland(seven) + "\n");
-				} else if (i == 8) {
+				} else if (i == 8 && players.contains(eight)) {
 					turn(eight);
 					System.out.println("\nMoney: " + Player.getMoney(eight));
 					System.out.println("Jail Cards Owned: " + Player.getJailcard(eight));
 					System.out.println("Land Owned: " + Player.getland(eight) + "\n");
-					
-					
-					if(Player.getPlayingGame(one))
-						turn(one);
-					else
-						break;
-				} else if (i == 2) {
-					if(Player.getPlayingGame(two))
-						turn(two);
-					else
-						break;
-				} else if (i == 3) {
-					if(Player.getPlayingGame(three))
-						turn(three);
-					else
-						break;
-				} else if (i == 4) {
-					if(Player.getPlayingGame(four))
-						turn(four);
-					else
-						break;
-				} else if (i == 5) {
-					if(Player.getPlayingGame(five))
-						turn(five);
-					else
-						break;
-				} else if (i == 6) {
-					if(Player.getPlayingGame(six))
-						turn(six);
-					else
-						break;
-				} else if (i == 7) {
-					if(Player.getPlayingGame(seven))
-						turn(seven);
-					else
-						break;
-				} else if (i == 8) {
-					if(Player.getPlayingGame(eight))
-						turn(eight);
-					else
-						break;
 				}
-				b.printBoard(Board.board);
-			}
-		} while (gameRunning);
 
+			}
+			b.printBoard(Board.board);
+		} while (noOneHasWon);
 	}
 
 	public static void makePlayer(int playerNumber) throws IOException {
@@ -218,7 +180,8 @@ public class Game {
 	public static void turn(Player play) throws IOException {
 		Player.setMyTurn(play, true);
 		System.out.println(Player.getPiece(play) + "'s turn.");
-		String[] options = new String[] { "1: Roll", "2: Buy Houses or Hotels", "3: Trade with another Player " };
+		String[] options = new String[] { "1: Roll", "2: Buy Houses or Hotels", "3: Trade with another Player",
+				"4: Quit Playing Game" };
 		int turnSelect = ConsoleUI.promptForMenuSelection(options, false);
 		if (turnSelect == 1) {
 			Player.roll(play);
@@ -226,6 +189,8 @@ public class Game {
 			Player.buyHousesOrHotel(play);
 		} else if (turnSelect == 3) {
 			Player.trade(play);
+		} else if (turnSelect == 4) {
+			players.remove(play);
 		}
 		Player.setMyTurn(play, false);
 	}

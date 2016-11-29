@@ -1,5 +1,7 @@
 package Nilrre.Jason.Alex.Law;
 
+import java.io.IOException;
+
 public class BoardSpaces {
 	enum SpaceType {
 		Property, Jail, Go, FreeParking, GoToJail, CardDraw, Tax, Utilities, Nothing
@@ -22,18 +24,31 @@ public class BoardSpaces {
 	private int railroad;
 	private Player ownedBy;
 	private boolean mortgaged;
+	private int landValue;
 
+	public int getLandValue(BoardSpaces space){
+		return space.landValue;
+	}
+	
+	public void setLandValue(BoardSpaces space, int value){
+		space.landValue = value;
+	}
+	
 	public boolean getMortgaged(BoardSpaces space) {
 		return space.mortgaged;
 	}
 
-	public void setMortgaged(BoardSpaces space, boolean mort) {
-		if(mort){
-			//give money to player
-		}else{
-			//take 110% or mort value
+	public void setMortgaged(BoardSpaces space, boolean mort) throws IOException {
+		if (space.houses == 0 && space.hotel == 0) {
+			if (mort && !space.mortgaged) {
+				Player.setMoney(space.ownedBy, space.morgageValue);
+			} else {
+				Player.setMoney(space.ownedBy, space.morgageValue * 1.1);
+			}
+			space.mortgaged = mort;
+		} else {
+			System.out.println("You must sell all houses or hotel on this property before mortgaging it");
 		}
-		space.mortgaged = mort;
 	}
 
 	public Player getOwnedBy(BoardSpaces space) {
@@ -57,7 +72,7 @@ public class BoardSpaces {
 	}
 
 	public void setHouses(BoardSpaces space, int numberOfHouses) {
-		space.houses = numberOfHouses;
+		space.houses += numberOfHouses;
 	}
 
 	public int getHotel(BoardSpaces space) {
@@ -65,7 +80,7 @@ public class BoardSpaces {
 	}
 
 	public void setHotel(BoardSpaces space, int numberOfHotels) {
-		space.hotel = numberOfHotels;
+		space.hotel += numberOfHotels;
 	}
 
 	public SpaceType getType(BoardSpaces space) {
@@ -101,7 +116,7 @@ public class BoardSpaces {
 
 	}
 
-	public void makeSpace(BoardSpaces space, SpaceColor color, String name, int rent, int morgage, int housePrice,
+	public void makeSpace(BoardSpaces space, SpaceColor color, String name, int rent, int morgage, int housePrice, int PropertyValue,
 			boolean isAvail, SpaceType Type, int boardSpaceNumber) {
 		space.isAvailable = isAvail;
 		space.color = color;
@@ -111,6 +126,7 @@ public class BoardSpaces {
 		space.housePrice = housePrice;
 		space.type = Type;
 		space.boardSpaceNumber = boardSpaceNumber;
+		space.landValue = PropertyValue;
 	}
 
 	public void makeSpaceBlank(BoardSpaces space) {

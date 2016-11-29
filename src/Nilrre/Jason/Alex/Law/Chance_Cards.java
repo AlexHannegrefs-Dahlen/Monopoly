@@ -56,7 +56,7 @@ public class Chance_Cards {
 	}
 
 	public void CardEffects(String retVal) throws IOException {
-
+			DRAW();
 		if (retVal == "GTG") {
 			System.out.println("Advance to go (Get to  Two Hundred)");
 			Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 0);
@@ -108,7 +108,7 @@ public class Chance_Cards {
 				}
 
 			}
-			Player.setMoney(Game.getPlayerWhosTurnItIs(), -50 * Game.amountOfPlayers);
+			Player.setMoney(Game.getPlayerWhosTurnItIs(), -50 * (Game.amountOfPlayers-1));
 
 		}
 		if (retVal == "ADV2NEARRAIL") {

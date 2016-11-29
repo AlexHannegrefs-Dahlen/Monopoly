@@ -21,6 +21,24 @@ public class Player {
 	private boolean playingGame = false;
 	private int amountOnDie;
 	private int railroadsOwned;
+	private int housesOwned;
+	private int hotelsOwned;
+	
+	public static int getHousesOwned(Player houses){
+		return houses.housesOwned;
+	}
+	
+	public static void setHousesOwned(Player houses, int amounttoadd){
+		houses.housesOwned += amounttoadd;
+	}
+	
+	public static int getHotelsOwned(Player hotels){
+		return hotels.hotelsOwned;
+	}
+	
+	public static void setHotelsOwned(Player hotels, int amounttoadd){
+		hotels.hotelsOwned += amounttoadd;
+	}
 	
 	public static String getNameOfSpaceOn(Player space){
 		return space.nameOfSpaceOn;
@@ -106,8 +124,9 @@ public class Player {
 		land.land.remove(property);
 	}
 
-	public static void buyLand(Player land, BoardSpaces property) {
+	public static void buyLand(Player land, BoardSpaces property, int price) throws IOException {
 		land.land.add(property);
+		Player.setMoney(land, -price);
 	}
 
 	public static int getJailcard(Player jailcard) {
@@ -126,8 +145,8 @@ public class Player {
 		return moneyFinder.money;
 	}
 
-	public static void setMoney(Player moneyVal, int valuetoadd) throws IOException {
-		moneyVal.money =+ valuetoadd;
+	public static void setMoney(Player moneyVal, double valuetoadd) throws IOException {
+		moneyVal.money =(int) + valuetoadd;
 		if(moneyVal.money < 0){
 			System.out.println("You must mortgage to afford this payment. What would you like to mortgage?");
 			moneyVal.land.get(ConsoleUI.promptForInt(moneyVal.land.toString() + "Enter number of property", 1, moneyVal.land.size()) - 1);
@@ -206,159 +225,166 @@ public class Player {
 		int space = moved.spaceCurrentlyOn;
 		int row = 0;
 		int col = 0;
-		System.out.println("Moved to space " + moved.nameOfSpaceOn);
-		if(space == 1){
+		if(space == 2){
 			row = 10;
 			col = 9;
+			printSpaceNameMovedTo(row, col, moved);
 			checkSpaceMovedToForOwner(row, col, moved);
-		} else if (space == 2) {
-			//[10][8] com chest
 		} else if (space == 3) {
+			printSpaceNameMovedTo(row, col, moved);
+			//[10][8] com chest
+		} else if (space == 4) {
 			row = 10;
 			col = 7;
+			printSpaceNameMovedTo(row, col, moved);
 			checkSpaceMovedToForOwner(row, col, moved);
-		} else if (space == 4) {
-			Player.setMoney(moved, -200);
 		} else if (space == 5) {
-			row = 10;
-			col = 5;
-			checkSpaceMovedToForOwner(row, col, moved);
+			Player.setMoney(moved, -200);
 		} else if (space == 6) {
 			row = 10;
-			col = 4;
+			col = 5;
+			printSpaceNameMovedTo(row, col, moved);
 			checkSpaceMovedToForOwner(row, col, moved);
 		} else if (space == 7) {
-			Chance_Cards.DRAW();
-		} else if (space == 8) {
 			row = 10;
-		col = 2;
-		checkSpaceMovedToForOwner(row, col, moved);
+			col = 4;
+			printSpaceNameMovedTo(row, col, moved);
+			checkSpaceMovedToForOwner(row, col, moved);
+		} else if (space == 8) {
+			Chance_Cards.DRAW();
 		} else if (space == 9) {
 			row = 10;
-			col = 1;
+			col = 2;
+			printSpaceNameMovedTo(row, col, moved);
 			checkSpaceMovedToForOwner(row, col, moved);
-		} else if (space == 11) {
-			row = 9;
-			col = 0;
+		} else if (space == 10) {
+			row = 10;
+			col = 1;
+			printSpaceNameMovedTo(row, col, moved);
 			checkSpaceMovedToForOwner(row, col, moved);
 		} else if (space == 12) {
+			row = 9;
+			col = 0;
+			printSpaceNameMovedTo(row, col, moved);
+			checkSpaceMovedToForOwner(row, col, moved);
+		} else if (space == 13) {
 			row = 8;
 			col = 0;
 			checkSpaceMovedToForOwner(row, col, moved);
-		} else if (space == 13) {
+		} else if (space == 14) {
 			row = 7;
 			col = 0;
 			checkSpaceMovedToForOwner(row, col, moved);
-		} else if (space == 14) {
+		} else if (space == 15) {
 			row = 6;
 			col = 0;
 			checkSpaceMovedToForOwner(row, col, moved);
 			//6 0 prop
-		} else if (space == 15) {
+		} else if (space == 16) {
 			row = 5;
 			col = 0;
 			checkSpaceMovedToForOwner(row, col, moved);
 			//5 0 prop
-		} else if (space == 16) {
+		} else if (space == 17) {
 			row = 4;
 			col = 0;
 			checkSpaceMovedToForOwner(row, col, moved);
 			//4 0 prop
-		} else if (space == 17) {
-			//3 0 com chest
 		} else if (space == 18) {
+			//3 0 com chest
+		} else if (space == 19) {
 			row = 2;
 			col = 0;
 			checkSpaceMovedToForOwner(row, col, moved);
 			//2 0 prop
-		} else if (space == 19) {
+		} else if (space == 20) {
 			row = 1;
 			col = 0;
 			checkSpaceMovedToForOwner(row, col, moved);
 			//1 0 prop
-		} else if (space == 21) {
+		} else if (space == 22) {
 			row = 0;
 			col = 1;
 			checkSpaceMovedToForOwner(row, col, moved);
 			//0 1 prop
-		} else if (space == 22) {
+		} else if (space == 23) {
 			row = 0;
 			col = 2;
 			checkSpaceMovedToForOwner(row, col, moved);
 			//0 2 chance
-		} else if (space == 23) {
+		} else if (space == 24) {
 			row = 0;
 			col = 3;
 			checkSpaceMovedToForOwner(row, col, moved);
 			//0 3 prop
-		} else if (space == 24) {
+		} else if (space == 25) {
 			row = 0;
 			col = 4;
 			checkSpaceMovedToForOwner(row, col, moved);
 			//0 4 prop
-		} else if (space == 25) {
+		} else if (space == 26) {
 			row = 0;
 			col = 5;
 			checkSpaceMovedToForOwner(row, col, moved);
 			//0 5 prop rail
-		} else if (space == 26) {
+		} else if (space == 27) {
 			row = 0;
 			col = 6;
 			checkSpaceMovedToForOwner(row, col, moved);
 			//0 6 prop
-		} else if (space == 27) {
+		} else if (space == 28) {
 			row = 0;
 			col = 7;
 			checkSpaceMovedToForOwner(row, col, moved);
 			//0 7 prop
-		} else if (space == 28) {
+		} else if (space == 29) {
 			row = 0;
 			col = 8;
 			checkSpaceMovedToForOwner(row, col, moved);
 			//0 8 prop util
-		} else if (space == 29) {
+		} else if (space == 30) {
 			row = 0;
 			col = 9;
 			checkSpaceMovedToForOwner(row, col, moved);
 			//0 9 prop
-		} else if (space == 30) {
+		} else if (space == 31) {
 			Player.setSpaceCurrentlyOn(moved, 10);
 			Player.setInJail(moved, true);
 			//0 10 got to jail
-		} else if (space == 31) {
+		} else if (space == 32) {
 			row = 1;
 			col = 10;
 			checkSpaceMovedToForOwner(row, col, moved);
 			//1 10 prop
-		} else if (space == 32) {
+		} else if (space == 33) {
 			row = 2;
 			col = 10;
 			checkSpaceMovedToForOwner(row, col, moved);
 			//2 10 prop
-		} else if (space == 33) {
-			//3 10 com chest
 		} else if (space == 34) {
+			//3 10 com chest
+		} else if (space == 35) {
 			row = 4;
 			col = 10;
 			checkSpaceMovedToForOwner(row, col, moved);
 			//4 10 prop
-		} else if (space == 35) {
+		} else if (space == 36) {
 			row = 5;
 			col = 10;
 			checkSpaceMovedToForOwner(row, col, moved);
 			//5 10 prop rail
-		} else if (space == 36) {
+		} else if (space == 37) {
 			Chance_Cards.DRAW();
 			//6 10 Chance
-		}else if (space == 37) {
+		}else if (space == 38) {
 			row = 7;
 			col = 10;
 			checkSpaceMovedToForOwner(row, col, moved);
 			//7 10 prop
-		}else if (space == 38) {
+		}else if (space == 39) {
 			Player.setMoney(moved, -75);
 			//8 10 lux tax
-		}else if (space == 39) {
+		}else if (space == 40) {
 			row = 9;
 			col = 10;
 			checkSpaceMovedToForOwner(row, col, moved);
@@ -369,13 +395,14 @@ public class Player {
 	public static void checkSpaceMovedToForOwner(int row, int col, Player moved) throws IOException{
 		if(Board.b.getIsAvailable(Board.board[row][col])){
 			if(ConsoleUI.promptForBool("Woud you like to buy " + Board.b.getName(Board.board[row][col]) + " [y/n]", "y", "n")){
-				Player.buyLand(moved, Board.board[row][col]);
+				Player.buyLand(moved, Board.board[row][col], Board.board[row][col].getLandValue(Board.board[row][col]));
 			}
 			else{
 				//do an auction
 			}
 		} else if(!Board.b.getMortgaged(Board.board[row][col])){
 			Player owner = Board.b.getOwnedBy(Board.board[row][col]);
+			System.out.println("You owe " + owner + ".");
 			Player.setMoney(moved, -Board.board[row][col].getRent(Board.board[row][col]));			
 			Player.setMoney(owner, Board.board[row][col].getRent(Board.board[row][col]));
 		}
