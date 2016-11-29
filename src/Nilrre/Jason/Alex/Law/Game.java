@@ -67,47 +67,59 @@ public class Game {
 					System.out.println("\nMoney: " + Player.getMoney(one));
 					System.out.println("Jail Cards Owned: " + Player.getJailcard(one));
 					System.out.println("Land Owned: " + Player.getland(one) + "\n");
-
+					b.printBoard(Board.board);
+					
 				} else if (i == 2 && players.contains(two)) {
 					turn(two);
 					System.out.println("\nMoney: " + Player.getMoney(two));
 					System.out.println("Jail Cards Owned: " + Player.getJailcard(two));
 					System.out.println("Land Owned: " + Player.getland(two) + "\n");
-
+					b.printBoard(Board.board);
+					
 				} else if (i == 3 && players.contains(three)) {
 					turn(three);
 					System.out.println("\nMoney: " + Player.getMoney(three));
 					System.out.println("Jail Cards Owned: " + Player.getJailcard(three));
 					System.out.println("Land Owned: " + Player.getland(three) + "\n");
+					b.printBoard(Board.board);
+					
 				} else if (i == 4 && players.contains(four)) {
 					turn(four);
 					System.out.println("\nMoney: " + Player.getMoney(four));
 					System.out.println("Jail Cards Owned: " + Player.getJailcard(four));
 					System.out.println("Land Owned: " + Player.getland(four) + "\n");
+					b.printBoard(Board.board);
+				
 				} else if (i == 5 && players.contains(five)) {
 					turn(five);
 					System.out.println("\nMoney: " + Player.getMoney(five));
 					System.out.println("Jail Cards Owned: " + Player.getJailcard(five));
 					System.out.println("Land Owned: " + Player.getland(five) + "\n");
+					b.printBoard(Board.board);
+				
 				} else if (i == 6 && players.contains(six)) {
 					turn(six);
 					System.out.println("\nMoney: " + Player.getMoney(six));
 					System.out.println("Jail Cards Owned: " + Player.getJailcard(six));
 					System.out.println("Land Owned: " + Player.getland(six) + "\n");
+					b.printBoard(Board.board);
+				
 				} else if (i == 7 && players.contains(seven)) {
 					turn(seven);
 					System.out.println("\nMoney: " + Player.getMoney(seven));
 					System.out.println("Jail Cards Owned: " + Player.getJailcard(seven));
 					System.out.println("Land Owned: " + Player.getland(seven) + "\n");
+					b.printBoard(Board.board);
+				
 				} else if (i == 8 && players.contains(eight)) {
 					turn(eight);
 					System.out.println("\nMoney: " + Player.getMoney(eight));
 					System.out.println("Jail Cards Owned: " + Player.getJailcard(eight));
 					System.out.println("Land Owned: " + Player.getland(eight) + "\n");
+					b.printBoard(Board.board);
 				}
 
 			}
-			b.printBoard(Board.board);
 		} while (noOneHasWon);
 	}
 
