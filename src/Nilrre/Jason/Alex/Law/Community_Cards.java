@@ -41,6 +41,7 @@ public class Community_Cards {
 		int Namber = Rnum.nextInt(6) + 5;
 		for (int i = 0; i < Namber; i++) {
 			Collections.shuffle(comCards);
+			System.out.println("*Shuffles Cards*");
 		}
 	}
 
@@ -143,6 +144,7 @@ public class Community_Cards {
 		if(getCard == "You inherit $100"){
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), 100);
 			System.out.println("You inherit $100");
-		}		
+		}
 	}	
+	
 }

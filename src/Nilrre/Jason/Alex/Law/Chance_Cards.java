@@ -49,6 +49,7 @@ public class Chance_Cards {
 		nextDrawIndex++;
 		if (nextDrawIndex >= CARDS.size()) {
 			Shuffle();
+			System.out.println("*Shuffles Cards*");
 			nextDrawIndex = 0;
 		}
 		return retVal;
@@ -69,17 +70,21 @@ public class Chance_Cards {
 		}
 		if (retVal == "C50") {
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), 50);
-			System.out.println("Bank pays you dividend of $50");
+			System.out.println("Bank pays your dividend of $50");
 		}
-		if (retVal == "GB3") {
+		if (retVal == "GB3") {//EDITED
 			Game.getPlayerWhosTurnItIs();
 			Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(),
 					(Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs())) - 3);
 			System.out.println("Go Back 3 Steps");
 		}
 		if (retVal == "ADV1") {
-			Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 39);
+			Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 40);//EDITED
 			System.out.println("You advanced to Boardwalk");
+			int[] space12 = Player.spaceNumberToBoardCords(40);
+			int row40 = space12[0];
+			int col40 = space12[1];
+			Player.checkSpaceMovedToForOwner(row40, col40, Game.getPlayerWhosTurnItIs());
 		}
 		if (retVal == "P15") {
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), -15);
@@ -87,13 +92,13 @@ public class Chance_Cards {
 		}
 		if (retVal == "ADV2") {
 			if (Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) == 37){
-			Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 24);
+			Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 25);
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), 200);
 			System.out.println("You advanced to Illinois Ave. and You've Passed GO");
 			System.out.println("Collect $200");			
 			}
 			else{
-			Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 24);
+			Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 25);
 			System.out.println("You advanced to Illinois Ave.");
 			}
 		}
@@ -142,30 +147,40 @@ public class Chance_Cards {
 
 		}
 		if (retVal == "ADV2READRAIL") {
-				Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 5);
+				Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 6);
 				//WIP
 		}
 		if (retVal == "ADV3") {
-			if (Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) > 11){
-				Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 11);
+			if (Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) > 12){
+				Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 12);
 				System.out.println("You've advanced to St.Charles Place");	
 				Player.setMoney(Game.getPlayerWhosTurnItIs(), 200);
 			}
-			if (Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) < 11){
-				Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 11);
+			if (Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) < 12){
+				Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 12);
 				System.out.println("You've advanced to St.Charles Place");
 			}
 		}
 		if (retVal == "ADV2NEARUTIL") {//WIP check if owned and pay extra if it is
-			if (Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) == 7) {
-				Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 12);
+			if (Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) == 8) {
+				Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 13);
+				System.out.println("You've landed on Electric Company"); 
+				int[] space12 = Player.spaceNumberToBoardCords(13);
+				int row12 = space12[0];
+				int col12 = space12[1];
+				if (Game.getPlayerWhosTurnItIs() != Board.b.getOwnedBy(Board.board[row12][col12]) && Board.b.getOwnedBy(Board.board[row12][col12]) != null){
+					System.out.println("But the Space is already Taken");
+					Player.setMoney(Game.getPlayerWhosTurnItIs(), Player.getAmountOnDie(Game.getPlayerWhosTurnItIs()) * -10);
+					
+				}
+				
 			}
 
-			if (Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) == 22) {
-				Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 28);
+			if (Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) == 23) {
+				Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 29);
 			}
-			if (Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) == 36) {
-				Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 12);
+			if (Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) == 37) {
+				Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 13);
 				Player.setMoney(Game.getPlayerWhosTurnItIs(), 200);
 			}
 		}
