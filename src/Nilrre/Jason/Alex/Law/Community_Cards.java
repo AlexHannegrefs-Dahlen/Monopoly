@@ -58,25 +58,34 @@ public class Community_Cards {
 		if (getCard == "Advance to go") {
 			Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 1);
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), 200);
+			System.out.println();
 		}
 		if (getCard == "Bank error in your favor") {
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), 200);
+			System.out.println();
 		}
 		if (getCard == "Doctor fees") {
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), -50);
+			System.out.println();
 		}
-		if (getCard == "From sale of stock you get $50") {
-			Player.setMoney(Game.getPlayerWhosTurnItIs(), 50);
+
+		if(getCard == "From sale of stock you get $50"){
+			Player.setMoney(Game.getPlayerWhosTurnItIs(), 50);	
+			System.out.println();
 		}
 		if (getCard == "Get out of jail free") {
 			Player.setGetOutOfJailChest(Game.getPlayerWhosTurnItIs(), true);
+			System.out.println();
 		}
 		if (getCard == "Go to jail") {
 			Player.setInJail(Game.getPlayerWhosTurnItIs(), true);
+			System.out.println();
 		}
-		if (getCard == "Grand opera night opening") {
-			Player.setMoney(Game.getPlayerWhosTurnItIs(), 50 * (Game.amountOfPlayers - 1));
-			for (int i = 0; i < Game.amountOfPlayers; i++) {
+
+		if(getCard == "Grand opera night opening"){
+			Player.setMoney(Game.getPlayerWhosTurnItIs(), 50 * (Game.amountOfPlayers-1));
+			System.out.println();
+			for(int i = 0; i < Game.amountOfPlayers; i++){
 				if (i == 1 && (Game.returnPlayerOne() != Game.getPlayerWhosTurnItIs())) {
 					Player.setMoney(Game.returnPlayerOne(), -50);
 				} else if (i == 2 && (Game.returnPlayerTwo() != Game.getPlayerWhosTurnItIs())) {
@@ -96,29 +105,43 @@ public class Community_Cards {
 				}
 			}
 		}
-		if (getCard == "Holiday fund matures") {
-			Player.setMoney(Game.getPlayerWhosTurnItIs(), 50);
+		if(getCard == "Holiday fund matures"){
+			Player.setMoney(Game.getPlayerWhosTurnItIs(), 50);	
+			System.out.println();
 		}
-		if (getCard == "Income tax refund") {
-			Player.setMoney(Game.getPlayerWhosTurnItIs(), 20);
+		if(getCard == "Income tax refund"){
+			Player.setMoney(Game.getPlayerWhosTurnItIs(),20);
+			System.out.println();
 		}
-		if (getCard == "Life insurance matures") {
+		if(getCard == "Life insurance matures"){
+			Player.setMoney(Game.getPlayerWhosTurnItIs(),100);
+			System.out.println();
+		}
+		if(getCard == "Pay hospital funds of $100"){
+			Player.setMoney(Game.getPlayerWhosTurnItIs(),-100);
+			System.out.println();
+		}
+		if(getCard == "Pay school fees of $150"){
+			Player.setMoney(Game.getPlayerWhosTurnItIs(),-150);
+			System.out.println();
+		}
+		if(getCard == "Recieve $25 consultabcy fee"){
+			Player.setMoney(Game.getPlayerWhosTurnItIs(),25);
+			System.out.println();
+		}
+		if(getCard == "You are accessed for street repairs"){//WIP
+			System.out.println();
+		}
+		if(getCard == "You have one second prize in a beauty contest"){
+			Player.setMoney(Game.getPlayerWhosTurnItIs(),10);
+			System.out.println();
+		}
+		if(getCard == "You inherit $100"){
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), 100);
+			System.out.println("You inherit $100");
 		}
-		if (getCard == "Pay hospital funds of $100") {
-			Player.setMoney(Game.getPlayerWhosTurnItIs(), -100);
-		}
-		if (getCard == "Pay school fees of $150") {
-			Player.setMoney(Game.getPlayerWhosTurnItIs(), -150);
-		}
-		if (getCard == "Recieve $25 consultabcy fee") {
-			Player.setMoney(Game.getPlayerWhosTurnItIs(), 25);
-		}
-		if (getCard == "You are accessed for street repairs") {
-
-		}
-	}
-
+		
+	}	
 	public static void beautyContest() throws IOException {
 		Player.setMoney(Game.getPlayerWhosTurnItIs(), Player.getMoney(Game.getPlayerWhosTurnItIs()) + 10);
 	}
