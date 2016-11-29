@@ -54,32 +54,34 @@ public class Community_Cards {
 		return getCard;
 	}
 
-	public static void effects(String getCard) throws IOException{
-		if(getCard == "Advance to go"){
+	public static void effects(String getCard) throws IOException {
+		if (getCard == "Advance to go") {
 			Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 1);
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), 200);
 			System.out.println();
 		}
-		if(getCard == "Bank error in your favor"){
+		if (getCard == "Bank error in your favor") {
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), 200);
 			System.out.println();
 		}
-		if(getCard == "Doctor fees"){
+		if (getCard == "Doctor fees") {
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), -50);
 			System.out.println();
 		}
+
 		if(getCard == "From sale of stock you get $50"){
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), 50);	
 			System.out.println();
 		}
-		if(getCard == "Get out of jail free"){
+		if (getCard == "Get out of jail free") {
 			Player.setGetOutOfJailChest(Game.getPlayerWhosTurnItIs(), true);
 			System.out.println();
 		}
-		if(getCard == "Go to jail"){
+		if (getCard == "Go to jail") {
 			Player.setInJail(Game.getPlayerWhosTurnItIs(), true);
 			System.out.println();
 		}
+
 		if(getCard == "Grand opera night opening"){
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), 50 * (Game.amountOfPlayers-1));
 			System.out.println();
@@ -139,8 +141,7 @@ public class Community_Cards {
 			System.out.println("You inherit $100");
 		}
 		
-	}
-	
+	}	
 	public static void beautyContest() throws IOException {
 		Player.setMoney(Game.getPlayerWhosTurnItIs(), Player.getMoney(Game.getPlayerWhosTurnItIs()) + 10);
 	}
@@ -151,13 +152,9 @@ public class Community_Cards {
 
 	public static void streetRepairs() throws IOException {
 		int cost = 0;
-		for (int i = 0; i < Player.getland(Game.getPlayerWhosTurnItIs()).size(); i++) {
-			cost += Player.getland(Game.getPlayerWhosTurnItIs()).get(i)
-					.getHotel(Player.getland(Game.getPlayerWhosTurnItIs()).get(i)) * 115;
-			cost += Player.getland(Game.getPlayerWhosTurnItIs()).get(i)
-					.getHouses(Player.getland(Game.getPlayerWhosTurnItIs()).get(i)) * 40;
-		}
-		Player.setMoney(Game.getPlayerWhosTurnItIs(), cost);
+		cost = cost + (Player.getHotelsOwned(Game.getPlayerWhosTurnItIs()) * 115);
+		cost = cost + (Player.getHousesOwned(Game.getPlayerWhosTurnItIs()) * 40);
+		Player.setMoney(Game.getPlayerWhosTurnItIs(), -cost);
 	}
 
 }
