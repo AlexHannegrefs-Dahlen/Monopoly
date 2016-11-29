@@ -180,8 +180,8 @@ public class Game {
 	public static void turn(Player play) throws IOException {
 		Player.setMyTurn(play, true);
 		System.out.println(Player.getPiece(play) + "'s turn.");
-		String[] options = new String[] { "1: Roll", "2: Buy Houses or Hotels", "3: Trade with another Player",
-				"4: Quit Playing Game" };
+		String[] options = new String[] { "1: Roll", "2: Buy Houses or Hotels", "3: Trade with another Player", "4: Unmortgage",
+				"5: Quit Playing Game" };
 		int turnSelect = ConsoleUI.promptForMenuSelection(options, false);
 		if (turnSelect == 1) {
 			Player.roll(play);
@@ -189,7 +189,7 @@ public class Game {
 			Player.buyHousesOrHotel(play);
 		} else if (turnSelect == 3) {
 			Player.trade(play);
-		} else if (turnSelect == 4) {
+		} else if (turnSelect == 5) {
 			players.remove(play);
 		}
 		Player.setMyTurn(play, false);

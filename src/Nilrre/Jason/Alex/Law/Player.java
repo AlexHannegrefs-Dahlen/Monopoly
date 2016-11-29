@@ -23,6 +23,15 @@ public class Player {
 	private int railroadsOwned;
 	private int housesOwned;
 	private int hotelsOwned;
+	private boolean inAuction;
+	
+	public static boolean getInAuction(Player auction){
+		return auction.inAuction;
+	}
+	
+	public static void setInAuction(Player auction, boolean participating){
+		auction.inAuction = participating;
+	}
 	
 	public static int getHousesOwned(Player houses){
 		return houses.housesOwned;
@@ -149,7 +158,9 @@ public class Player {
 		moneyVal.money =(int) + valuetoadd;
 		if(moneyVal.money < 0){
 			System.out.println("You must mortgage to afford this payment. What would you like to mortgage?");
-			moneyVal.land.get(ConsoleUI.promptForInt(moneyVal.land.toString() + "Enter number of property", 1, moneyVal.land.size()) - 1);
+			//moneyVal.land.get
+			ConsoleUI.promptForInt(moneyVal.land.toString() + "Enter number of property", 1, 40);
+			
 		}
 	}
 
