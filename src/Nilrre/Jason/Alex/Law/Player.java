@@ -175,10 +175,9 @@ public class Player {
 	}
 
 	public static void setMoney(Player moneyVal, double valuetoadd) throws IOException {
-		moneyVal.money =(int) + valuetoadd;
+		moneyVal.money = (int) + valuetoadd;
 		if(moneyVal.money < 0){
 			System.out.println("You must mortgage to afford this payment. What would you like to mortgage?");
-			//moneyVal.land.get
 			ConsoleUI.promptForInt(moneyVal.land.toString() + "Enter number of property", 1, 40);
 			
 		}
@@ -241,7 +240,7 @@ public class Player {
 		moving.spaceCurrentlyOn += movement;
 		if((moving.spaceCurrentlyOn) > 41){
 			moving.spaceCurrentlyOn -= 41;
-			moving.money =+ 200;
+			Player.setMoney(moving, 200);
 			System.out.println("You passed go Collect $200. Current funds: $" + moving.money);
 		}
 		spaceNumberTo2dArray(moving);
