@@ -18,12 +18,32 @@ public class Player {
 	private String nameOfSpaceOn;
 	private int rolledDoubles;
 	private boolean myTurn = false;
-	private boolean playingGame = false;
+	private boolean playingGame;
 	private int amountOnDie;
 	private int railroadsOwned;
 	private int housesOwned;
 	private int hotelsOwned;
 	private boolean inAuction;
+	
+	public static Player getWhoWonAuction(){
+		if(Player.getInAuction(Game.returnPlayerOne())){
+			return Game.returnPlayerOne();
+		} else if(Player.getInAuction(Game.returnPlayerTwo())){
+			return Game.returnPlayerTwo();
+		} else if(Player.getInAuction(Game.returnPlayerThree())){
+			return Game.returnPlayerThree();
+		} else if(Player.getInAuction(Game.returnPlayerFour())){
+			return Game.returnPlayerFour();
+		} else if(Player.getInAuction(Game.returnPlayerFive())){
+			return Game.returnPlayerFive();
+		} else if(Player.getInAuction(Game.returnPlayerSix())){
+			return Game.returnPlayerSix();
+		} else if(Player.getInAuction(Game.returnPlayerSeven())){
+			return Game.returnPlayerSeven();
+		} else {
+			return Game.returnPlayerEight();
+		}
+	}
 	
 	public static boolean getInAuction(Player auction){
 		return auction.inAuction;
