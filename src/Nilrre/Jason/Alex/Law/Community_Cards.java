@@ -129,13 +129,9 @@ public class Community_Cards {
 
 	public static void streetRepairs() throws IOException {
 		int cost = 0;
-		for (int i = 0; i < Player.getland(Game.getPlayerWhosTurnItIs()).size(); i++) {
-			cost += Player.getland(Game.getPlayerWhosTurnItIs()).get(i)
-					.getHotel(Player.getland(Game.getPlayerWhosTurnItIs()).get(i)) * 115;
-			cost += Player.getland(Game.getPlayerWhosTurnItIs()).get(i)
-					.getHouses(Player.getland(Game.getPlayerWhosTurnItIs()).get(i)) * 40;
-		}
-		Player.setMoney(Game.getPlayerWhosTurnItIs(), cost);
+		cost = cost + (Player.getHotelsOwned(Game.getPlayerWhosTurnItIs()) * 115);
+		cost = cost + (Player.getHousesOwned(Game.getPlayerWhosTurnItIs()) * 40);
+		Player.setMoney(Game.getPlayerWhosTurnItIs(), -cost);
 	}
 
 }
