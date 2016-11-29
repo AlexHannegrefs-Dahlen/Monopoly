@@ -7,69 +7,144 @@ import java.util.ArrayList;
 public class Trade {
 	static int enterValue = 0;
 	static int enter2Value = 0;
-	static boolean currentJailCard = null != null;
-	static boolean currentJailCard2 = null != null;
 	static ArrayList<BoardSpaces> tradingLand = new ArrayList <BoardSpaces>();
 	static ArrayList<BoardSpaces> tradingPlayerLand = new ArrayList <BoardSpaces>();
 	
-	public static Player whatPlayerToTradeWith(int inputPlayerNumber, Player player) throws IOException {	
-		System.out.println("There are " + Game.amountOfPlayers + " Players currently playing");	
+	public static Player whatPlayerToTradeWith(int inputPlayerNumber, Player player) throws IOException {
+		if(player == null){
+			player = Game.getPlayerWhosTurnItIs();
+		}
+		System.out.println("There are " + Game.amountOfPlayers + " Players currently playing");
 		inputPlayerNumber = ConsoleUI.promptForInt("Select another player to trade with", 1, 8);
-		for (int i = 1; i <= Game.amountOfPlayers; i++){
-			if (inputPlayerNumber == 1){
+			boolean checkTrue = false;
+			/*if (inputPlayerNumber == 1) {
+				while (!checkTrue){
+				if (player == Game.getPlayerWhosTurnItIs()){
+					System.out.println("You can't trade with yourself");
+					checkTrue = false;
+				}
+				else {
 				player = Game.returnPlayerOne();
+				checkTrue = true;
 				return player;
-			}
-			else if (inputPlayerNumber == 2){
-				player = Game.returnPlayerTwo();
-				return player;
-			}
-			else if (inputPlayerNumber == 3){
-				player = Game.returnPlayerThree();
-				return player;
-			}
-			else if (inputPlayerNumber == 4){
-				player = Game.returnPlayerFour();
-				return player;
-			}
-			else if (inputPlayerNumber == 5){
-				player = Game.returnPlayerFive();
-				return player;
-			}
-			else if (inputPlayerNumber == 6){
-				player = Game.returnPlayerSix();
-				return player;
-			}
-			else if (inputPlayerNumber == 7){
-				player = Game.returnPlayerSeven();
-				return player;
-			}	
-			else if (inputPlayerNumber == 8){
-				player = Game.returnPlayerEight();
-				return player;
+				}
 			}
 		}
-		return null;
-	
+			else if (inputPlayerNumber == 2){
+				while (!checkTrue) {
+				if (player == Game.getPlayerWhosTurnItIs()){
+					System.out.println("You can't trade with yourself");
+					checkTrue = false;
+				}
+				else {
+				player = Game.returnPlayerTwo();
+				checkTrue = true;
+				return player;
+				}
+			}
+		}
+			else if (inputPlayerNumber == 3){
+				while (!checkTrue) {
+				if (player == Game.getPlayerWhosTurnItIs()){
+					System.out.println("You can't trade with yourself");
+					checkTrue = false;
+				}
+				else {
+				player = Game.returnPlayerThree();
+				checkTrue = true;
+				return player;
+				}
+			}
+		}
+			else if (inputPlayerNumber == 4){
+				while (!checkTrue) {
+				if (player == Game.getPlayerWhosTurnItIs()){
+					System.out.println("You can't trade with yourself");
+					checkTrue = false;
+				}
+				else {
+				player = Game.returnPlayerFour();
+				checkTrue = true;
+				return player;
+				}
+			}
+		}	
+			else if (inputPlayerNumber == 5){
+				while (!checkTrue) {
+				if (player == Game.getPlayerWhosTurnItIs()){
+					System.out.println("You can't trade with yourself");
+					checkTrue = false;
+				}
+				else {
+				player = Game.returnPlayerFive();
+				checkTrue = true;
+				return player;
+				}
+			}
+		}
+			else if (inputPlayerNumber == 6){
+				while (!checkTrue) {
+				if (player == Game.getPlayerWhosTurnItIs()){
+					System.out.println("You can't trade with yourself");
+					checkTrue = false;
+				}
+				else {
+				player = Game.returnPlayerSix();
+				checkTrue = true;
+				return player;
+				}
+			}
+		}
+			else if (inputPlayerNumber == 7){
+				while (!checkTrue) {
+				if (player == Game.getPlayerWhosTurnItIs()){
+					System.out.println("You can't trade with yourself");
+					checkTrue = false;
+				}
+				else {
+				player = Game.returnPlayerSeven();
+				checkTrue = true;
+				return player;
+				}
+			}	
+		}
+			else if (inputPlayerNumber == 8){
+				while (!checkTrue) {
+				if (player == Game.getPlayerWhosTurnItIs()){
+					System.out.println("You can't trade with yourself");
+					checkTrue = false;
+				}
+				else {
+				player = Game.returnPlayerEight();
+				checkTrue = true;
+				return player;
+				}
+			}
+		}
+		return null;*/
 	}
 	
 	// Spaced everything out to make it easier to read
 	public static int askCurrentPlayerForTrade() throws IOException {
-		System.out.println(Game.getPlayerWhosTurnItIs() + " what will you do");
-		String[] firstSelection = new String[] { "Accept", "Decline"};
-		int menuSelect = ConsoleUI.promptForMenuSelection(firstSelection, true);
-		// They want to trade
+		int inputPlayerNumber = 0;
+		Player player = null;
+		whatPlayerToTradeWith(inputPlayerNumber, player);
+		
+		System.out.println("Would you like to continue trade?");
+		String[] currentPlayerSelection = new String[] { "Accept", "Decline"};
+		int menuSelect = ConsoleUI.promptForMenuSelection(currentPlayerSelection, false);
+		
 		if (menuSelect == 1) {
 			
-			System.out.println("Please select what you want to trade?");
-			String[] stuffToTrade = new String[] { "Money", "Get out of jail free", "Properties" };
-			int selectWhatToTrade = ConsoleUI.promptForMenuSelection(stuffToTrade, false);
+			System.out.println("Please select what you want to trade:");
+			String[] currentPlayerChooseTrade = new String[] { "Money", "Get Out of Jail Free", "Properties" };
+			int selectWhatToTrade = ConsoleUI.promptForMenuSelection(currentPlayerChooseTrade, false);
 			
 			if (selectWhatToTrade == 1) {
-				boolean moneyExchange = ConsoleUI.promptForBool("Would you like to exchange some cash?" + "[Y/N]", "Y","N");
+				boolean currentPlayerMoneyExchange = ConsoleUI.promptForBool("Would you like to exchange some cash?" + "[Y/N]", "Y","N");
 
-				if (moneyExchange == true) {
-					enterValue = ConsoleUI.promptForInt("Enter in the value of money you would like to trade", 0,Integer.MAX_VALUE);
+				if (currentPlayerMoneyExchange == true) {
+					enterValue = ConsoleUI.promptForInt("Enter in the value of money you would like to exchange:", 0,Integer.MAX_VALUE);
 					boolean amountRight = false;
 					while (!amountRight){
 					if (enterValue > Player.getMoney(Game.getPlayerWhosTurnItIs())){
@@ -77,28 +152,29 @@ public class Trade {
 						amountRight = false; 
 					}
 					else {
+						System.out.println("Money value is sufficient!");
 						System.out.println("Amount To Be Exchanged: " + enterValue);
 						amountRight = true;
 						}
 					}
 				}
-				else if (moneyExchange == false) {
+				else if (currentPlayerMoneyExchange == false) {
 					System.out.println("No cash will be exchanged");
+					enterValue = 0;
 				}
+				return enterValue;
 			}
 			if (selectWhatToTrade == 2) {
-				boolean tradeJailCard = ConsoleUI.promptForBool("Would you like to trade your Get out of jail card?" + "[Y/N]", "Y", "N");
+				boolean tradeJailCard = ConsoleUI.promptForBool("Would you like to trade your Get Out of Jail Card?" + "[Y/N]", "Y", "N");
+				
 				if (tradeJailCard == true) {
 					System.out.println("Checking to see if player has card");
-					currentJailCard = Player.getGetOutOfJailChance(Game.getPlayerWhosTurnItIs()) || Player.getGetOutOfJailChest(Game.getPlayerWhosTurnItIs());
 					if (!Player.getGetOutOfJailChance(Game.getPlayerWhosTurnItIs())
 							&& !Player.getGetOutOfJailChest(Game.getPlayerWhosTurnItIs())) {
 						System.out.println("Sorry, you don't possess a Get out of jail free card");
-						currentJailCard = false;
 					}
 					else if (Player.getGetOutOfJailChance(Game.getPlayerWhosTurnItIs()) || Player.getGetOutOfJailChest(Game.getPlayerWhosTurnItIs())) {
 						System.out.println("Excellent! You are eligible for trade");
-						currentJailCard = true;
 						//Set to give to other player when ready
 					}
 				}
@@ -179,15 +255,12 @@ public class Trade {
 
 				if (askPlayerForJailCard == true) {
 					System.out.println("Checking to see if player " + player + " has a card");
-					currentJailCard2 = Player.getGetOutOfJailChance(player) || Player.getGetOutOfJailChest(player);
 					if (!Player.getGetOutOfJailChance(player)
 							&& !Player.getGetOutOfJailChest(player)) {
 						System.out.println("Sorry, " + player + " doesn't possess a Get out of jail free card");
-						currentJailCard2 = false;
 					}
 					else if (Player.getGetOutOfJailChance(player) || Player.getGetOutOfJailChest(player)){
 						System.out.println("Excellent! They are eligible for trade");
-						currentJailCard2 = true;
 					}
 				}
 
@@ -277,21 +350,18 @@ public class Trade {
 
 					if (modifyJailCard == true) {
 						System.out.println("Checking to see if that player has a card");
-//						if (!Player.getGetOutOfJailChance(player)
-//								&& !Player.getGetOutOfJailChest(player)) 
-						if (currentJailCard2 = false){
+						if (!Player.getGetOutOfJailChance(player)
+								&& !Player.getGetOutOfJailChest(player)){
 							System.out.println("Sorry, " + player + "  you still don't possess a Get Out of Jail Free card");	
 						}
 
-//						else if (Player.getGetOutOfJailChance(player) || Player.getGetOutOfJailChest(player))
-						if (currentJailCard2 = true) {
+						else if (Player.getGetOutOfJailChance(player) || Player.getGetOutOfJailChest(player)){
 							System.out.println("Excellent! You are eligible for trade");
-							if (currentJailCard2 = Player.getGetOutOfJailChance(player)){
 							Player.giveJailCard(Game.getPlayerWhosTurnItIs());
 							Player.setGetOutOfJailChance(Game.getPlayerWhosTurnItIs(), true);
 							Player.setGetOutOfJailChance(player, false);
 						}
-							else if (currentJailCard2 = Player.getGetOutOfJailChest(player)) {
+						else if (Player.getGetOutOfJailChest(player) || Player.getGetOutOfJailChest(player)){
 							Player.giveJailCard(Game.getPlayerWhosTurnItIs());	
 							Player.setGetOutOfJailChest(Game.getPlayerWhosTurnItIs(), true);
 							Player.setGetOutOfJailChest(player, false);
@@ -349,7 +419,15 @@ public class Trade {
 				}
 			}
 		} 
-	}
 		return acceptOrDecline;
  }
+	public static Player callAllMethods() throws IOException {
+		int inputPlayerNumber = 0;
+		Player player = null;
+		whatPlayerToTradeWith(inputPlayerNumber, player);
+		askCurrentPlayerForTrade();
+		selectWhatOtherPlayerTrades();
+		acceptOrDeclinePlayerTradeRequest();
+		return null;
+	}
 }
