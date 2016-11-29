@@ -395,7 +395,9 @@ public class Player {
 	}
 
 	public static void trade(Player trading) throws IOException {
-		Trade.whatPlayerToTradeWith();
+		int inputPlayerNumber = 0;
+		Player player = null;
+		Trade.whatPlayerToTradeWith(inputPlayerNumber, player);
 	}
 
 }
