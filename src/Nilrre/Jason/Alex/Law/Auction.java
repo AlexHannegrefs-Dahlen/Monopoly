@@ -122,6 +122,6 @@ public class Auction {
 			}
 		} while (playersInAuction-- != 1);
 		System.out.println(Player.getWhoWonAuction() + " you won " + space.getName(space) + " for $" + AuctionPrice);
-		Player.setMoney(Player.getWhoWonAuction(), -AuctionPrice);
+		Player.buyLand(Player.getWhoWonAuction(), space, AuctionPrice);
 	}
 }
