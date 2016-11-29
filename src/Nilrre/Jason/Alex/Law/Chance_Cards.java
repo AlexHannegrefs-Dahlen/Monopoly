@@ -60,16 +60,16 @@ public class Chance_Cards {
 		if (retVal == "GTG") {
 			System.out.println("Advance to go (Get to  Two Hundred)");
 			Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 0);
-			// |if player doesn't automatically get there $200
-			// V
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), 200);
-
+			System.out.println("Go to Go, collect $200");
 		}
 		if (retVal == "GTJ") {
 			Player.setInJail(Game.getPlayerWhosTurnItIs(), true);
+			System.out.println("Go to Jail");
 		}
 		if (retVal == "C50") {
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), 50);
+			
 		}
 		if (retVal == "GB3") {
 			Game.getPlayerWhosTurnItIs();

@@ -58,35 +58,37 @@ public class Community_Cards {
 		if (getCard == "Advance to go") {
 			Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 1);
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), 200);
-			System.out.println();
+			System.out.println("Advance to go, collect $200");
 		}
 		if (getCard == "Bank error in your favor") {
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), 200);
-			System.out.println();
+			System.out.println("Bank error in your favor, collect $200");
 		}
 		if (getCard == "Doctor fees") {
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), -50);
-			System.out.println();
+			System.out.println("Doctor fees, you lose $50");
 		}
 
 		if(getCard == "From sale of stock you get $50"){
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), 50);	
-			System.out.println();
+			System.out.println("From sale of stock you get $50");
 		}
 		if (getCard == "Get out of jail free") {
 			Player.setGetOutOfJailChest(Game.getPlayerWhosTurnItIs(), true);
-			System.out.println();
+			System.out.println("Get out of jail free");
 		}
 		if (getCard == "Go to jail") {
 			Player.setInJail(Game.getPlayerWhosTurnItIs(), true);
-			System.out.println();
+			System.out.println("Go to jail");
 		}
 
 		if(getCard == "Grand opera night opening"){
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), 50 * (Game.amountOfPlayers-1));
-			System.out.println();
+			int text = 50 * (Game.amountOfPlayers-1);
+			System.out.println("Grand opera night opening" + "\n" + "Each player has to pay $50" + "\n" + "You earn $"  + text);
+			
 			for(int i = 0; i < Game.amountOfPlayers; i++){
-				if (i == 1 && (Game.returnPlayerOne() != Game.getPlayerWhosTurnItIs())) {
+				if (i == 1 && (Game.returnPlayerOne() != Game.getPlayerWhosTurnItIs())) {					
 					Player.setMoney(Game.returnPlayerOne(), -50);
 				} else if (i == 2 && (Game.returnPlayerTwo() != Game.getPlayerWhosTurnItIs())) {
 					Player.setMoney(Game.returnPlayerTwo(), -50);
@@ -107,54 +109,40 @@ public class Community_Cards {
 		}
 		if(getCard == "Holiday fund matures"){
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), 50);	
-			System.out.println();
+			System.out.println("Holiday fund matures, collect $50");
 		}
 		if(getCard == "Income tax refund"){
 			Player.setMoney(Game.getPlayerWhosTurnItIs(),20);
-			System.out.println();
+			System.out.println("Income tax refund, collect $20");
 		}
 		if(getCard == "Life insurance matures"){
 			Player.setMoney(Game.getPlayerWhosTurnItIs(),100);
-			System.out.println();
+			System.out.println("Life insurance matures, collect $100");
 		}
 		if(getCard == "Pay hospital funds of $100"){
 			Player.setMoney(Game.getPlayerWhosTurnItIs(),-100);
-			System.out.println();
+			System.out.println("Pay hospital funds of $100");
 		}
 		if(getCard == "Pay school fees of $150"){
 			Player.setMoney(Game.getPlayerWhosTurnItIs(),-150);
-			System.out.println();
+			System.out.println("Pay school fees of $150");
 		}
 		if(getCard == "Recieve $25 consultabcy fee"){
 			Player.setMoney(Game.getPlayerWhosTurnItIs(),25);
-			System.out.println();
+			System.out.println("Recieve $25 consultabcy fee");
 		}
 		if(getCard == "You are accessed for street repairs"){//WIP
-			System.out.println();
+			Player.setMoney(Game.getPlayerWhosTurnItIs(),Player.getHousesOwned(null) * -40);
+			Player.setMoney(Game.getPlayerWhosTurnItIs(), Player.getHotelsOwned(null) * -115);
+			System.out.println("You are accessed for street repairs, you pay $" + (((Player.getHousesOwned(null)) * -40) + (Player.getHotelsOwned(null) * -115)));
 		}
 		if(getCard == "You have one second prize in a beauty contest"){
 			Player.setMoney(Game.getPlayerWhosTurnItIs(),10);
-			System.out.println();
+			System.out.println("You have one second prize in a beauty contest, collect $10");
 		}
 		if(getCard == "You inherit $100"){
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), 100);
 			System.out.println("You inherit $100");
-		}
-		
+		}		
 	}	
-	public static void beautyContest() throws IOException {
-		Player.setMoney(Game.getPlayerWhosTurnItIs(), Player.getMoney(Game.getPlayerWhosTurnItIs()) + 10);
-	}
-
-	public static void inheritance() throws IOException {
-		Player.setMoney(Game.getPlayerWhosTurnItIs(), Player.getMoney(Game.getPlayerWhosTurnItIs()) + 100);
-	}
-
-	public static void streetRepairs() throws IOException {
-		int cost = 0;
-		cost = cost + (Player.getHotelsOwned(Game.getPlayerWhosTurnItIs()) * 115);
-		cost = cost + (Player.getHousesOwned(Game.getPlayerWhosTurnItIs()) * 40);
-		Player.setMoney(Game.getPlayerWhosTurnItIs(), -cost);
-	}
-
 }
