@@ -277,14 +277,25 @@ public class Trade {
 
 					if (modifyJailCard == true) {
 						System.out.println("Checking to see if that player has a card");
-						if (!Player.getGetOutOfJailChance(player)
-								&& !Player.getGetOutOfJailChest(player)) {
-							System.out.println("Sorry, " + player + "  you still don't possess a Get Out of Jail Free card");
+//						if (!Player.getGetOutOfJailChance(player)
+//								&& !Player.getGetOutOfJailChest(player)) 
+						if (currentJailCard2 = false){
+							System.out.println("Sorry, " + player + "  you still don't possess a Get Out of Jail Free card");	
 						}
 
-						else if (Player.getGetOutOfJailChance(player) || Player.getGetOutOfJailChest(player)){
+//						else if (Player.getGetOutOfJailChance(player) || Player.getGetOutOfJailChest(player))
+						if (currentJailCard2 = true) {
 							System.out.println("Excellent! You are eligible for trade");
+							if (currentJailCard2 = Player.getGetOutOfJailChance(player)){
+							Player.giveJailCard(Game.getPlayerWhosTurnItIs());
+							Player.setGetOutOfJailChance(Game.getPlayerWhosTurnItIs(), true);
+							Player.setGetOutOfJailChance(player, false);
 						}
+							else if (currentJailCard2 = Player.getGetOutOfJailChest(player)) {
+							Player.giveJailCard(Game.getPlayerWhosTurnItIs());	
+							Player.setGetOutOfJailChest(Game.getPlayerWhosTurnItIs(), true);
+							Player.setGetOutOfJailChest(player, false);
+							}
 					}
 
 					else if (modifyJailCard == false) {
@@ -335,9 +346,10 @@ public class Trade {
 			enterValue = 0;
 			enter2Value = 0;
 			whatPlayerToTradeWith(inputPlayerNumber, player);
+				}
 			}
-		}
+		} 
 	}
-		return acceptOrDecline; 
-	}
+		return acceptOrDecline;
+ }
 }
