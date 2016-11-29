@@ -174,9 +174,9 @@ public class Player {
 		return moneyFinder.money;
 	}
 
-	public static void setMoney(Player moneyVal, double valuetoadd) {
-		moneyVal.money = (int) +valuetoadd;
-		if (moneyVal.money < 0) {
+	public static void setMoney(Player moneyVal, double valuetoadd) throws IOException {
+		moneyVal.money += (int) + valuetoadd;
+		if(moneyVal.money < 0){
 			System.out.println("You must mortgage to afford this payment. What would you like to mortgage?");
 		}
 	}
