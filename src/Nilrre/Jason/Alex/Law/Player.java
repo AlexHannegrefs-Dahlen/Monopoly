@@ -572,9 +572,7 @@ public class Player {
 	}
 
 	public static void trade(Player trading) throws IOException {
-		int inputPlayerNumber = 0;
-		Player player = null;
-		Trade.whatPlayerToTradeWith(inputPlayerNumber, player);
+		Trade.whatPlayerToTradeWith(0, Game.getPlayerWhosTurnItIs());
 	}
 
 }
