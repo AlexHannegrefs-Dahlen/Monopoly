@@ -6,10 +6,11 @@ import java.util.Collections;
 import java.util.Random;
 
 public class Community_Cards {
+	
 	private static int ReShuffle = 0;
-
+	static ArrayList<String> comCards = new ArrayList<String>();
 	public static void communityCards() {
-		ArrayList<String> comCards = new ArrayList<String>();
+
 		comCards.add("Advance to go"); // Collect 200
 		comCards.add("Bank error in your favor"); // Collect 200
 		comCards.add("Doctor fees"); // Pay 50
@@ -45,7 +46,7 @@ public class Community_Cards {
 		}
 	}
 
-	public static String draw(ArrayList<String> comCards) {
+	public static String draw() {
 		String getCard = comCards.get(ReShuffle);
 		ReShuffle++;
 		if (ReShuffle >= comCards.size()) {
@@ -56,34 +57,35 @@ public class Community_Cards {
 	}
 
 	public static void effects(String getCard) throws IOException {
-		if (getCard == "Advance to go") {
+		draw();
+		if (getCard == "Advance to go") {//Finished
 			Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 1);
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), 200);
 			System.out.println("Advance to go, collect $200");
 		}
-		if (getCard == "Bank error in your favor") {
+		if (getCard == "Bank error in your favor") {//Finished
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), 200);
 			System.out.println("Bank error in your favor, collect $200");
 		}
-		if (getCard == "Doctor fees") {
+		if (getCard == "Doctor fees") {//Finished
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), -50);
 			System.out.println("Doctor fees, you lose $50");
 		}
 
-		if(getCard == "From sale of stock you get $50"){
+		if(getCard == "From sale of stock you get $50"){//Finished
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), 50);	
 			System.out.println("From sale of stock you get $50");
 		}
-		if (getCard == "Get out of jail free") {
+		if (getCard == "Get out of jail free") {//Finished
 			Player.setGetOutOfJailChest(Game.getPlayerWhosTurnItIs(), true);
-			System.out.println("Get out of jail free");
+			System.out.println("Get a Get out of jail free card");
 		}
-		if (getCard == "Go to jail") {
+		if (getCard == "Go to jail") {//Finished
 			Player.setInJail(Game.getPlayerWhosTurnItIs(), true);
 			System.out.println("Go to jail");
 		}
 
-		if(getCard == "Grand opera night opening"){
+		if(getCard == "Grand opera night opening"){//Finished
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), 50 * (Game.amountOfPlayers-1));
 			int text = 50 * (Game.amountOfPlayers-1);
 			System.out.println("Grand opera night opening" + "\n" + "Each player has to pay $50" + "\n" + "You earn $"  + text);
@@ -108,40 +110,40 @@ public class Community_Cards {
 				}
 			}
 		}
-		if(getCard == "Holiday fund matures"){
+		if(getCard == "Holiday fund matures"){//Finished
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), 50);	
 			System.out.println("Holiday fund matures, collect $50");
 		}
-		if(getCard == "Income tax refund"){
+		if(getCard == "Income tax refund"){//Finished
 			Player.setMoney(Game.getPlayerWhosTurnItIs(),20);
 			System.out.println("Income tax refund, collect $20");
 		}
-		if(getCard == "Life insurance matures"){
+		if(getCard == "Life insurance matures"){//Finished
 			Player.setMoney(Game.getPlayerWhosTurnItIs(),100);
 			System.out.println("Life insurance matures, collect $100");
 		}
-		if(getCard == "Pay hospital funds of $100"){
+		if(getCard == "Pay hospital funds of $100"){//Finished
 			Player.setMoney(Game.getPlayerWhosTurnItIs(),-100);
 			System.out.println("Pay hospital funds of $100");
 		}
-		if(getCard == "Pay school fees of $150"){
+		if(getCard == "Pay school fees of $150"){//Finished
 			Player.setMoney(Game.getPlayerWhosTurnItIs(),-150);
 			System.out.println("Pay school fees of $150");
 		}
-		if(getCard == "Recieve $25 consultabcy fee"){
+		if(getCard == "Recieve $25 consultabcy fee"){//Finished
 			Player.setMoney(Game.getPlayerWhosTurnItIs(),25);
 			System.out.println("Recieve $25 consultabcy fee");
 		}
-		if(getCard == "You are accessed for street repairs"){//WIP
+		if(getCard == "You are accessed for street repairs"){//Finished
 			Player.setMoney(Game.getPlayerWhosTurnItIs(),Player.getHousesOwned(Game.getPlayerWhosTurnItIs()) * -40);
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), Player.getHotelsOwned(Game.getPlayerWhosTurnItIs()) * -115);
-			System.out.println("You are accessed for street repairs, you pay $" + (((Player.getHousesOwned(null)) * -40) + (Player.getHotelsOwned(null) * -115)));
+			System.out.println("You are accessed for street repairs, you pay $" + (((Player.getHousesOwned(Game.getPlayerWhosTurnItIs())) * -40) + (Player.getHotelsOwned(Game.getPlayerWhosTurnItIs()) * -115)));
 		}
-		if(getCard == "You have one second prize in a beauty contest"){
+		if(getCard == "You have one second prize in a beauty contest"){//Finished
 			Player.setMoney(Game.getPlayerWhosTurnItIs(),10);
 			System.out.println("You have one second prize in a beauty contest, collect $10");
 		}
-		if(getCard == "You inherit $100"){
+		if(getCard == "You inherit $100"){//Finished
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), 100);
 			System.out.println("You inherit $100");
 		}
