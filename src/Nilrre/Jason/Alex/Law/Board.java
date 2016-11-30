@@ -34,8 +34,7 @@ public class Board {
 		b.makeSpace(board[8][0], SpaceColor.Utilities, "Electric Company", 0, 0, 0, 150, true, SpaceType.Utilities, 13);
 		b.makeSpace(board[7][0], SpaceColor.Pink, "States Avenue", 10, 70, 100, 140, true, SpaceType.Property, 14);
 		b.makeSpace(board[6][0], SpaceColor.Pink, "Virgina Avenue", 12, 80, 100, 140, true, SpaceType.Property, 15);
-		b.makeSpace(board[5][0], SpaceColor.Railroad, "Pennsylvania RailRoad", 25, 100, 0, 200, true, SpaceType.Property,
-				16);
+		b.makeSpace(board[5][0], SpaceColor.Railroad, "Pennsylvania RailRoad", 25, 100, 0, 200, true, SpaceType.Property,16);
 		b.makeSpace(board[4][0], SpaceColor.Orange, "St James Place", 14, 90, 100, 180, true, SpaceType.Property, 17);
 		b.makeSpace(board[3][0], SpaceColor.Blank, "Community Chest", 0, 0, 0, 0, false, SpaceType.CardDraw, 18);
 		b.makeSpace(board[2][0], SpaceColor.Orange, "Tennessee Avenue", 14, 90, 100, 180, true, SpaceType.Property, 19);

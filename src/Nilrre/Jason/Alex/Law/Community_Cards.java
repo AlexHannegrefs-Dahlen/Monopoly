@@ -132,8 +132,8 @@ public class Community_Cards {
 			System.out.println("Recieve $25 consultabcy fee");
 		}
 		if(getCard == "You are accessed for street repairs"){//WIP
-			Player.setMoney(Game.getPlayerWhosTurnItIs(),Player.getHousesOwned(null) * -40);
-			Player.setMoney(Game.getPlayerWhosTurnItIs(), Player.getHotelsOwned(null) * -115);
+			Player.setMoney(Game.getPlayerWhosTurnItIs(),Player.getHousesOwned(Game.getPlayerWhosTurnItIs()) * -40);
+			Player.setMoney(Game.getPlayerWhosTurnItIs(), Player.getHotelsOwned(Game.getPlayerWhosTurnItIs()) * -115);
 			System.out.println("You are accessed for street repairs, you pay $" + (((Player.getHousesOwned(null)) * -40) + (Player.getHotelsOwned(null) * -115)));
 		}
 		if(getCard == "You have one second prize in a beauty contest"){
