@@ -21,28 +21,28 @@ public class Trade {
 			pickedThemself = false;
 			inputPlayerNumber = ConsoleUI.promptForInt("Select player to trade with", 1, 8);
 			Game.returnPlayerOne();
-			if (inputPlayerNumber == 1 && (Game.returnPlayerOne() == Game.getPlayerWhosTurnItIs())
+			if (inputPlayerNumber == 1 && (Game.returnPlayerOne() != Game.getPlayerWhosTurnItIs())
 					&& Player.getPlayingGame(Game.returnPlayerOne())) {
 				playerToTradeWith = Game.returnPlayerOne();
-			} else if (inputPlayerNumber == 2 && (Game.returnPlayerTwo() == Game.getPlayerWhosTurnItIs())
+			} else if (inputPlayerNumber == 2 && (Game.returnPlayerTwo() != Game.getPlayerWhosTurnItIs())
 					&& Player.getPlayingGame(Game.returnPlayerTwo())) {
 				playerToTradeWith = Game.returnPlayerTwo();
-			} else if (inputPlayerNumber == 3 && (Game.returnPlayerThree() == Game.getPlayerWhosTurnItIs())
+			} else if (inputPlayerNumber == 3 && (Game.returnPlayerThree() != Game.getPlayerWhosTurnItIs())
 					&& Player.getPlayingGame(Game.returnPlayerThree())) {
 				playerToTradeWith = Game.returnPlayerThree();
-			} else if (inputPlayerNumber == 4 && (Game.returnPlayerFour() == Game.getPlayerWhosTurnItIs())
+			} else if (inputPlayerNumber == 4 && (Game.returnPlayerFour() != Game.getPlayerWhosTurnItIs())
 					&& Player.getPlayingGame(Game.returnPlayerFour())) {
 				playerToTradeWith = Game.returnPlayerFour();
-			} else if (inputPlayerNumber == 5 && (Game.returnPlayerFive() == Game.getPlayerWhosTurnItIs())
+			} else if (inputPlayerNumber == 5 && (Game.returnPlayerFive() != Game.getPlayerWhosTurnItIs())
 					&& Player.getPlayingGame(Game.returnPlayerFive())) {
 				playerToTradeWith = Game.returnPlayerFive();
-			} else if (inputPlayerNumber == 6 && (Game.returnPlayerSix() == Game.getPlayerWhosTurnItIs())
+			} else if (inputPlayerNumber == 6 && (Game.returnPlayerSix() != Game.getPlayerWhosTurnItIs())
 					&& Player.getPlayingGame(Game.returnPlayerSix())) {
 				playerToTradeWith = Game.returnPlayerSix();
-			} else if (inputPlayerNumber == 7 && (Game.returnPlayerSeven() == Game.getPlayerWhosTurnItIs())
+			} else if (inputPlayerNumber == 7 && (Game.returnPlayerSeven() != Game.getPlayerWhosTurnItIs())
 					&& Player.getPlayingGame(Game.returnPlayerSeven())) {
 				playerToTradeWith = Game.returnPlayerSeven();
-			} else if (inputPlayerNumber == 8 && (Game.returnPlayerEight() == Game.getPlayerWhosTurnItIs())
+			} else if (inputPlayerNumber == 8 && (Game.returnPlayerEight() != Game.getPlayerWhosTurnItIs())
 					&& Player.getPlayingGame(Game.returnPlayerEight())) {
 				playerToTradeWith = Game.getPlayerWhosTurnItIs();
 			} else {
