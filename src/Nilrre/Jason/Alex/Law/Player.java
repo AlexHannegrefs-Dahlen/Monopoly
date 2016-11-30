@@ -157,7 +157,7 @@ public class Player {
 		land.land.add(property);
 		property.setIsAvailable(property, false);
 		Player.setMoney(land, -price);
-		//test for jason
+		// test for jason
 	}
 
 	public static int getJailcard(Player jailcard) {
@@ -177,13 +177,18 @@ public class Player {
 	}
 
 	public static void setMoney(Player moneyVal, double valuetoadd) throws IOException {
+<<<<<<< HEAD
 		moneyVal.money += (int)valuetoadd;
 		if(moneyVal.money < 0){
+=======
+		moneyVal.money += (int) +valuetoadd;
+		if (moneyVal.money < 0) {
+>>>>>>> 682cfe9585e1e70e44c982691091e66b6639a616
 			System.out.println("You must mortgage to afford this payment. What would you like to mortgage?");
 		}
 	}
-	
-	public static void unmortgage(Player unmortgaging) throws IOException{
+
+	public static void unmortgage(Player unmortgaging) throws IOException {
 		boolean validProp;
 		do {
 			validProp = true;
@@ -395,7 +400,7 @@ public class Player {
 			col = 0;
 			printSpaceNameMovedTo(row, col, moved);
 			checkSpaceMovedToForOwner(row, col, moved);
-		} else if (space == 21){
+		} else if (space == 21) {
 			row = 0;
 			col = 0;
 			printSpaceNameMovedTo(row, col, moved);
@@ -595,8 +600,8 @@ public class Player {
 
 	public static void checkSpaceMovedToForOwner(int row, int col, Player moved) throws IOException {
 		if (Board.b.getIsAvailable(Board.board[row][col])) {
-			if (ConsoleUI.promptForBool("Woud you like to buy " + Board.b.getName(Board.board[row][col]) + " [y/n]",
-					"y", "n")) {
+			if (ConsoleUI.promptForBool("Woud you like to buy " + Board.b.getName(Board.board[row][col]) + "for "
+					+ Board.b.getLandValue(Board.board[row][col]) + "[y/n]", "y", "n")) {
 				Player.buyLand(moved, Board.board[row][col], Board.board[row][col].getLandValue(Board.board[row][col]));
 			} else {
 				Auction.startAuction(Board.board[row][col]);
@@ -619,12 +624,12 @@ public class Player {
 	}
 
 	public static void buyHousesOrHotel(Player upgrading) {
-		//LandValue;
+		// LandValue;
 	}
 
 	public static void trade(Player trading) throws IOException {
 		Trade.callAllMethods(trading);
-//		Trade.whatPlayerToTradeWith(0, Game.getPlayerWhosTurnItIs());
+		// Trade.whatPlayerToTradeWith(0, Game.getPlayerWhosTurnItIs());
 	}
 
 }
