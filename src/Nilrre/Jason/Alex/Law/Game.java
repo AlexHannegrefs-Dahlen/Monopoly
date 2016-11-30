@@ -129,25 +129,30 @@ public class Game {
 			Player.setPiece(one);
 			Player.setMoney(one, 1500);
 			Player.setSpaceCurrentlyOn(one, 1);
+			Player.setPlayingGame(one, true);
 			players.add(one);
 		} else if (playerNumber == 2) {
 			Player.setPiece(two);
 			Player.setMoney(two, 1500);
 			players.add(two);
+			Player.setPlayingGame(two, true);
 			Player.setSpaceCurrentlyOn(two, 1);
 		} else if (playerNumber == 3) {
 			Player.setPiece(three);
 			Player.setMoney(three, 1500);
 			Player.setSpaceCurrentlyOn(three, 1);
+			Player.setPlayingGame(three, true);
 			players.add(three);
 		} else if (playerNumber == 4) {
 			Player.setPiece(four);
 			Player.setMoney(four, 1500);
 			Player.setSpaceCurrentlyOn(four, 1);
+			Player.setPlayingGame(four, true);
 			players.add(four);
 		} else if (playerNumber == 5) {
 			Player.setPiece(five);
 			Player.setMoney(five, 1500);
+			Player.setPlayingGame(five, true);
 			Player.setSpaceCurrentlyOn(five, 1);
 			players.add(five);
 		} else if (playerNumber == 6) {
@@ -155,15 +160,18 @@ public class Game {
 			Player.setMoney(six, 1500);
 			Player.setSpaceCurrentlyOn(six, 1);
 			players.add(six);
+			Player.setPlayingGame(six, true);
 		} else if (playerNumber == 7) {
 			Player.setPiece(seven);
 			Player.setMoney(seven, 1500);
 			Player.setSpaceCurrentlyOn(seven, 1);
 			players.add(seven);
+			Player.setPlayingGame(seven, true);
 		} else if (playerNumber == 8) {
 			Player.setPiece(eight);
 			Player.setMoney(eight, 1500);
 			Player.setSpaceCurrentlyOn(eight, 1);
+			Player.setPlayingGame(eight, true);
 			players.add(eight);
 		}
 	}
@@ -209,6 +217,7 @@ public class Game {
 			}
 			Player.getland(play).clear();
 			players.remove(play);
+			Player.setPlayingGame(play, false);
 		}
 		Player.setMyTurn(play, false);
 	}
