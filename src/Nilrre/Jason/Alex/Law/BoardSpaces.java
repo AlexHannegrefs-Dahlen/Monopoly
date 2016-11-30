@@ -26,6 +26,7 @@ public class BoardSpaces {
 	private boolean mortgaged;
 	private int landValue;
 
+	
 	public int getLandValue(BoardSpaces space){
 		return space.landValue;
 	}
@@ -114,6 +115,10 @@ public class BoardSpaces {
 	public int getBoardSpaceNumber(BoardSpaces space) {
 		return space.boardSpaceNumber;
 
+	}
+	
+	public void setIsAvailable(BoardSpaces space, boolean avail){
+		space.isAvailable = avail;
 	}
 
 	public void makeSpace(BoardSpaces space, SpaceColor color, String name, int rent, int morgage, int housePrice, int PropertyValue,

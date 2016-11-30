@@ -155,6 +155,7 @@ public class Player {
 
 	public static void buyLand(Player land, BoardSpaces property, int price) throws IOException {
 		land.land.add(property);
+		property.setIsAvailable(property, false);
 		Player.setMoney(land, -price);
 	}
 
@@ -597,7 +598,7 @@ public class Player {
 					"y", "n")) {
 				Player.buyLand(moved, Board.board[row][col], Board.board[row][col].getLandValue(Board.board[row][col]));
 			} else {
-				// do an auction
+				Auction.startAuction(Board.board[row][col]);
 			}
 		} else if (!Board.b.getMortgaged(Board.board[row][col])) {
 			Player owner = Board.b.getOwnedBy(Board.board[row][col]);
