@@ -157,6 +157,7 @@ public class Player {
 		land.land.add(property);
 		property.setIsAvailable(property, false);
 		Player.setMoney(land, -price);
+		//test for jason
 	}
 
 	public static int getJailcard(Player jailcard) {
