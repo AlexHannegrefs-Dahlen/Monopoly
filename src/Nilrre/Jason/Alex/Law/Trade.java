@@ -13,9 +13,10 @@ public class Trade {
 	private static boolean playersJailCard = null != null;
 	private static int enterValue = 0;
 	private static int enter2Value = 0;
+	private static Player player = new Player();
+
 
 	public static Player whatPlayerToTradeWith() throws IOException {
-		Player player = new Player();
 		boolean pickedThemself;
 		int inputPlayerNumber;
 		do {
@@ -56,8 +57,6 @@ public class Trade {
 	}
 
 	public static int askCurrentPlayerForTrade(Player player) throws IOException {
-		player =  whatPlayerToTradeWith();
-
 		System.out.println("Would you like to continue trade?");
 		String[] currentPlayerSelection = new String[] { "Accept", "Decline" };
 		int menuSelect = ConsoleUI.promptForMenuSelection(currentPlayerSelection, false);
