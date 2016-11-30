@@ -30,7 +30,8 @@ public class Auction {
 		do {
 			if (playerSelect == 1 && Player.getInAuction(Game.returnPlayerOne())) {
 				System.out.println("Current Bid: $" + AuctionPrice);
-				System.out.println(Game.returnPlayerOne());
+				Game.returnPlayerOne();
+				System.out.println(Player.getPiece(Game.returnPlayerOne()).name());
 				if (ConsoleUI.promptForBool("Would you like to bid? [y/n]", "y", "n")) {
 					AuctionPrice = ConsoleUI.promptForInt("How much would you like to bid?", AuctionPrice + 1,
 							Player.getMoney(Game.returnPlayerOne()));
@@ -41,7 +42,7 @@ public class Auction {
 				playerSelect++;
 			} else if (playerSelect == 2 && Player.getInAuction(Game.returnPlayerTwo())) {
 				System.out.println("Current Bid: $" + AuctionPrice);
-				System.out.println(Game.returnPlayerTwo());
+				System.out.println(Player.getPiece(Game.returnPlayerTwo()).name());
 				if (ConsoleUI.promptForBool("Would you like to bid? [y/n]", "y", "n")) {
 					AuctionPrice = ConsoleUI.promptForInt("How much would you like to bid?", AuctionPrice + 1,
 							Player.getMoney(Game.returnPlayerTwo()));
@@ -52,7 +53,7 @@ public class Auction {
 				playerSelect++;
 			} else if (playerSelect == 3 && Player.getInAuction(Game.returnPlayerThree())) {
 				System.out.println("Current Bid: $" + AuctionPrice);
-				System.out.println(Game.returnPlayerThree());
+				System.out.println(Player.getPiece(Game.returnPlayerThree()).name());
 				if (ConsoleUI.promptForBool("Would you like to bid? [y/n]", "y", "n")) {
 					AuctionPrice = ConsoleUI.promptForInt("How much would you like to bid?", AuctionPrice + 1,
 							Player.getMoney(Game.returnPlayerThree()));
@@ -63,7 +64,7 @@ public class Auction {
 				playerSelect++;
 			} else if (playerSelect == 4 && Player.getInAuction(Game.returnPlayerFour())) {
 				System.out.println("Current Bid: $" + AuctionPrice);
-				System.out.println(Game.returnPlayerFour());
+				System.out.println(Player.getPiece(Game.returnPlayerFour()).name());
 				if (ConsoleUI.promptForBool("Would you like to bid? [y/n]", "y", "n")) {
 					AuctionPrice = ConsoleUI.promptForInt("How much would you like to bid?", AuctionPrice + 1,
 							Player.getMoney(Game.returnPlayerFour()));
@@ -74,7 +75,7 @@ public class Auction {
 				playerSelect++;
 			} else if (playerSelect == 5 && Player.getInAuction(Game.returnPlayerFive())) {
 				System.out.println("Current Bid: $" + AuctionPrice);
-				System.out.println(Game.returnPlayerFive());
+				System.out.println(Player.getPiece(Game.returnPlayerFive()).name());
 				if (ConsoleUI.promptForBool("Would you like to bid? [y/n]", "y", "n")) {
 					AuctionPrice = ConsoleUI.promptForInt("How much would you like to bid?", AuctionPrice + 1,
 							Player.getMoney(Game.returnPlayerFive()));
@@ -85,7 +86,7 @@ public class Auction {
 				playerSelect++;
 			} else if (playerSelect == 6 && Player.getInAuction(Game.returnPlayerSix())) {
 				System.out.println("Current Bid: $" + AuctionPrice);
-				System.out.println(Game.returnPlayerSix());
+				System.out.println(Player.getPiece(Game.returnPlayerSix()).name());
 				if (ConsoleUI.promptForBool("Would you like to bid? [y/n]", "y", "n")) {
 					AuctionPrice = ConsoleUI.promptForInt("How much would you like to bid?", AuctionPrice + 1,
 							Player.getMoney(Game.returnPlayerSix()));
@@ -95,7 +96,7 @@ public class Auction {
 				playerSelect++;
 			} else if (playerSelect == 7 && Player.getInAuction(Game.returnPlayerSeven())) {
 				System.out.println("Current Bid: $" + AuctionPrice);
-				System.out.println(Game.returnPlayerSeven());
+				System.out.println(Player.getPiece(Game.returnPlayerSeven()).name());
 				if (ConsoleUI.promptForBool("Would you like to bid? [y/n]", "y", "n")) {
 					AuctionPrice = ConsoleUI.promptForInt("How much would you like to bid?", AuctionPrice + 1,
 							Player.getMoney(Game.returnPlayerSeven()));
@@ -105,7 +106,7 @@ public class Auction {
 				playerSelect++;
 			} else if (playerSelect == 8 && Player.getInAuction(Game.returnPlayerEight())) {
 				System.out.println("Current Bid: $" + AuctionPrice);
-				System.out.println(Game.returnPlayerEight());
+				System.out.println(Player.getPiece(Game.returnPlayerEight()).name());
 				if (ConsoleUI.promptForBool("Would you like to bid? [y/n]", "y", "n")) {
 					AuctionPrice = ConsoleUI.promptForInt("How much would you like to bid?", AuctionPrice + 1,
 							Player.getMoney(Game.returnPlayerEight()));
