@@ -615,8 +615,10 @@ public class Player {
 		boolean rolledDoubles = false;
 
 		if (dieOne == dieTwo) {
+			System.out.println("You rolled doubles");
 			rolledDoubles = true;
 		}
+		
 		return rolledDoubles;
 	}
 
@@ -626,7 +628,6 @@ public class Player {
 
 	public static void trade(Player trading) throws IOException {
 		Trade.callAllMethods(trading);
-		// Trade.whatPlayerToTradeWith(0, Game.getPlayerWhosTurnItIs());
 	}
 
 }
