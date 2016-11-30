@@ -603,11 +603,10 @@ public class Player {
 			}
 		} else if (!Board.b.getMortgaged(Board.board[row][col])) {
 			Player owner = Board.b.getOwnedBy(Board.board[row][col]);
-			if (owner != null) {
-				System.out.println("You owe " + owner.piece.name() + ".");
+				System.out.println("You owe " + owner.piece.toString() + ".");
 				Player.setMoney(moved, -Board.b.getRent(Board.board[row][col]));
 				Player.setMoney(owner, Board.b.getRent(Board.board[row][col]));
-			}
+			
 		}
 	}
 
