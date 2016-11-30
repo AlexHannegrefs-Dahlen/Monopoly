@@ -53,8 +53,9 @@ public class Game {
 		Board b = new Board();
 		b.createBoard();
 		Chance_Cards.Make_Cards();
+		Chance_Cards.Shuffle();
 		Community_Cards.communityCards();
-
+		Community_Cards.Shuffle1();
 		for (int i = 1; i <= amountOfPlayers; i++) {
 			makePlayer(i);
 		}

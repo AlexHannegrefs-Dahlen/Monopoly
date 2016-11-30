@@ -11,6 +11,7 @@ public class Chance_Cards {
 	private static int UsedCardJail;
 	private static int nextDrawIndex = 0;
 	static Property p = new Property();
+
 	public static void Make_Cards() {
 		// C = Collect
 		// P = Pay
@@ -35,6 +36,7 @@ public class Chance_Cards {
 
 	public static void Shuffle() {
 		UsedCardJail = 0;
+		System.out.println("*Shuffle Chance Cards*");
 		for (int i = 0; i < 100; i++) {
 			Random NUM = new Random();
 			int number = NUM.nextInt(CARDS.size());
@@ -58,28 +60,28 @@ public class Chance_Cards {
 	}
 
 	public static void CardEffects() throws IOException {
-			String retVal = DRAW();
-		if (retVal == "GTG") {//Finished
+		String retVal = DRAW();
+		if (retVal == "GTG") {// Finished
 			System.out.println("Advance to go (Get to  Two Hundred)");
 			Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 0);
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), 200);
 			System.out.println("Go to Go, collect $200");
 		}
-		if (retVal == "GTJ") {//Finished
+		if (retVal == "GTJ") {// Finished
 			Player.setInJail(Game.getPlayerWhosTurnItIs(), true);
 			System.out.println("Go to Jail");
 		}
-		if (retVal == "C50") {//Finished
+		if (retVal == "C50") {// Finished
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), 50);
 			System.out.println("Bank pays your dividend of $50");
 		}
-		if (retVal == "GB3") {//Finished
+		if (retVal == "GB3") {// Finished
 			Game.getPlayerWhosTurnItIs();
 			Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(),
 					(Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs())) - 3);
 			System.out.println("Go Back 3 Steps");
 		}
-		if (retVal == "ADV1") {//Finished
+		if (retVal == "ADV1") {// Finished
 			Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 40);
 			System.out.println("You advanced to Boardwalk");
 			int[] space12 = Player.spaceNumberToBoardCords(40);
@@ -87,28 +89,27 @@ public class Chance_Cards {
 			int col40 = space12[1];
 			Player.checkSpaceMovedToForOwner(row40, col40, Game.getPlayerWhosTurnItIs());
 		}
-		if (retVal == "P15") {//Finished
+		if (retVal == "P15") {// Finished
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), -15);
 			System.out.println("Pay the poor tax, Pay $15");
 		}
-		if (retVal == "ADV2") {//Finished
+		if (retVal == "ADV2") {// Finished
 			int[] space12 = Player.spaceNumberToBoardCords(25);
 			int row40 = space12[0];
 			int col40 = space12[1];
-			if (Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) == 37){
-			Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 25);
-			Player.setMoney(Game.getPlayerWhosTurnItIs(), 200);
-			System.out.println("You advanced to Illinois Ave., and You've Passed GO");
-			System.out.println("Collect $200");	
-			Player.checkSpaceMovedToForOwner(row40, col40 , Game.getPlayerWhosTurnItIs());
-			}
-			else{
-			Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 25);
-			System.out.println("You advanced to Illinois Ave.");
-			Player.checkSpaceMovedToForOwner(row40, col40 , Game.getPlayerWhosTurnItIs());
+			if (Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) == 37) {
+				Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 25);
+				Player.setMoney(Game.getPlayerWhosTurnItIs(), 200);
+				System.out.println("You advanced to Illinois Ave., and You've Passed GO");
+				System.out.println("Collect $200");
+				Player.checkSpaceMovedToForOwner(row40, col40, Game.getPlayerWhosTurnItIs());
+			} else {
+				Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 25);
+				System.out.println("You advanced to Illinois Ave.");
+				Player.checkSpaceMovedToForOwner(row40, col40, Game.getPlayerWhosTurnItIs());
 			}
 		}
-		if (retVal == "PEP50") {//Finished
+		if (retVal == "PEP50") {// Finished
 			for (int i = 1; i < Game.amountOfPlayers; i++) {
 				if (i == 1 && (Game.returnPlayerOne() != Game.getPlayerWhosTurnItIs())) {
 					Player.setMoney(Game.returnPlayerOne(), 50);
@@ -129,25 +130,25 @@ public class Chance_Cards {
 				}
 
 			}
-			Player.setMoney(Game.getPlayerWhosTurnItIs(), -50 * (Game.amountOfPlayers-1));
+			Player.setMoney(Game.getPlayerWhosTurnItIs(), -50 * (Game.amountOfPlayers - 1));
 			System.out.println("You been Elected Chairman of the Board, Each player gets $50 form you");
-			System.out.println("You've Lost $" + (-50 * (Game.amountOfPlayers-1)));
+			System.out.println("You've Lost $" + (-50 * (Game.amountOfPlayers - 1)));
 		}
-		if (retVal == "ADV2NEARRAIL") {//Finished
+		if (retVal == "ADV2NEARRAIL") {// Finished
 			if (Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) == 8) {
 				int[] space12 = Player.spaceNumberToBoardCords(16);
 				int row12 = space12[0];
 				int col12 = space12[1];
 				Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 16);
 				System.out.println("You've Advanced to Pennsylvania RailRoad");
-				if (Game.getPlayerWhosTurnItIs() != Board.b.getOwnedBy(Board.board[row12][col12]) && Board.b.getOwnedBy(Board.board[row12][col12]) != null){
+				if (Game.getPlayerWhosTurnItIs() != Board.b.getOwnedBy(Board.board[row12][col12])
+						&& Board.b.getOwnedBy(Board.board[row12][col12]) != null) {
 					int val = p.PennsylvaniaRailroad();
 					Player.setMoney(Game.getPlayerWhosTurnItIs(), -val);
 					Player.setMoney(Board.b.getOwnedBy(Board.board[row12][col12]), val);
 					System.out.println("But this spot is taken(and you have to pay double)");
-					Player.checkSpaceMovedToForOwner(row12, col12, Game.getPlayerWhosTurnItIs());					
-				}
-				else{
+					Player.checkSpaceMovedToForOwner(row12, col12, Game.getPlayerWhosTurnItIs());
+				} else {
 					Player.checkSpaceMovedToForOwner(row12, col12, Game.getPlayerWhosTurnItIs());
 				}
 			}
@@ -158,14 +159,14 @@ public class Chance_Cards {
 				int col12 = space12[1];
 				Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 26);
 				System.out.println("You've Advanced to B & O Railroad");
-				if (Game.getPlayerWhosTurnItIs() != Board.b.getOwnedBy(Board.board[row12][col12]) && Board.b.getOwnedBy(Board.board[row12][col12]) != null){
+				if (Game.getPlayerWhosTurnItIs() != Board.b.getOwnedBy(Board.board[row12][col12])
+						&& Board.b.getOwnedBy(Board.board[row12][col12]) != null) {
 					int val = p.BandORailroad();
 					Player.setMoney(Game.getPlayerWhosTurnItIs(), -val);
 					Player.setMoney(Board.b.getOwnedBy(Board.board[row12][col12]), val);
 					System.out.println("But this spot is taken(and you have to pay double)");
 					Player.checkSpaceMovedToForOwner(row12, col12, Game.getPlayerWhosTurnItIs());
-				}
-				else{
+				} else {
 					Player.checkSpaceMovedToForOwner(row12, col12, Game.getPlayerWhosTurnItIs());
 				}
 			}
@@ -177,80 +178,81 @@ public class Chance_Cards {
 				Player.setMoney(Game.getPlayerWhosTurnItIs(), 200);
 				System.out.println("You've Advanced to Reading Railroad, and you've passed GO");
 				System.out.println("Collect $200");
-				if (Game.getPlayerWhosTurnItIs() != Board.b.getOwnedBy(Board.board[row12][col12]) && Board.b.getOwnedBy(Board.board[row12][col12]) != null){
+				if (Game.getPlayerWhosTurnItIs() != Board.b.getOwnedBy(Board.board[row12][col12])
+						&& Board.b.getOwnedBy(Board.board[row12][col12]) != null) {
 					int val = p.ReadingRailroad() * 2;
 					Player.setMoney(Game.getPlayerWhosTurnItIs(), -val);
 					Player.setMoney(Board.b.getOwnedBy(Board.board[row12][col12]), val);
 					System.out.println("But this spot is taken(and you have to pay double)");
 					Player.checkSpaceMovedToForOwner(row12, col12, Game.getPlayerWhosTurnItIs());
-				}
-				else{
+				} else {
 					Player.checkSpaceMovedToForOwner(row12, col12, Game.getPlayerWhosTurnItIs());
 				}
 			}
 
 		}
-		if (retVal == "ADV2READRAIL") {//Finished
+		if (retVal == "ADV2READRAIL") {// Finished
 			int[] space12 = Player.spaceNumberToBoardCords(6);
 			int row12 = space12[0];
 			int col12 = space12[1];
 			Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 6);
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), 200);
 			System.out.println("You've Advanced to Reading Railroad, and you've passed GO");
-			System.out.println("Collect $200"); 
+			System.out.println("Collect $200");
 			Player.checkSpaceMovedToForOwner(row12, col12, Game.getPlayerWhosTurnItIs());
 		}
-		if (retVal == "ADV3") {//Finished
+		if (retVal == "ADV3") {// Finished
 			int[] space12 = Player.spaceNumberToBoardCords(12);
-				int row12 = space12[0];
-				int col12 = space12[1];
-			if (Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) > 12){
+			int row12 = space12[0];
+			int col12 = space12[1];
+			if (Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) > 12) {
 				Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 12);
-				System.out.println("You've advanced to St.Charles Place" + "\n" + "You Also Passed Go");	
+				System.out.println("You've advanced to St.Charles Place" + "\n" + "You Also Passed Go");
 				Player.setMoney(Game.getPlayerWhosTurnItIs(), 200);
 				Player.checkSpaceMovedToForOwner(row12, col12, Game.getPlayerWhosTurnItIs());
-				
+
 			}
-			if (Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) < 12){
+			if (Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) < 12) {
 				Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 12);
 				System.out.println("You've advanced to St.Charles Place");
 				Player.checkSpaceMovedToForOwner(row12, col12, Game.getPlayerWhosTurnItIs());
 			}
-			}
-		
-		if (retVal == "ADV2NEARUTIL") {//Finished
+		}
+
+		if (retVal == "ADV2NEARUTIL") {// Finished
 			if (Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) == 8) {
 				Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 13);
-				System.out.println("You've landed on Electric Company"); 
+				System.out.println("You've landed on Electric Company");
 				int[] space12 = Player.spaceNumberToBoardCords(13);
 				int row12 = space12[0];
 				int col12 = space12[1];
-				if (Game.getPlayerWhosTurnItIs() != Board.b.getOwnedBy(Board.board[row12][col12]) && Board.b.getOwnedBy(Board.board[row12][col12]) != null){					
+				if (Game.getPlayerWhosTurnItIs() != Board.b.getOwnedBy(Board.board[row12][col12])
+						&& Board.b.getOwnedBy(Board.board[row12][col12]) != null) {
 					int[] space121 = Player.spaceNumberToBoardCords(13);
 					int row121 = space121[0];
-					int col121= space121[1];
-					int val= Player.getAmountOnDie(Game.getPlayerWhosTurnItIs()) * 10;
+					int col121 = space121[1];
+					int val = Player.getAmountOnDie(Game.getPlayerWhosTurnItIs()) * 10;
 					Player.setMoney(Game.getPlayerWhosTurnItIs(), -val);
 					Player.setMoney(Board.b.getOwnedBy(Board.board[row121][col121]), val);
 					System.out.println("But the Space is already Taken, you pay $" + val);
-				
-				}
-				else{
+
+				} else {
 					Player.checkSpaceMovedToForOwner(row12, col12, Game.getPlayerWhosTurnItIs());
 				}
 			}
 
 			if (Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) == 23) {
 				Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 29);
-				System.out.println("You've landed on Water Works"); 
+				System.out.println("You've landed on Water Works");
 				int[] space12 = Player.spaceNumberToBoardCords(29);
 				int row12 = space12[0];
 				int col12 = space12[1];
-				if (Game.getPlayerWhosTurnItIs() != Board.b.getOwnedBy(Board.board[row12][col12]) && Board.b.getOwnedBy(Board.board[row12][col12]) != null){					
+				if (Game.getPlayerWhosTurnItIs() != Board.b.getOwnedBy(Board.board[row12][col12])
+						&& Board.b.getOwnedBy(Board.board[row12][col12]) != null) {
 					int[] space121 = Player.spaceNumberToBoardCords(29);
 					int row121 = space121[0];
-					int col121= space121[1];
-					int val= Player.getAmountOnDie(Game.getPlayerWhosTurnItIs()) * 10;
+					int col121 = space121[1];
+					int val = Player.getAmountOnDie(Game.getPlayerWhosTurnItIs()) * 10;
 					Player.setMoney(Game.getPlayerWhosTurnItIs(), -val);
 					Player.setMoney(Board.b.getOwnedBy(Board.board[row121][col121]), val);
 					System.out.println("But the Space is already Taken, you pay $" + val);
@@ -258,48 +260,52 @@ public class Chance_Cards {
 			}
 			if (Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) == 37) {
 				Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 13);
-				System.out.println("You've landed on Electric Company"); 
+				System.out.println("You've landed on Electric Company");
 				int[] space12 = Player.spaceNumberToBoardCords(13);
 				int row12 = space12[0];
 				int col12 = space12[1];
-				if (Game.getPlayerWhosTurnItIs() != Board.b.getOwnedBy(Board.board[row12][col12]) && Board.b.getOwnedBy(Board.board[row12][col12]) != null){					
+				if (Game.getPlayerWhosTurnItIs() != Board.b.getOwnedBy(Board.board[row12][col12])
+						&& Board.b.getOwnedBy(Board.board[row12][col12]) != null) {
 					int[] space121 = Player.spaceNumberToBoardCords(13);
 					int row121 = space121[0];
-					int col121= space121[1];
-					int val= Player.getAmountOnDie(Game.getPlayerWhosTurnItIs()) * 10;
+					int col121 = space121[1];
+					int val = Player.getAmountOnDie(Game.getPlayerWhosTurnItIs()) * 10;
 					Player.setMoney(Game.getPlayerWhosTurnItIs(), -val);
 					Player.setMoney(Board.b.getOwnedBy(Board.board[row121][col121]), val);
 					System.out.println("But the Space is already Taken, you pay $" + val);
-				Player.setMoney(Game.getPlayerWhosTurnItIs(), 200);
+					Player.setMoney(Game.getPlayerWhosTurnItIs(), 200);
+				}
 			}
 		}
-		}
-		if (retVal == "C150") {//Finished
-			Player.setMoney(Game.getPlayerWhosTurnItIs(),150);
+		if (retVal == "C150") {// Finished
+			Player.setMoney(Game.getPlayerWhosTurnItIs(), 150);
 			System.out.println("Your Loan matures, Collect $150");
 		}
-		if (retVal == "C100") {//Finished
+		if (retVal == "C100") {// Finished
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), 100);
 			System.out.println("you won a crossword competition, Collect $100");
 		}
-		if (retVal == "GETOUT") {//Finished
-			if(UsedCardJail==0){
+		if (retVal == "GETOUT") {// Finished
+			if (UsedCardJail == 0) {
 				Player.setGetOutOfJailChance(Game.getPlayerWhosTurnItIs(), true);
 				UsedCardJail++;
 				System.out.println("You gained a Get out of Jail card");
-				}
-			if(UsedCardJail > 0){
+			}
+			if (UsedCardJail > 0) {
 				DRAW();
 			}
-				
+
 		}
-		if (retVal == "P25HOUSEPHOTEL100") {//Finished?
-			if ((Player.getHousesOwned(Game.getPlayerWhosTurnItIs()) == 0) && Player.getHotelsOwned(Game.getPlayerWhosTurnItIs()) == 0){
+		if (retVal == "P25HOUSEPHOTEL100") {// Finished?
+			if ((Player.getHousesOwned(Game.getPlayerWhosTurnItIs()) == 0)
+					&& Player.getHotelsOwned(Game.getPlayerWhosTurnItIs()) == 0) {
 				throw new IllegalArgumentException();
 			}
-			Player.setMoney(Game.getPlayerWhosTurnItIs(),Player.getHousesOwned(Game.getPlayerWhosTurnItIs()) * -20);
+			Player.setMoney(Game.getPlayerWhosTurnItIs(), Player.getHousesOwned(Game.getPlayerWhosTurnItIs()) * -20);
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), Player.getHotelsOwned(Game.getPlayerWhosTurnItIs()) * -100);
-			System.out.println("You are accessed for street repairs, you pay $" + (((Player.getHousesOwned(Game.getPlayerWhosTurnItIs())) * 20) + (Player.getHotelsOwned(Game.getPlayerWhosTurnItIs()) * 100)));
+			System.out.println("You are accessed for street repairs, you pay $"
+					+ (((Player.getHousesOwned(Game.getPlayerWhosTurnItIs())) * 20)
+							+ (Player.getHotelsOwned(Game.getPlayerWhosTurnItIs()) * 100)));
 		}
 	}
 }

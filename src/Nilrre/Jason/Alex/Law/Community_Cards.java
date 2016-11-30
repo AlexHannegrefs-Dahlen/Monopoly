@@ -36,13 +36,14 @@ public class Community_Cards {
 
 	}
 
-	public static void Shuffle1(ArrayList<String> comCards) {// Not sure if it
+	public static void Shuffle1() {// Not sure if it
 																// works
 		Random Rnum = new Random();
+		System.out.println("*Shuffles Community Cards*");
 		int Namber = Rnum.nextInt(6) + 5;
 		for (int i = 0; i < Namber; i++) {
 			Collections.shuffle(comCards);
-			System.out.println("*Shuffles Cards*");
+			
 		}
 	}
 
@@ -50,7 +51,7 @@ public class Community_Cards {
 		String getCard = comCards.get(ReShuffle);
 		ReShuffle++;
 		if (ReShuffle >= comCards.size()) {
-			Shuffle1(comCards);
+			Shuffle1();
 			ReShuffle = 0;
 		}
 		return getCard;
