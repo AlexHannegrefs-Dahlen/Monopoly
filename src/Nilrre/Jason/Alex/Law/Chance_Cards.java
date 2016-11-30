@@ -50,6 +50,7 @@ public class Chance_Cards {
 	static public String DRAW() {
 		String retVal = CARDS.get(nextDrawIndex);
 		nextDrawIndex++;
+		System.out.println("*Draws Chance Card*");
 		if (nextDrawIndex >= CARDS.size()) {
 			Shuffle();
 			System.out.println("*Shuffles Cards*");

@@ -318,6 +318,7 @@ public class Player {
 			col = 6;
 			printSpaceNameMovedTo(row, col, moved);
 			Player.setMoney(moved, -200);
+			System.out.println("You lose $200");
 		} else if (space == 6) {
 			row = 10;
 			col = 5;

@@ -50,6 +50,7 @@ public class Community_Cards {
 	public static String draw() {
 		String getCard = comCards.get(ReShuffle);
 		ReShuffle++;
+		System.out.println("*Draws Community Card*");
 		if (ReShuffle >= comCards.size()) {
 			Shuffle1();
 			ReShuffle = 0;
