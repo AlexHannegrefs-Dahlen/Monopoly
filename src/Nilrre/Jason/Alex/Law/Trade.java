@@ -159,6 +159,7 @@ public class Trade {
 				return 0;
 			}
 		}
+		return 0;
 	}
 
 	public static int selectWhatOtherPlayerTrades(Player player) throws IOException {
