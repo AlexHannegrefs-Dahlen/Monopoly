@@ -253,6 +253,21 @@ public class Player {
 	}
 
 	public static void roll(Player rolling) throws IOException {
+		if (rolling.inJail) {
+			if (rolling.GetOutOfJailChance) {
+				if (ConsoleUI.promptForBool("You have a Get out of Jail free card. Would you like to use it? [y,n]",
+						"y", "n")) {
+					Player.setInJail(rolling, false);
+					Chance_Cards.CARDS.add("GETOUT");
+				}
+			} else if (rolling.GetOutOfJailChest) {
+				if (ConsoleUI.promptForBool("You have a Get out of Jail free card. Would you like to use it? [y,n]",
+						"y", "n")) {
+					Player.setInJail(rolling, false);
+					Community_Cards.comCards.add("Get out of jail free");
+				}
+			}
+		}
 		System.out.println("Rolling");
 		Random gen = new Random();
 		int dieOne = (gen.nextInt(6) + 1);
@@ -617,7 +632,7 @@ public class Player {
 			System.out.println("You rolled doubles");
 			rolledDoubles = true;
 		}
-		
+
 		return rolledDoubles;
 	}
 
