@@ -307,7 +307,6 @@ public class Player {
 			row = 10;
 			col = 8;
 			printSpaceNameMovedTo(row, col, moved);
-			checkSpaceMovedToForOwner(row, col, moved);
 			Community_Cards.effects();
 		} else if (space == 4) {
 			row = 10;
@@ -318,7 +317,6 @@ public class Player {
 			row = 10;
 			col = 6;
 			printSpaceNameMovedTo(row, col, moved);
-			checkSpaceMovedToForOwner(row, col, moved);
 			Player.setMoney(moved, -200);
 		} else if (space == 6) {
 			row = 10;
@@ -345,6 +343,10 @@ public class Player {
 			col = 1;
 			printSpaceNameMovedTo(row, col, moved);
 			checkSpaceMovedToForOwner(row, col, moved);
+		} else if (space == 11) {
+			row = 10;
+			col = 0;
+			printSpaceNameMovedTo(row, col, moved);
 		} else if (space == 12) {
 			row = 9;
 			col = 0;
@@ -379,7 +381,6 @@ public class Player {
 			row = 3;
 			col = 0;
 			printSpaceNameMovedTo(row, col, moved);
-			checkSpaceMovedToForOwner(row, col, moved);
 			Community_Cards.effects();
 		} else if (space == 19) {
 			row = 2;
@@ -391,6 +392,10 @@ public class Player {
 			col = 0;
 			printSpaceNameMovedTo(row, col, moved);
 			checkSpaceMovedToForOwner(row, col, moved);
+		} else if (space == 21){
+			row = 0;
+			col = 0;
+			printSpaceNameMovedTo(row, col, moved);
 		} else if (space == 22) {
 			row = 0;
 			col = 1;
@@ -400,7 +405,6 @@ public class Player {
 			row = 0;
 			col = 2;
 			printSpaceNameMovedTo(row, col, moved);
-			checkSpaceMovedToForOwner(row, col, moved);
 			Chance_Cards.CardEffects();
 		} else if (space == 24) {
 			row = 0;
@@ -439,7 +443,6 @@ public class Player {
 			checkSpaceMovedToForOwner(row, col, moved);
 		} else if (space == 31) {
 			printSpaceNameMovedTo(row, col, moved);
-			checkSpaceMovedToForOwner(row, col, moved);
 			Player.setSpaceCurrentlyOn(moved, 10);
 			Player.setInJail(moved, true);
 		} else if (space == 32) {
@@ -456,7 +459,6 @@ public class Player {
 			row = 3;
 			col = 10;
 			printSpaceNameMovedTo(row, col, moved);
-			checkSpaceMovedToForOwner(row, col, moved);
 			Community_Cards.effects();
 		} else if (space == 35) {
 			row = 4;
@@ -472,7 +474,6 @@ public class Player {
 			row = 6;
 			col = 10;
 			printSpaceNameMovedTo(row, col, moved);
-			checkSpaceMovedToForOwner(row, col, moved);
 			Chance_Cards.DRAW();
 		} else if (space == 38) {
 			row = 7;
@@ -483,7 +484,6 @@ public class Player {
 			row = 8;
 			col = 10;
 			printSpaceNameMovedTo(row, col, moved);
-			checkSpaceMovedToForOwner(row, col, moved);
 			Player.setMoney(moved, -75);
 		} else if (space == 40) {
 			row = 9;
