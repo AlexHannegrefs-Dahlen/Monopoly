@@ -328,6 +328,45 @@ public class Trade {
 						}
 
 						else if (playersJailCard == true && currentJailCard == false) {
+							System.out.println("Excellent! " + whatPlayerToTradeWith(inputPlayerNumber, player) + " is able to trade with current player.");
+							if (Player.getGetOutOfJailChance(player) == true) {
+							Player.setGetOutOfJailChance(Game.getPlayerWhosTurnItIs(), true);
+							Player.setGetOutOfJailChance(player, false);
+							}
+							if (Player.getGetOutOfJailChest(player) == true) {
+								Player.setGetOutOfJailChest(Game.getPlayerWhosTurnItIs(), true);
+								Player.setGetOutOfJailChest(player, false);
+							}
+						}
+						else if (playersJailCard == false && currentJailCard == true) {
+							System.out.println("Excellent! " + "current player can trade");
+							if (Player.getGetOutOfJailChance(Game.getPlayerWhosTurnItIs()) == true){
+							Player.setGetOutOfJailChance(player, true);
+							Player.setGetOutOfJailChance(Game.getPlayerWhosTurnItIs(), false);
+							}
+							if (Player.getGetOutOfJailChest(Game.getPlayerWhosTurnItIs())) {
+								Player.setGetOutOfJailChest(player, true);
+								Player.setGetOutOfJailChest(Game.getPlayerWhosTurnItIs(), true);
+							}
+						}
+						else if (playersJailCard == true && currentJailCard == true) {
+							System.out.println("Excellent! Both players are able to trade with current player.");
+							if (Player.getGetOutOfJailChance(player) == true) {
+							Player.setGetOutOfJailChance(Game.getPlayerWhosTurnItIs(), true);
+							Player.setGetOutOfJailChance(player, false);
+							}
+							if (Player.getGetOutOfJailChest(player) == true) {
+								Player.setGetOutOfJailChest(Game.getPlayerWhosTurnItIs(), true);
+								Player.setGetOutOfJailChest(player, false);
+							}
+							if (Player.getGetOutOfJailChance(Game.getPlayerWhosTurnItIs()) == true){
+							Player.setGetOutOfJailChance(player, true);
+							Player.setGetOutOfJailChance(Game.getPlayerWhosTurnItIs(), false);
+							}
+							if (Player.getGetOutOfJailChest(Game.getPlayerWhosTurnItIs())) {
+								Player.setGetOutOfJailChest(player, true);
+								Player.setGetOutOfJailChest(Game.getPlayerWhosTurnItIs(), true);
+							}
 							System.out.println("Excellent! " + whatPlayerToTradeWith(inputPlayerNumber, player)
 									+ " is able to trade with current player.");
 							Player.giveJailCard(Game.getPlayerWhosTurnItIs());
