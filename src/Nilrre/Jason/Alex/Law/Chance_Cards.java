@@ -10,7 +10,7 @@ public class Chance_Cards {
 	static ArrayList<String> CARDS = new ArrayList<>();
 	private static int UsedCardJail;
 	private static int nextDrawIndex = 0;
-	Property p = new Property();
+	static Property p = new Property();
 	public static void Make_Cards() {
 		// C = Collect
 		// P = Pay
