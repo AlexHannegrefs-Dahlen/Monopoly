@@ -175,19 +175,9 @@ public class Trade {
 			if (exchangeMoneyWithOtherPlayer == true) {
 				int otherPlayersMoney = Player.getMoney(player);
 				System.out.println("Player has: " + otherPlayersMoney);
-				boolean otherRightAmount = false;
-				while (!otherRightAmount)
-					enter2Value = ConsoleUI.promptForInt("Enter in the value of money you would like to trade", 0,
-							Integer.MAX_VALUE);
-				if (otherPlayersMoney < enter2Value) {
-					System.out.println("Error! Player: " + Player.getPiece(player).name()
-							+ " doesn't have that money money in their account. Try Again.");
-					otherRightAmount = false;
-				} else {
-					System.out.println(Player.getPiece(player).name() + " has enough funds in their account");
-					System.out.println("Amount To Be Exchanged: " + enter2Value);
-					otherRightAmount = true;
-				}
+
+				enter2Value = ConsoleUI.promptForInt("Enter in the value of money you would like to request", 0,
+						otherPlayersMoney);
 
 			}
 
@@ -275,7 +265,7 @@ public class Trade {
 				if (selectWhatToModify == 1) {
 					boolean modifyExchange = ConsoleUI.promptForBool("Please modify exchange" + "[Y/N]", "Y", "N");
 					if (modifyExchange == true) {
-						
+
 						boolean checkModifiedAmount = false;
 						while (!checkModifiedAmount) {
 							enter2Value = ConsoleUI.promptForInt("Modify money value", 0, Integer.MAX_VALUE);
@@ -403,30 +393,31 @@ public class Trade {
 					} else if (willYouTradePlayerProperty == false) {
 						System.out.println("No property will be asked of");
 					}
-				} else if (willYouModifyTrade = false) {
-					System.out.println("Trade will commence");
-					Player.setMoney(player, -enter2Value);
-					Player.setMoney(Game.getPlayerWhosTurnItIs(), enter2Value);
-					System.out.println(Player.getPiece(Game.getPlayerWhosTurnItIs()).name() + " has " + enter2Value
-							+ " added to their account");
-					Player.setMoney(Game.getPlayerWhosTurnItIs(), -enterValue);
-					Player.setMoney(player, enterValue);
-					System.out
-							.println(Player.getPiece(player).name() + " has " + enterValue + " added to their account");
-					// MONEY
-
 				}
 			}
 
-			else if (acceptOrDecline == false) {
-				System.out.println("Trade declined");
-				System.out.println("Let's restart the process");
-				enterValue = 0;
-				enter2Value = 0;
-				currentJailCard = null != null;
-				playersJailCard = null != null;
-				whatPlayerToTradeWith();
+			else {
+				System.out.println("Trade will commence");
+				Player.setMoney(player, -enter2Value);
+				Player.setMoney(Game.getPlayerWhosTurnItIs(), enter2Value);
+				System.out.println(Player.getPiece(Game.getPlayerWhosTurnItIs()).name() + " has " + enter2Value
+						+ " added to their account");
+				Player.setMoney(Game.getPlayerWhosTurnItIs(), -enterValue);
+				Player.setMoney(player, enterValue);
+				System.out.println(Player.getPiece(player).name() + " has " + enterValue + " added to their account");
+				// MONEY
+
 			}
+		}
+
+		else {
+			System.out.println("Trade declined");
+			System.out.println("Let's restart the process");
+			enterValue = 0;
+			enter2Value = 0;
+			currentJailCard = null != null;
+			playersJailCard = null != null;
+			whatPlayerToTradeWith();
 		}
 		return acceptOrDecline;
 	}
