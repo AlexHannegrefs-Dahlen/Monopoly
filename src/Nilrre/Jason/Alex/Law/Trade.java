@@ -6,8 +6,10 @@ import java.util.ArrayList;
 //added existing BoardSpaces arraylist for trading properties
 public class Trade {
 
-	private static ArrayList<BoardSpaces> tradingLand = new ArrayList<BoardSpaces>();
-	private static ArrayList<BoardSpaces> tradingPlayerLand = new ArrayList<BoardSpaces>();
+	// private static ArrayList<BoardSpaces> tradingLand = new
+	// ArrayList<BoardSpaces>();
+	// private static ArrayList<BoardSpaces> tradingPlayerLand = new
+	// ArrayList<BoardSpaces>();
 	private static boolean exitTrade;
 	private static boolean currentJailCard;
 	private static boolean playersJailCard;
@@ -130,17 +132,25 @@ public class Trade {
 								.promptForBool("Would you like to continue trade?" + "[Y/N]", "Y", "N");
 
 						if (continuePropTrade == true) {
+							boolean ownLand;
+							do{
 							System.out.println("What property will you be trading?");
 							System.out.println(Player.getland(Game.getPlayerWhosTurnItIs()));
-							tradingLand.addAll(Player.getland(Game.getPlayerWhosTurnItIs()));
+							// tradingLand.addAll(Player.getland(Game.getPlayerWhosTurnItIs()));
 							int landToTrade = ConsoleUI.promptForInt(
-									"Select what property you want to trade and remove from your inventory", 1,
-									tradingLand.size());
-							tradingLand = Player.getland(Game.getPlayerWhosTurnItIs());
-							tradingLand.remove(landToTrade);
-							decideTrade = true;
-							continuePropTrade = true;
-
+									"Select what property you want to trade and remove from your inventory", 1, 40);
+							int[] space = Player.spaceNumberToBoardCords(landToTrade);
+							int row = space[0];
+							int col = space[1];
+							if (!Board.b.getOwnedBy(Board.board[row][col]).equals(Game.getPlayerWhosTurnItIs())) {
+								ownLand = false;
+							} else {
+								Player.getland(Game.getPlayerWhosTurnItIs()).remove(Board.board[row][col]);
+								decideTrade = true;
+								continuePropTrade = true;
+								ownLand = true;
+							}
+							}while(!ownLand);
 						} else {
 							System.out.println("No more property will be traded");
 							decideTrade = true;
@@ -151,7 +161,6 @@ public class Trade {
 
 				else if (decideToTradeProperty == false) {
 					System.out.println("No property will be traded");
-					tradingLand = Player.getland(Game.getPlayerWhosTurnItIs());
 				}
 			}
 
@@ -224,11 +233,12 @@ public class Trade {
 					if (continuePropTrade == true) {
 						System.out.println("What property do you want?");
 						System.out.println(Player.getland(player));
-						tradingPlayerLand.addAll(Player.getland(player));
 						int requestLand = ConsoleUI.promptForInt("Select what property you want to take", 1,
-								tradingPlayerLand.size());
-						tradingPlayerLand = Player.getland(player);
-						tradingPlayerLand.remove(requestLand);
+						Player.getland(player).size());
+						int[] space = Player.spaceNumberToBoardCords(requestLand);
+						int row = space[0];
+						int col = space[1];
+						Player.getland(player).remove(Board.board[row][col]);
 						tradeRequest = true;
 						continuePropTrade = true;
 					} else {
@@ -241,7 +251,6 @@ public class Trade {
 
 			else if (requestToTradePlayerProperty == false) {
 				System.out.println("No property will be asked of");
-				tradingPlayerLand = Player.getland(Game.getPlayerWhosTurnItIs());
 			}
 		}
 		return requestOtherPlayerTrade;
@@ -378,9 +387,11 @@ public class Trade {
 								System.out.println("What property do you want?");
 								System.out.println(Player.getland(Game.getPlayerWhosTurnItIs()));
 								int tradeLand = ConsoleUI.promptForInt("Select what property you want to take", 1,
-										Integer.MAX_VALUE);
-								tradingLand = Player.getland(Game.getPlayerWhosTurnItIs());
-								tradingLand.remove(tradeLand);
+										40);
+								int [] space = Player.spaceNumberToBoardCords(tradeLand);
+								int row = space[0];
+								int col = space[1];
+								Player.getland(Game.getPlayerWhosTurnItIs()).remove(Board.board[row][col]);
 								isTradeTrue = true;
 								continuePropTrade = true;
 							} else {
