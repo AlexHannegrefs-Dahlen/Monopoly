@@ -604,8 +604,8 @@ public class Player {
 		} else if (!Board.b.getMortgaged(Board.board[row][col])) {
 			Player owner = Board.b.getOwnedBy(Board.board[row][col]);
 			System.out.println("You owe " + owner.piece + ".");
-			Player.setMoney(moved, -Board.board[row][col].getRent(Board.board[row][col]));
-			Player.setMoney(owner, Board.board[row][col].getRent(Board.board[row][col]));
+			Player.setMoney(moved, -Board.b.getRent(Board.board[row][col]));
+			Player.setMoney(owner, Board.b.getRent(Board.board[row][col]));
 		}
 	}
 
