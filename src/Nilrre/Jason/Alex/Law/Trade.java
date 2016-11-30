@@ -162,6 +162,7 @@ public class Trade {
 >>>>>>> 983d36173df594e16b8494faae7da481c50dd228
 			}
 		}
+		return 0;
 	}
 
 	public static int selectWhatOtherPlayerTrades(Player player) throws IOException {
