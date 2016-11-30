@@ -293,11 +293,13 @@ public class Chance_Cards {
 			}
 				
 		}
-		if (retVal == "P25HOUSEPHOTEL100") {//Finished
+		if (retVal == "P25HOUSEPHOTEL100") {//Finished?
+			if ((Player.getHousesOwned(Game.getPlayerWhosTurnItIs()) == 0) && Player.getHotelsOwned(Game.getPlayerWhosTurnItIs()) == 0){
+				throw new IllegalArgumentException();
+			}
 			Player.setMoney(Game.getPlayerWhosTurnItIs(),Player.getHousesOwned(Game.getPlayerWhosTurnItIs()) * -20);
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), Player.getHotelsOwned(Game.getPlayerWhosTurnItIs()) * -100);
 			System.out.println("You are accessed for street repairs, you pay $" + (((Player.getHousesOwned(Game.getPlayerWhosTurnItIs())) * 20) + (Player.getHotelsOwned(Game.getPlayerWhosTurnItIs()) * 100)));
-	
 		}
 	}
 }

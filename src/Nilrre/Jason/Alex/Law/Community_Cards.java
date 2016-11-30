@@ -135,6 +135,9 @@ public class Community_Cards {
 			System.out.println("Recieve $25 consultabcy fee");
 		}
 		if(getCard == "You are accessed for street repairs"){//Finished
+			if ((Player.getHousesOwned(Game.getPlayerWhosTurnItIs()) == 0) && Player.getHotelsOwned(Game.getPlayerWhosTurnItIs()) == 0){
+				throw new IllegalArgumentException();
+			}
 			Player.setMoney(Game.getPlayerWhosTurnItIs(),Player.getHousesOwned(Game.getPlayerWhosTurnItIs()) * -40);
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), Player.getHotelsOwned(Game.getPlayerWhosTurnItIs()) * -115);
 			System.out.println("You are accessed for street repairs, you pay $" + (((Player.getHousesOwned(Game.getPlayerWhosTurnItIs())) * -40) + (Player.getHotelsOwned(Game.getPlayerWhosTurnItIs()) * -115)));
