@@ -180,10 +180,32 @@ public class Player {
 			System.out.println("You must mortgage to afford this payment. What would you like to mortgage?");
 		}
 	}
+	
+	public static void unmortgage(Player unmortgaging) throws IOException{
+		boolean validProp;
+		do {
+			validProp = true;
+			int property = ConsoleUI.promptForInt(unmortgaging.land.toString() + "Enter number of property", 1, 40);
+			if (unmortgaging.land.contains(property)) {
+				int[] spaces = spaceNumberToBoardCords(property);
+
+				int row = spaces[0];
+				int col = spaces[1];
+				if (!Board.board[row][col].getMortgaged(Board.board[row][col])) {
+					Board.b.setMortgaged(Board.board[row][col], true);
+				} else {
+					System.out.println("This space is already unmortgaged");
+					validProp = false;
+				}
+			} else {
+				System.out.println("You do not own this space");
+				validProp = false;
+			}
+		} while (!validProp);
+	}
 
 	public static void mortgage(Player mortgaging) throws IOException {
 		boolean validProp;
-
 		do {
 			validProp = true;
 			int property = ConsoleUI.promptForInt(mortgaging.land.toString() + "Enter number of property", 1, 40);
@@ -568,7 +590,7 @@ public class Player {
 	}
 
 	public static void buyHousesOrHotel(Player upgrading) {
-		UpgradeLand.buyHousesOrHotel(upgrading);
+		//LandValue;
 	}
 
 	public static void trade(Player trading) throws IOException {
