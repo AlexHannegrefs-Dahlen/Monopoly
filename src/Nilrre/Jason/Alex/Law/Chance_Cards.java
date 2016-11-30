@@ -64,7 +64,7 @@ public class Chance_Cards {
 		String retVal = DRAW();
 		if (retVal == "GTG") {// Finished
 			System.out.println("Advance to go (Get to  Two Hundred)");
-			Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 0);
+			Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 1);
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), 200);
 			System.out.println("Go to Go, collect $200");
 		}
@@ -78,6 +78,9 @@ public class Chance_Cards {
 		}
 		if (retVal == "GB3") {// Finished
 			Game.getPlayerWhosTurnItIs();
+			if(Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) == 3){
+				Player.spaceNumberToBoardCords(40);
+			}
 			Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(),
 					(Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs())) - 3);
 			System.out.println("Go Back 3 Steps");

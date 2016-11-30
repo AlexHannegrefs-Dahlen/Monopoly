@@ -177,13 +177,8 @@ public class Player {
 	}
 
 	public static void setMoney(Player moneyVal, double valuetoadd) throws IOException {
-<<<<<<< HEAD
-		moneyVal.money += (int)valuetoadd;
-		if(moneyVal.money < 0){
-=======
-		moneyVal.money += (int) +valuetoadd;
+		moneyVal.money += (int) valuetoadd;
 		if (moneyVal.money < 0) {
->>>>>>> 682cfe9585e1e70e44c982691091e66b6639a616
 			System.out.println("You must mortgage to afford this payment. What would you like to mortgage?");
 		}
 	}
@@ -608,9 +603,11 @@ public class Player {
 			}
 		} else if (!Board.b.getMortgaged(Board.board[row][col])) {
 			Player owner = Board.b.getOwnedBy(Board.board[row][col]);
-			System.out.println("You owe " + owner.piece.name() + ".");
-			Player.setMoney(moved, -Board.b.getRent(Board.board[row][col]));
-			Player.setMoney(owner, Board.b.getRent(Board.board[row][col]));
+			if (owner != null) {
+				System.out.println("You owe " + owner.piece.name() + ".");
+				Player.setMoney(moved, -Board.b.getRent(Board.board[row][col]));
+				Player.setMoney(owner, Board.b.getRent(Board.board[row][col]));
+			}
 		}
 	}
 
