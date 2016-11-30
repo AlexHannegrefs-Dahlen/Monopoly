@@ -153,11 +153,11 @@ public class Trade {
 				}
 			}
 
-			else {
-				System.out.println("There will be no trade");
-				exitTrade = false;
-				return 0;
-			}
+		}
+		else {
+			System.out.println("There will be no trade");
+			exitTrade = false;
+			return 0;
 		}
 		return 0;
 	}
@@ -430,7 +430,7 @@ public class Trade {
 
 	public static void callAllMethods(Player player) throws IOException {
 		askCurrentPlayerForTrade(player);
-		if (exitTrade = false) {
+		if (exitTrade == false) {
 			return;
 		} else {
 			selectWhatOtherPlayerTrades(player);
