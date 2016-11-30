@@ -316,7 +316,7 @@ public class Trade {
 
 						else if (playersJailCard == true && currentJailCard == false) {
 							System.out.println(
-									"Excellent! " + player.toString() + " is able to trade with current player.");
+									"Excellent! " + Player.getPiece(Game.getPlayerWhosTurnItIs()).name() + " is able to trade with current player.");
 							if (Player.getGetOutOfJailChance(player) == true) {
 								Player.setGetOutOfJailChance(Game.getPlayerWhosTurnItIs(), true);
 								Player.setGetOutOfJailChance(player, false);
