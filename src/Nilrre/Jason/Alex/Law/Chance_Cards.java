@@ -8,7 +8,6 @@ import Nilrre.Jason.Alex.Law.Player;
 
 public class Chance_Cards {
 	static ArrayList<String> CARDS = new ArrayList<>();
-	private static int UsedCardJail;
 	private static int nextDrawIndex = 0;
 	static Property p = new Property();
 
@@ -35,7 +34,6 @@ public class Chance_Cards {
 	}
 
 	public static void Shuffle() {
-		UsedCardJail = 0;
 		System.out.println("*Shuffle Chance Cards*");
 		for (int i = 0; i < 100; i++) {
 			Random NUM = new Random();
@@ -291,14 +289,16 @@ public class Chance_Cards {
 			System.out.println("you won a crossword competition, Collect $100");
 		}
 		if (retVal == "GETOUT") {// Finished
-			if (UsedCardJail == 0) {
+			Player.setGetOutOfJailChance(Game.getPlayerWhosTurnItIs(), true);
+			CARDS.remove("GETOUT");
+			/*if (UsedCardJail == 0) {
 				Player.setGetOutOfJailChance(Game.getPlayerWhosTurnItIs(), true);
 				UsedCardJail++;
 				System.out.println("You gained a Get out of Jail card");
 			}
-			if (UsedCardJail > 0) {
+			else if (UsedCardJail > 0) {
 				DRAW();
-			}
+			}*/
 
 		}
 		if (retVal == "P25HOUSEPHOTEL100") {// Finished?

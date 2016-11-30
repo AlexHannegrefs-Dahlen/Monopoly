@@ -81,6 +81,7 @@ public class Community_Cards {
 		if (getCard == "Get out of jail free") {//Finished
 			Player.setGetOutOfJailChest(Game.getPlayerWhosTurnItIs(), true);
 			System.out.println("Get a Get out of jail free card");
+			Community_Cards.comCards.remove("Get out of jail free");
 		}
 		if (getCard == "Go to jail") {//Finished
 			Player.setInJail(Game.getPlayerWhosTurnItIs(), true);
