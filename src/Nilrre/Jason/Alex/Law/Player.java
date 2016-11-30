@@ -620,7 +620,8 @@ public class Player {
 	}
 
 	public static void trade(Player trading) throws IOException {
-		Trade.whatPlayerToTradeWith(0, Game.getPlayerWhosTurnItIs());
+		Trade.callAllMethods(trading);
+//		Trade.whatPlayerToTradeWith(0, Game.getPlayerWhosTurnItIs());
 	}
 
 }

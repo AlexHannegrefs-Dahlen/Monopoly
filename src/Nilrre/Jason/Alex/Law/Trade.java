@@ -14,54 +14,49 @@ public class Trade {
 	private static int enterValue = 0;
 	private static int enter2Value = 0;
 
-	public static Player whatPlayerToTradeWith(int inputPlayerNumber, Player player) throws IOException {
-		Player playerToTradeWith = null;
+	public static Player whatPlayerToTradeWith() throws IOException {
+		Player player = new Player();
 		boolean pickedThemself;
-		int saved = inputPlayerNumber;
+		int inputPlayerNumber;
 		do {
 			pickedThemself = false;
 			
-			if (saved == 0) {
 				inputPlayerNumber = ConsoleUI.promptForInt("Select player to trade with. 1 - 8", 1, 8);
-			}
 			
 			if (inputPlayerNumber == 1 && !(Game.returnPlayerOne().equals(Game.getPlayerWhosTurnItIs()))
 					&& Player.getPlayingGame(Game.returnPlayerOne())) {
-				playerToTradeWith = Game.returnPlayerOne();
+				player = Game.returnPlayerOne();
 			} else if (inputPlayerNumber == 2 && !(Game.returnPlayerTwo().equals(Game.getPlayerWhosTurnItIs()))
 					&& Player.getPlayingGame(Game.returnPlayerTwo())) {
-				playerToTradeWith = Game.returnPlayerTwo();
+				player = Game.returnPlayerTwo();
 			} else if (inputPlayerNumber == 3 && !(Game.returnPlayerThree().equals(Game.getPlayerWhosTurnItIs()))
 					&& Player.getPlayingGame(Game.returnPlayerThree())) {
-				playerToTradeWith = Game.returnPlayerThree();
+				player = Game.returnPlayerThree();
 			} else if (inputPlayerNumber == 4 && !(Game.returnPlayerFour().equals(Game.getPlayerWhosTurnItIs()))
 					&& Player.getPlayingGame(Game.returnPlayerFour())) {
-				playerToTradeWith = Game.returnPlayerFour();
+				player = Game.returnPlayerFour();
 			} else if (inputPlayerNumber == 5 && !(Game.returnPlayerFive().equals(Game.getPlayerWhosTurnItIs()))
 					&& Player.getPlayingGame(Game.returnPlayerFive())) {
-				playerToTradeWith = Game.returnPlayerFive();
+				player = Game.returnPlayerFive();
 			} else if (inputPlayerNumber == 6 && !(Game.returnPlayerSix().equals(Game.getPlayerWhosTurnItIs()))
 					&& Player.getPlayingGame(Game.returnPlayerSix())) {
-				playerToTradeWith = Game.returnPlayerSix();
+				player = Game.returnPlayerSix();
 			} else if (inputPlayerNumber == 7 && !(Game.returnPlayerSeven().equals(Game.getPlayerWhosTurnItIs()))
 					&& Player.getPlayingGame(Game.returnPlayerSeven())) {
-				playerToTradeWith = Game.returnPlayerSeven();
+				player = Game.returnPlayerSeven();
 			} else if (inputPlayerNumber == 8 && !(Game.returnPlayerEight().equals(Game.getPlayerWhosTurnItIs()))
 					&& Player.getPlayingGame(Game.returnPlayerEight())) {
-				playerToTradeWith = Game.getPlayerWhosTurnItIs();
+				player = Game.getPlayerWhosTurnItIs();
 			} else {
 				System.out.println("Invalid Choice");
 				pickedThemself = true;
 			}
 		} while (pickedThemself);
-		return playerToTradeWith;
+		return player;
 	}
 
-	public static int askCurrentPlayerForTrade() throws IOException {
-
-		int inputPlayerNumber = 0;
-		Player player = null;
-		whatPlayerToTradeWith(inputPlayerNumber, player);
+	public static int askCurrentPlayerForTrade(Player player) throws IOException {
+		player =  whatPlayerToTradeWith();
 
 		System.out.println("Would you like to continue trade?");
 		String[] currentPlayerSelection = new String[] { "Accept", "Decline" };
@@ -169,14 +164,11 @@ public class Trade {
 		return menuSelect;
 	}
 
-	public static int selectWhatOtherPlayerTrades() throws IOException {
-
-		int inputPlayerNumber = 0;
-		Player player = null;
-		whatPlayerToTradeWith(inputPlayerNumber, player);
+	public static int selectWhatOtherPlayerTrades(Player player) throws IOException {
+		player = whatPlayerToTradeWith();
 
 		System.out
-				.println("What would you like to take from Player:" + whatPlayerToTradeWith(inputPlayerNumber, player));
+				.println("What would you like to take from Player:" + player.toString());
 		String[] tradingWithOtherPlayer = new String[] { "Money", "Get Out of Jail Free", "Properties" };
 		int requestOtherPlayerTrade = ConsoleUI.promptForMenuSelection(tradingWithOtherPlayer, false);
 
@@ -192,7 +184,7 @@ public class Trade {
 				boolean otherRightAmount = false;
 				while (!otherRightAmount)
 					if (otherPlayersMoney < enter2Value) {
-						System.out.println("Error! Player: " + whatPlayerToTradeWith(inputPlayerNumber, player)
+						System.out.println("Error! Player: " + player.toString()
 								+ " doesn't have that money money in their account. Try Again.");
 						otherRightAmount = false;
 					} else {
@@ -218,7 +210,7 @@ public class Trade {
 				System.out.println("Checking to see if player " + player + " has a card");
 
 				if (!Player.getGetOutOfJailChance(player) && !Player.getGetOutOfJailChest(player)) {
-					System.out.println("Sorry, Player: " + whatPlayerToTradeWith(inputPlayerNumber, player)
+					System.out.println("Sorry, Player: " + player.toString()
 							+ " doesn't possess a Get out of jail free card");
 					playersJailCard = false;
 				} else if (Player.getGetOutOfJailChance(player) || Player.getGetOutOfJailChest(player)) {
@@ -267,14 +259,10 @@ public class Trade {
 		return requestOtherPlayerTrade;
 	}
 
-	public static boolean acceptOrDeclinePlayerTradeRequest() throws IOException {
-
-		int inputPlayerNumber = 0;
-		Player player = null;
-		whatPlayerToTradeWith(inputPlayerNumber, player);
+	public static boolean acceptOrDeclinePlayerTradeRequest(Player player) throws IOException {
 		System.out.println("Player being requested for trade what will you do?");
 
-		boolean acceptOrDecline = ConsoleUI.promptForBool(whatPlayerToTradeWith(inputPlayerNumber, player)
+		boolean acceptOrDecline = ConsoleUI.promptForBool(player.toString()
 				+ "would you like to trade with the player intiating trade?" + "[Y/N]", "Y", "N");
 
 		if (acceptOrDecline == true) {
@@ -303,7 +291,7 @@ public class Trade {
 								System.out.println("Current player has " + enter2Value + " added to their account");
 								Player.setMoney(Game.getPlayerWhosTurnItIs(), -enterValue);
 								Player.setMoney(player, enterValue);
-								System.out.println(whatPlayerToTradeWith(inputPlayerNumber, player) + " has "
+								System.out.println(player.toString() + " has "
 										+ enterValue + " added to their account");
 								checkModifiedAmount = true;
 							}
@@ -328,7 +316,7 @@ public class Trade {
 						}
 
 						else if (playersJailCard == true && currentJailCard == false) {
-							System.out.println("Excellent! " + whatPlayerToTradeWith(inputPlayerNumber, player) + " is able to trade with current player.");
+							System.out.println("Excellent! " + player.toString() + " is able to trade with current player.");
 							if (Player.getGetOutOfJailChance(player) == true) {
 							Player.setGetOutOfJailChance(Game.getPlayerWhosTurnItIs(), true);
 							Player.setGetOutOfJailChance(player, false);
@@ -367,7 +355,7 @@ public class Trade {
 								Player.setGetOutOfJailChest(player, true);
 								Player.setGetOutOfJailChest(Game.getPlayerWhosTurnItIs(), true);
 							}
-							System.out.println("Excellent! " + whatPlayerToTradeWith(inputPlayerNumber, player)
+							System.out.println("Excellent! " + player.toString()
 									+ " is able to trade with current player.");
 							Player.giveJailCard(Game.getPlayerWhosTurnItIs());
 							Player.setGetOutOfJailChance(Game.getPlayerWhosTurnItIs(), true);
@@ -422,7 +410,7 @@ public class Trade {
 					System.out.println("Current player has " + enter2Value + " added to their account");
 					Player.setMoney(Game.getPlayerWhosTurnItIs(), -enterValue);
 					Player.setMoney(player, enterValue);
-					System.out.println(whatPlayerToTradeWith(inputPlayerNumber, player) + " has " + enterValue
+					System.out.println(player.toString() + " has " + enterValue
 							+ " added to their account");
 					// MONEY
 
@@ -436,22 +424,19 @@ public class Trade {
 				enter2Value = 0;
 				currentJailCard = null != null;
 				playersJailCard = null != null;
-				whatPlayerToTradeWith(inputPlayerNumber, player);
+				whatPlayerToTradeWith();
 			}
 		}
 		return acceptOrDecline;
 	}
 
-	public static Player callAllMethods() throws IOException {
-		int inputPlayerNumber = 0;
-		Player player = Game.getPlayerWhosTurnItIs();
-		whatPlayerToTradeWith(inputPlayerNumber, player);
-		askCurrentPlayerForTrade();
+	public static Player callAllMethods(Player player) throws IOException {
+		askCurrentPlayerForTrade(player);
 		if (exitTrade = false) {
 
 		} else {
-			selectWhatOtherPlayerTrades();
-			acceptOrDeclinePlayerTradeRequest();
+			selectWhatOtherPlayerTrades(player);
+			acceptOrDeclinePlayerTradeRequest(player);
 		}
 		return null;
 	}
