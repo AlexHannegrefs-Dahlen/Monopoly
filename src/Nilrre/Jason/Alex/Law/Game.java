@@ -68,49 +68,49 @@ public class Game {
 					System.out.println("Jail Cards Owned: " + Player.getJailcard(one));
 					System.out.println("Land Owned: " + Player.getland(one) + "\n");
 					b.printBoard(Board.board);
-					
+
 				} else if (i == 2 && players.contains(two)) {
 					turn(two);
 					System.out.println("\nMoney: " + Player.getMoney(two));
 					System.out.println("Jail Cards Owned: " + Player.getJailcard(two));
 					System.out.println("Land Owned: " + Player.getland(two) + "\n");
 					b.printBoard(Board.board);
-					
+
 				} else if (i == 3 && players.contains(three)) {
 					turn(three);
 					System.out.println("\nMoney: " + Player.getMoney(three));
 					System.out.println("Jail Cards Owned: " + Player.getJailcard(three));
 					System.out.println("Land Owned: " + Player.getland(three) + "\n");
 					b.printBoard(Board.board);
-					
+
 				} else if (i == 4 && players.contains(four)) {
 					turn(four);
 					System.out.println("\nMoney: " + Player.getMoney(four));
 					System.out.println("Jail Cards Owned: " + Player.getJailcard(four));
 					System.out.println("Land Owned: " + Player.getland(four) + "\n");
 					b.printBoard(Board.board);
-				
+
 				} else if (i == 5 && players.contains(five)) {
 					turn(five);
 					System.out.println("\nMoney: " + Player.getMoney(five));
 					System.out.println("Jail Cards Owned: " + Player.getJailcard(five));
 					System.out.println("Land Owned: " + Player.getland(five) + "\n");
 					b.printBoard(Board.board);
-				
+
 				} else if (i == 6 && players.contains(six)) {
 					turn(six);
 					System.out.println("\nMoney: " + Player.getMoney(six));
 					System.out.println("Jail Cards Owned: " + Player.getJailcard(six));
 					System.out.println("Land Owned: " + Player.getland(six) + "\n");
 					b.printBoard(Board.board);
-				
+
 				} else if (i == 7 && players.contains(seven)) {
 					turn(seven);
 					System.out.println("\nMoney: " + Player.getMoney(seven));
 					System.out.println("Jail Cards Owned: " + Player.getJailcard(seven));
 					System.out.println("Land Owned: " + Player.getland(seven) + "\n");
 					b.printBoard(Board.board);
-				
+
 				} else if (i == 8 && players.contains(eight)) {
 					turn(eight);
 					System.out.println("\nMoney: " + Player.getMoney(eight));
@@ -192,8 +192,8 @@ public class Game {
 	public static void turn(Player play) throws IOException {
 		Player.setMyTurn(play, true);
 		System.out.println(Player.getPiece(play) + "'s turn.");
-		String[] options = new String[] { "1: Roll", "2: Buy Houses or Hotels", "3: Trade with another Player", "4: Unmortgage",
-				"5: Quit Playing Game" };
+		String[] options = new String[] { "1: Roll", "2: Buy Houses or Hotels", "3: Trade with another Player",
+				"4: Unmortgage", "5: Quit Playing Game" };
 		int turnSelect = ConsoleUI.promptForMenuSelection(options, false);
 		if (turnSelect == 1) {
 			Player.roll(play);
@@ -201,7 +201,13 @@ public class Game {
 			Player.buyHousesOrHotel(play);
 		} else if (turnSelect == 3) {
 			Player.trade(play);
+		} else if (turnSelect == 4) {
+			Player.unmortgage(play);
 		} else if (turnSelect == 5) {
+			for(int i = 0; i < Player.getland(play).size(); i++){
+				Auction.startAuction(Player.getland(play).get(i));
+			}
+			Player.getland(play).clear();
 			players.remove(play);
 		}
 		Player.setMyTurn(play, false);
