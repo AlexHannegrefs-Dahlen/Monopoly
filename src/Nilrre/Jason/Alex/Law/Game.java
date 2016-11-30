@@ -52,6 +52,8 @@ public class Game {
 		amountOfPlayers = ConsoleUI.promptForInt("How many players?", 2, 8);
 		Board b = new Board();
 		b.createBoard();
+		Chance_Cards.Make_Cards();
+		Community_Cards.communityCards();
 
 		for (int i = 1; i <= amountOfPlayers; i++) {
 			makePlayer(i);

@@ -56,8 +56,8 @@ public class Community_Cards {
 		return getCard;
 	}
 
-	public static void effects(String getCard) throws IOException {
-		draw();
+	public static void effects() throws IOException {
+		String getCard = draw();
 		if (getCard == "Advance to go") {//Finished
 			Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 1);
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), 200);

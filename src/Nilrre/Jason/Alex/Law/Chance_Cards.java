@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
-import org.omg.PortableServer.ServantManagerOperations;
-
 import Nilrre.Jason.Alex.Law.Player;
 
 public class Chance_Cards {
@@ -13,7 +11,7 @@ public class Chance_Cards {
 	private static int UsedCardJail;
 	private static int nextDrawIndex = 0;
 	Property p = new Property();
-	public void Make_Cards() {
+	public static void Make_Cards() {
 		// C = Collect
 		// P = Pay
 		CARDS.add("GTG");
@@ -59,8 +57,8 @@ public class Chance_Cards {
 
 	}
 
-	public void CardEffects(String retVal) throws IOException {
-			DRAW();
+	public static void CardEffects() throws IOException {
+			String retVal = DRAW();
 		if (retVal == "GTG") {//Finished
 			System.out.println("Advance to go (Get to  Two Hundred)");
 			Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 0);

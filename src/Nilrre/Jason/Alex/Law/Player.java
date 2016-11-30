@@ -307,13 +307,18 @@ public class Player {
 			row = 10;
 			col = 8;
 			printSpaceNameMovedTo(row, col, moved);
-			// [10][8] com chest
+			checkSpaceMovedToForOwner(row, col, moved);
+			Community_Cards.effects();
 		} else if (space == 4) {
 			row = 10;
 			col = 7;
 			printSpaceNameMovedTo(row, col, moved);
 			checkSpaceMovedToForOwner(row, col, moved);
 		} else if (space == 5) {
+			row = 10;
+			col = 6;
+			printSpaceNameMovedTo(row, col, moved);
+			checkSpaceMovedToForOwner(row, col, moved);
 			Player.setMoney(moved, -200);
 		} else if (space == 6) {
 			row = 10;
@@ -326,7 +331,10 @@ public class Player {
 			printSpaceNameMovedTo(row, col, moved);
 			checkSpaceMovedToForOwner(row, col, moved);
 		} else if (space == 8) {
-			Chance_Cards.DRAW();
+			row = 10;
+			col = 3;
+			printSpaceNameMovedTo(row, col, moved);
+			Chance_Cards.CardEffects();
 		} else if (space == 9) {
 			row = 10;
 			col = 2;
@@ -345,125 +353,143 @@ public class Player {
 		} else if (space == 13) {
 			row = 8;
 			col = 0;
+			printSpaceNameMovedTo(row, col, moved);
 			checkSpaceMovedToForOwner(row, col, moved);
 		} else if (space == 14) {
 			row = 7;
 			col = 0;
+			printSpaceNameMovedTo(row, col, moved);
 			checkSpaceMovedToForOwner(row, col, moved);
 		} else if (space == 15) {
 			row = 6;
 			col = 0;
+			printSpaceNameMovedTo(row, col, moved);
 			checkSpaceMovedToForOwner(row, col, moved);
-			// 6 0 prop
 		} else if (space == 16) {
 			row = 5;
 			col = 0;
+			printSpaceNameMovedTo(row, col, moved);
 			checkSpaceMovedToForOwner(row, col, moved);
-			// 5 0 prop
 		} else if (space == 17) {
 			row = 4;
 			col = 0;
+			printSpaceNameMovedTo(row, col, moved);
 			checkSpaceMovedToForOwner(row, col, moved);
-			// 4 0 prop
 		} else if (space == 18) {
-			// 3 0 com chest
+			row = 3;
+			col = 0;
+			printSpaceNameMovedTo(row, col, moved);
+			checkSpaceMovedToForOwner(row, col, moved);
+			Community_Cards.effects();
 		} else if (space == 19) {
 			row = 2;
 			col = 0;
+			printSpaceNameMovedTo(row, col, moved);
 			checkSpaceMovedToForOwner(row, col, moved);
-			// 2 0 prop
 		} else if (space == 20) {
 			row = 1;
 			col = 0;
+			printSpaceNameMovedTo(row, col, moved);
 			checkSpaceMovedToForOwner(row, col, moved);
-			// 1 0 prop
 		} else if (space == 22) {
 			row = 0;
 			col = 1;
+			printSpaceNameMovedTo(row, col, moved);
 			checkSpaceMovedToForOwner(row, col, moved);
-			// 0 1 prop
 		} else if (space == 23) {
 			row = 0;
 			col = 2;
+			printSpaceNameMovedTo(row, col, moved);
 			checkSpaceMovedToForOwner(row, col, moved);
-			// 0 2 chance
+			Chance_Cards.CardEffects();
 		} else if (space == 24) {
 			row = 0;
 			col = 3;
+			printSpaceNameMovedTo(row, col, moved);
 			checkSpaceMovedToForOwner(row, col, moved);
-			// 0 3 prop
 		} else if (space == 25) {
 			row = 0;
 			col = 4;
+			printSpaceNameMovedTo(row, col, moved);
 			checkSpaceMovedToForOwner(row, col, moved);
-			// 0 4 prop
 		} else if (space == 26) {
 			row = 0;
 			col = 5;
+			printSpaceNameMovedTo(row, col, moved);
 			checkSpaceMovedToForOwner(row, col, moved);
-			// 0 5 prop rail
 		} else if (space == 27) {
 			row = 0;
 			col = 6;
+			printSpaceNameMovedTo(row, col, moved);
 			checkSpaceMovedToForOwner(row, col, moved);
-			// 0 6 prop
 		} else if (space == 28) {
 			row = 0;
 			col = 7;
+			printSpaceNameMovedTo(row, col, moved);
 			checkSpaceMovedToForOwner(row, col, moved);
-			// 0 7 prop
 		} else if (space == 29) {
 			row = 0;
 			col = 8;
+			printSpaceNameMovedTo(row, col, moved);
 			checkSpaceMovedToForOwner(row, col, moved);
-			// 0 8 prop util
 		} else if (space == 30) {
 			row = 0;
 			col = 9;
+			printSpaceNameMovedTo(row, col, moved);
 			checkSpaceMovedToForOwner(row, col, moved);
-			// 0 9 prop
 		} else if (space == 31) {
+			printSpaceNameMovedTo(row, col, moved);
+			checkSpaceMovedToForOwner(row, col, moved);
 			Player.setSpaceCurrentlyOn(moved, 10);
 			Player.setInJail(moved, true);
-			// 0 10 got to jail
 		} else if (space == 32) {
 			row = 1;
 			col = 10;
+			printSpaceNameMovedTo(row, col, moved);
 			checkSpaceMovedToForOwner(row, col, moved);
-			// 1 10 prop
 		} else if (space == 33) {
 			row = 2;
 			col = 10;
+			printSpaceNameMovedTo(row, col, moved);
 			checkSpaceMovedToForOwner(row, col, moved);
-			// 2 10 prop
 		} else if (space == 34) {
-			// 3 10 com chest
+			row = 3;
+			col = 10;
+			printSpaceNameMovedTo(row, col, moved);
+			checkSpaceMovedToForOwner(row, col, moved);
+			Community_Cards.effects();
 		} else if (space == 35) {
 			row = 4;
 			col = 10;
+			printSpaceNameMovedTo(row, col, moved);
 			checkSpaceMovedToForOwner(row, col, moved);
-			// 4 10 prop
 		} else if (space == 36) {
 			row = 5;
 			col = 10;
+			printSpaceNameMovedTo(row, col, moved);
 			checkSpaceMovedToForOwner(row, col, moved);
-			// 5 10 prop rail
 		} else if (space == 37) {
+			row = 6;
+			col = 10;
+			printSpaceNameMovedTo(row, col, moved);
+			checkSpaceMovedToForOwner(row, col, moved);
 			Chance_Cards.DRAW();
-			// 6 10 Chance
 		} else if (space == 38) {
 			row = 7;
 			col = 10;
+			printSpaceNameMovedTo(row, col, moved);
 			checkSpaceMovedToForOwner(row, col, moved);
-			// 7 10 prop
 		} else if (space == 39) {
+			row = 8;
+			col = 10;
+			printSpaceNameMovedTo(row, col, moved);
+			checkSpaceMovedToForOwner(row, col, moved);
 			Player.setMoney(moved, -75);
-			// 8 10 lux tax
 		} else if (space == 40) {
 			row = 9;
 			col = 10;
+			printSpaceNameMovedTo(row, col, moved);
 			checkSpaceMovedToForOwner(row, col, moved);
-			// 9 10 prop
 		}
 	}
 
