@@ -8,22 +8,21 @@ public class Trade {
 
 	private static ArrayList<BoardSpaces> tradingLand = new ArrayList<BoardSpaces>();
 	private static ArrayList<BoardSpaces> tradingPlayerLand = new ArrayList<BoardSpaces>();
-	private static boolean exitTrade = null != null;
-	private static boolean currentJailCard = null != null;
-	private static boolean playersJailCard = null != null;
+	private static boolean exitTrade;
+	private static boolean currentJailCard;
+	private static boolean playersJailCard;
 	private static int enterValue = 0;
 	private static int enter2Value = 0;
 	private static Player player = new Player();
-
 
 	public static Player whatPlayerToTradeWith() throws IOException {
 		boolean pickedThemself;
 		int inputPlayerNumber;
 		do {
 			pickedThemself = false;
-			
-				inputPlayerNumber = ConsoleUI.promptForInt("Select player to trade with. 1 - 8", 1, 8);
-			
+
+			inputPlayerNumber = ConsoleUI.promptForInt("Select player to trade with. 1 - 8", 1, 8);
+
 			if (inputPlayerNumber == 1 && !(Game.returnPlayerOne().equals(Game.getPlayerWhosTurnItIs()))
 					&& Player.getPlayingGame(Game.returnPlayerOne())) {
 				player = Game.returnPlayerOne();
@@ -56,7 +55,8 @@ public class Trade {
 		return player;
 	}
 
-	public static int askCurrentPlayerForTrade(Player player) throws IOException {
+	public static void askCurrentPlayerForTrade(Player player) throws IOException {
+		exitTrade = true;
 		System.out.println("Would you like to continue trade?");
 		String[] currentPlayerSelection = new String[] { "Accept", "Decline" };
 		int menuSelect = ConsoleUI.promptForMenuSelection(currentPlayerSelection, false);
@@ -68,35 +68,36 @@ public class Trade {
 			int selectWhatToTrade = ConsoleUI.promptForMenuSelection(currentPlayerChooseTrade, false);
 
 			if (selectWhatToTrade == 1) {
-				boolean currentPlayerMoneyExchange = ConsoleUI.promptForBool("Would you like to exchange some cash with " + Player.getPiece(player).name() + "?" + "[Y/N]", "Y", "N");
+				boolean currentPlayerMoneyExchange = ConsoleUI.promptForBool(
+						"Would you like to exchange some cash with " + Player.getPiece(player).name() + "?" + "[Y/N]",
+						"Y", "N");
 
 				if (currentPlayerMoneyExchange == true) {
-					int playersMoney = Player.getMoney(Game.getPlayerWhosTurnItIs());
-					System.out.println("You have: " + playersMoney);
-					enterValue = ConsoleUI.promptForInt("Enter in the value of money you would like to exchange:", 0,
-							Integer.MAX_VALUE);
-					boolean stopInfinite = true;
 					boolean amountRight = true;
-					while (amountRight) {
+					do {
+						int playersMoney = Player.getMoney(Game.getPlayerWhosTurnItIs());
+						System.out.println("You have: " + playersMoney);
+						enterValue = ConsoleUI.promptForInt("Enter in the value of money you would like to exchange:",
+								0, Integer.MAX_VALUE);
+						amountRight = true;
+						exitTrade = true;
 						if (enterValue > Player.getMoney(Game.getPlayerWhosTurnItIs())) {
-							System.out.println("Error! " + Player.getPiece(Game.getPlayerWhosTurnItIs()).name() + " :The amount specified is too high. You don't have that much money.");
-							stopInfinite = true;
+							System.out.println("Error! " + Player.getPiece(Game.getPlayerWhosTurnItIs()).name()
+									+ " :The amount specified is too high. You don't have that much money.");
 							amountRight = true;
 						} else {
 							System.out.println("Money value is sufficient!");
 							System.out.println("Amount To Be Exchanged: " + enterValue);
-							stopInfinite = true;
 							amountRight = false;
 						}
-					}
+					} while (amountRight);
 				} else if (currentPlayerMoneyExchange == false) {
 					System.out.println("No cash will be exchanged");
 					enterValue = 0;
 				}
-				return enterValue;
 			}
 
-			if (selectWhatToTrade == 2) {
+			else if (selectWhatToTrade == 2) {
 				boolean decideToTradeJailCard = ConsoleUI
 						.promptForBool("Would you like to trade your Get Out of Jail Card?" + "[Y/N]", "Y", "N");
 
@@ -118,7 +119,7 @@ public class Trade {
 				}
 			}
 
-			if (selectWhatToTrade == 3) {
+			else if (selectWhatToTrade == 3) {
 				boolean decideToTradeProperty = ConsoleUI
 						.promptForBool("Would you like to trade some property?" + "[Y/N]", "Y", "N");
 
@@ -154,42 +155,39 @@ public class Trade {
 				}
 			}
 
-		}
-		else {
+		} else {
 			System.out.println("There will be no trade");
 			exitTrade = false;
-			return 0;
 		}
-		return 0;
 	}
 
 	public static int selectWhatOtherPlayerTrades(Player player) throws IOException {
-		player = whatPlayerToTradeWith();
 
 		System.out.println("What would you like to take from Player:" + Player.getPiece(player).name());
 		String[] tradingWithOtherPlayer = new String[] { "Money", "Get Out of Jail Free", "Properties" };
 		int requestOtherPlayerTrade = ConsoleUI.promptForMenuSelection(tradingWithOtherPlayer, false);
 
 		if (requestOtherPlayerTrade == 1) {
-			boolean exchangeMoneyWithOtherPlayer = ConsoleUI
-			.promptForBool("Would you like to request a money exchange from " + Player.getPiece(player).name() + "?" + "[Y/N]", "Y", "N");
+			boolean exchangeMoneyWithOtherPlayer = ConsoleUI.promptForBool(
+					"Would you like to request a money exchange from " + Player.getPiece(player).name() + "?" + "[Y/N]",
+					"Y", "N");
 
 			if (exchangeMoneyWithOtherPlayer == true) {
 				int otherPlayersMoney = Player.getMoney(player);
 				System.out.println("Player has: " + otherPlayersMoney);
-				enter2Value = ConsoleUI.promptForInt("Enter in the value of money you would like to trade", 0,
-						Integer.MAX_VALUE);
 				boolean otherRightAmount = false;
 				while (!otherRightAmount)
-					if (otherPlayersMoney < enter2Value) {
-						System.out.println("Error! Player: " + Player.getPiece(player).name()
-								+ " doesn't have that money money in their account. Try Again.");
-						otherRightAmount = false;
-					} else {
-						System.out.println(Player.getPiece(player).name() + " has enough funds in their account");
-						System.out.println("Amount To Be Exchanged: " + enter2Value);
-						otherRightAmount = true;
-					}
+					enter2Value = ConsoleUI.promptForInt("Enter in the value of money you would like to trade", 0,
+							Integer.MAX_VALUE);
+				if (otherPlayersMoney < enter2Value) {
+					System.out.println("Error! Player: " + Player.getPiece(player).name()
+							+ " doesn't have that money money in their account. Try Again.");
+					otherRightAmount = false;
+				} else {
+					System.out.println(Player.getPiece(player).name() + " has enough funds in their account");
+					System.out.println("Amount To Be Exchanged: " + enter2Value);
+					otherRightAmount = true;
+				}
 
 			}
 
@@ -202,7 +200,8 @@ public class Trade {
 
 		if (requestOtherPlayerTrade == 2) {
 			boolean askPlayerForJailCard = ConsoleUI
-					.promptForBool("Would you like to request a Get out of jail card from " + Player.getPiece(player).name() + "?" + "[Y/N]", "Y", "N");
+					.promptForBool("Would you like to request a Get out of jail card from "
+							+ Player.getPiece(player).name() + "?" + "[Y/N]", "Y", "N");
 
 			if (askPlayerForJailCard == true) {
 				System.out.println("Checking to see if player " + Player.getPiece(player).name() + " has a card");
@@ -222,8 +221,9 @@ public class Trade {
 			}
 		}
 		if (requestOtherPlayerTrade == 3) {
-			boolean requestToTradePlayerProperty = ConsoleUI
-					.promptForBool("Would you like to request some property from " + Player.getPiece(player).name() + " ?" + "[Y/N]", "Y", "N");
+			boolean requestToTradePlayerProperty = ConsoleUI.promptForBool(
+					"Would you like to request some property from " + Player.getPiece(player).name() + " ?" + "[Y/N]",
+					"Y", "N");
 
 			if (requestToTradePlayerProperty == true) {
 				boolean tradeRequest = true;
@@ -260,8 +260,9 @@ public class Trade {
 	public static boolean acceptOrDeclinePlayerTradeRequest(Player player) throws IOException {
 		System.out.println("Player: " + Player.getPiece(player).name() + " what will you do?");
 
-		boolean acceptOrDecline = ConsoleUI.promptForBool(Player.getPiece(player).name()
-				+ "would you like to trade with the player intiating trade?" + "[Y/N]", "Y", "N");
+		boolean acceptOrDecline = ConsoleUI.promptForBool(
+				Player.getPiece(player).name() + "would you like to trade with the player intiating trade?" + "[Y/N]",
+				"Y", "N");
 
 		if (acceptOrDecline == true) {
 			boolean willYouModifyTrade = ConsoleUI.promptForBool("Would you like to modify your trade?" + "[Y/N]", "Y",
@@ -274,10 +275,10 @@ public class Trade {
 				if (selectWhatToModify == 1) {
 					boolean modifyExchange = ConsoleUI.promptForBool("Please modify exchange" + "[Y/N]", "Y", "N");
 					if (modifyExchange == true) {
-						enter2Value = 0;
-						enter2Value = ConsoleUI.promptForInt("Modify money value", 0, Integer.MAX_VALUE);
+						
 						boolean checkModifiedAmount = false;
 						while (!checkModifiedAmount) {
+							enter2Value = ConsoleUI.promptForInt("Modify money value", 0, Integer.MAX_VALUE);
 							if (enter2Value > Player.getMoney(player)) {
 								System.out.println(Player.getPiece(player).name() + " you don't have that much money");
 								checkModifiedAmount = false;
@@ -286,11 +287,12 @@ public class Trade {
 								System.out.println("Amount To Be Exchanged: " + enter2Value);
 								Player.setMoney(player, -enter2Value);
 								Player.setMoney(Game.getPlayerWhosTurnItIs(), enter2Value);
-								System.out.println(Player.getPiece(Game.getPlayerWhosTurnItIs()).name() + " has " + enter2Value + " added to their account");
+								System.out.println(Player.getPiece(Game.getPlayerWhosTurnItIs()).name() + " has "
+										+ enter2Value + " added to their account");
 								Player.setMoney(Game.getPlayerWhosTurnItIs(), -enterValue);
 								Player.setMoney(player, enterValue);
-								System.out.println(Player.getPiece(player).name() + " has "
-										+ enterValue + " added to their account");
+								System.out.println(Player.getPiece(player).name() + " has " + enterValue
+										+ " added to their account");
 								checkModifiedAmount = true;
 							}
 						}
@@ -304,8 +306,8 @@ public class Trade {
 				}
 
 				if (selectWhatToModify == 2) {
-					boolean modifyJailCard = ConsoleUI
-							.promptForBool(Player.getPiece(player).name() + "Would you like to trade your Get Out of Jail Card?" + "[Y/N]", "Y", "N");
+					boolean modifyJailCard = ConsoleUI.promptForBool(Player.getPiece(player).name()
+							+ "Would you like to trade your Get Out of Jail Card?" + "[Y/N]", "Y", "N");
 
 					if (modifyJailCard == true) {
 						System.out.println("Checking to see if players have a card");
@@ -314,40 +316,39 @@ public class Trade {
 						}
 
 						else if (playersJailCard == true && currentJailCard == false) {
-							System.out.println("Excellent! " + player.toString() + " is able to trade with current player.");
+							System.out.println(
+									"Excellent! " + player.toString() + " is able to trade with current player.");
 							if (Player.getGetOutOfJailChance(player) == true) {
-							Player.setGetOutOfJailChance(Game.getPlayerWhosTurnItIs(), true);
-							Player.setGetOutOfJailChance(player, false);
+								Player.setGetOutOfJailChance(Game.getPlayerWhosTurnItIs(), true);
+								Player.setGetOutOfJailChance(player, false);
 							}
 							if (Player.getGetOutOfJailChest(player) == true) {
 								Player.setGetOutOfJailChest(Game.getPlayerWhosTurnItIs(), true);
 								Player.setGetOutOfJailChest(player, false);
 							}
-						}
-						else if (playersJailCard == false && currentJailCard == true) {
+						} else if (playersJailCard == false && currentJailCard == true) {
 							System.out.println("Excellent! " + "current player can trade");
-							if (Player.getGetOutOfJailChance(Game.getPlayerWhosTurnItIs()) == true){
-							Player.setGetOutOfJailChance(player, true);
-							Player.setGetOutOfJailChance(Game.getPlayerWhosTurnItIs(), false);
+							if (Player.getGetOutOfJailChance(Game.getPlayerWhosTurnItIs()) == true) {
+								Player.setGetOutOfJailChance(player, true);
+								Player.setGetOutOfJailChance(Game.getPlayerWhosTurnItIs(), false);
 							}
 							if (Player.getGetOutOfJailChest(Game.getPlayerWhosTurnItIs())) {
 								Player.setGetOutOfJailChest(player, true);
 								Player.setGetOutOfJailChest(Game.getPlayerWhosTurnItIs(), true);
 							}
-						}
-						else if (playersJailCard == true && currentJailCard == true) {
+						} else if (playersJailCard == true && currentJailCard == true) {
 							System.out.println("Excellent! Both players are able to trade with current player.");
 							if (Player.getGetOutOfJailChance(player) == true) {
-							Player.setGetOutOfJailChance(Game.getPlayerWhosTurnItIs(), true);
-							Player.setGetOutOfJailChance(player, false);
+								Player.setGetOutOfJailChance(Game.getPlayerWhosTurnItIs(), true);
+								Player.setGetOutOfJailChance(player, false);
 							}
 							if (Player.getGetOutOfJailChest(player) == true) {
 								Player.setGetOutOfJailChest(Game.getPlayerWhosTurnItIs(), true);
 								Player.setGetOutOfJailChest(player, false);
 							}
-							if (Player.getGetOutOfJailChance(Game.getPlayerWhosTurnItIs()) == true){
-							Player.setGetOutOfJailChance(player, true);
-							Player.setGetOutOfJailChance(Game.getPlayerWhosTurnItIs(), false);
+							if (Player.getGetOutOfJailChance(Game.getPlayerWhosTurnItIs()) == true) {
+								Player.setGetOutOfJailChance(player, true);
+								Player.setGetOutOfJailChance(Game.getPlayerWhosTurnItIs(), false);
 							}
 							if (Player.getGetOutOfJailChest(Game.getPlayerWhosTurnItIs())) {
 								Player.setGetOutOfJailChest(player, true);
@@ -373,8 +374,9 @@ public class Trade {
 				}
 
 				if (selectWhatToModify == 3) {
-					boolean willYouTradePlayerProperty = ConsoleUI
-							.promptForBool("Would you like to trade some property " + Player.getPiece(player).name() + " ?" + "[Y/N]", "Y", "N");
+					boolean willYouTradePlayerProperty = ConsoleUI.promptForBool(
+							"Would you like to trade some property " + Player.getPiece(player).name() + " ?" + "[Y/N]",
+							"Y", "N");
 
 					if (willYouTradePlayerProperty == true) {
 						boolean isTradeTrue = true;
@@ -405,11 +407,12 @@ public class Trade {
 					System.out.println("Trade will commence");
 					Player.setMoney(player, -enter2Value);
 					Player.setMoney(Game.getPlayerWhosTurnItIs(), enter2Value);
-					System.out.println(Player.getPiece(Game.getPlayerWhosTurnItIs()).name() + " has " + enter2Value + " added to their account");
+					System.out.println(Player.getPiece(Game.getPlayerWhosTurnItIs()).name() + " has " + enter2Value
+							+ " added to their account");
 					Player.setMoney(Game.getPlayerWhosTurnItIs(), -enterValue);
 					Player.setMoney(player, enterValue);
-					System.out.println(Player.getPiece(player).name() + " has " + enterValue
-							+ " added to their account");
+					System.out
+							.println(Player.getPiece(player).name() + " has " + enterValue + " added to their account");
 					// MONEY
 
 				}
