@@ -300,7 +300,7 @@ public class Chance_Cards {
 		if (retVal == "P25HOUSEPHOTEL100") {// Finished?
 			if ((Player.getHousesOwned(Game.getPlayerWhosTurnItIs()) == 0)
 					&& Player.getHotelsOwned(Game.getPlayerWhosTurnItIs()) == 0) {
-				throw new IllegalArgumentException();
+				throw new NullPointerException("You were accessed for street repairs, you don't own any real estate");
 			}
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), Player.getHousesOwned(Game.getPlayerWhosTurnItIs()) * -20);
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), Player.getHotelsOwned(Game.getPlayerWhosTurnItIs()) * -100);
