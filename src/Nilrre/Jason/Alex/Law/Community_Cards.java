@@ -84,6 +84,7 @@ public class Community_Cards {
 		}
 		if (getCard == "Go to jail") {//Finished
 			Player.setInJail(Game.getPlayerWhosTurnItIs(), true);
+			Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 11);
 			System.out.println("Go to jail");
 		}
 
@@ -138,7 +139,7 @@ public class Community_Cards {
 		}
 		if(getCard == "You are accessed for street repairs"){//Finished
 			if ((Player.getHousesOwned(Game.getPlayerWhosTurnItIs()) == 0) && Player.getHotelsOwned(Game.getPlayerWhosTurnItIs()) == 0){
-				throw new IllegalArgumentException();
+				System.out.println("You were accessed for street repairs, you don't own any real estate");
 			}
 			Player.setMoney(Game.getPlayerWhosTurnItIs(),Player.getHousesOwned(Game.getPlayerWhosTurnItIs()) * -40);
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), Player.getHotelsOwned(Game.getPlayerWhosTurnItIs()) * -115);

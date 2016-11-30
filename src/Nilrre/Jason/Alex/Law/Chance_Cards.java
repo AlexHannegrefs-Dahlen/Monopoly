@@ -70,6 +70,7 @@ public class Chance_Cards {
 		}
 		if (retVal == "GTJ") {// Finished
 			Player.setInJail(Game.getPlayerWhosTurnItIs(), true);
+			Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 11);
 			System.out.println("Go to Jail");
 		}
 		if (retVal == "C50") {// Finished
@@ -303,7 +304,7 @@ public class Chance_Cards {
 		if (retVal == "P25HOUSEPHOTEL100") {// Finished?
 			if ((Player.getHousesOwned(Game.getPlayerWhosTurnItIs()) == 0)
 					&& Player.getHotelsOwned(Game.getPlayerWhosTurnItIs()) == 0) {
-				throw new NullPointerException("You were accessed for street repairs, you don't own any real estate");
+				System.out.println("You were accessed for street repairs, you don't own any real estate");
 			}
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), Player.getHousesOwned(Game.getPlayerWhosTurnItIs()) * -20);
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), Player.getHotelsOwned(Game.getPlayerWhosTurnItIs()) * -100);

@@ -223,5 +223,5 @@ public class Game {
 			Player.setPlayingGame(play, false);
 		}
 		Player.setMyTurn(play, false);
-	}
+	} 
 }
