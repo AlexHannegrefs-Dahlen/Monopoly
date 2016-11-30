@@ -153,12 +153,15 @@ public class Trade {
 				}
 			}
 
-			else if (menuSelect == 2) {
+			else {
 				System.out.println("There will be no trade");
 				exitTrade = false;
+<<<<<<< HEAD
+=======
+				return 0;
+>>>>>>> 983d36173df594e16b8494faae7da481c50dd228
 			}
 		}
-		return menuSelect;
 	}
 
 	public static int selectWhatOtherPlayerTrades(Player player) throws IOException {
