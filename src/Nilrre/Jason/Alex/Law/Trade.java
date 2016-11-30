@@ -153,15 +153,12 @@ public class Trade {
 				}
 			}
 
-			else if (menuSelect == 2) {
+			else {
 				System.out.println("There will be no trade");
 				exitTrade = false;
-				// exitTrade = ConsoleUI.promptForBool("Are you sure you want to
-				// quit trade?" + "[Y/N]", "Y", "N");
-
+				return 0;
 			}
 		}
-		return menuSelect;
 	}
 
 	public static int selectWhatOtherPlayerTrades(Player player) throws IOException {
@@ -430,14 +427,13 @@ public class Trade {
 		return acceptOrDecline;
 	}
 
-	public static Player callAllMethods(Player player) throws IOException {
+	public static void callAllMethods(Player player) throws IOException {
 		askCurrentPlayerForTrade(player);
 		if (exitTrade = false) {
-
+			return;
 		} else {
 			selectWhatOtherPlayerTrades(player);
 			acceptOrDeclinePlayerTradeRequest(player);
 		}
-		return null;
 	}
 }
