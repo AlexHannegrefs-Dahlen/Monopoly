@@ -637,9 +637,9 @@ System.out.println("not dis");
 			if(owner == null){
 				System.out.println("i like dik");
 			}
-			System.out.println(GamePieces.getGamePieces(Player.getPiece(moved)));
+			System.out.println((Player.getPiece(moved)));
 
-			System.out.println(GamePieces.getGamePieces(Player.getPiece(owner)));
+			System.out.println((Player.getPiece(owner)));
 			Player.setMoney(Board.b.getOwnedBy(Board.board[row][col]), +rent);
 			System.out.println("i do not accept");
 
