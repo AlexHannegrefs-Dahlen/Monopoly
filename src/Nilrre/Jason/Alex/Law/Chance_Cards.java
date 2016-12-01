@@ -20,7 +20,7 @@ public class Chance_Cards {
 		CARDS.add("GB3");/* go back 3 */
 		CARDS.add("ADV1");
 		CARDS.add("P15");
-		CARDS.add("ADV2");
+		CARDS.add("ADV2"); 
 		CARDS.add("PEP50");/* Pay Each Player */
 		CARDS.add("ADV2NEARRAIL");
 		CARDS.add("ADV2READRAIL");

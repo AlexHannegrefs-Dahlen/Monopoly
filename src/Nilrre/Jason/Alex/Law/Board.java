@@ -71,7 +71,6 @@ public class Board {
 				b.makeSpaceBlank(board[i][j]);
 			}
 		}
-
 	}
 
 	public void actualRent(BoardSpaces spaceNumber) {
@@ -164,7 +163,11 @@ public class Board {
 				}
 
 			}
+			
 			System.out.println();
+
 		}
+		System.out.println("\n==================================\n");
 	}
+
 }

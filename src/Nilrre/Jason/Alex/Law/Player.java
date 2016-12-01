@@ -177,11 +177,15 @@ public class Player {
 	}
 
 	public static void setMoney(Player moneyVal, int valuetoadd) throws IOException {
-		//delete this line
-		moneyVal.money += valuetoadd;
-		if (moneyVal.money < 0) {
-			System.out.println("You must mortgage to afford this payment. What would you like to mortgage?");
-		}
+//		if (moneyVal.money <= 0) {
+//			System.out.println("You must mortgage to afford this payment. What would you like to mortgage?");
+//		} else {
+		
+//		}else {
+			
+			moneyVal.money = (Player.getMoney(moneyVal) + valuetoadd);
+//		}
+//		}
 	}
 
 	public static void unmortgage(Player unmortgaging) throws IOException {
@@ -231,6 +235,9 @@ public class Player {
 	}
 
 	public static diffPieces getPiece(Player pieceFinder) {
+		if(pieceFinder == null){
+			System.out.println("There is no peice");
+		}
 		return pieceFinder.piece;
 	}
 
@@ -619,10 +626,22 @@ public class Player {
 			}
 		} else if (!Board.b.getMortgaged(Board.board[row][col])) {
 			Player owner = Board.b.getOwnedBy(Board.board[row][col]);
-				System.out.println("You owe " + owner.piece.name().toString() + ".");
-				Player.setMoney(moved, -Board.b.getRent(Board.board[row][col]));
-				Player.setMoney(owner, Board.b.getRent(Board.board[row][col]));
-			
+System.out.println("not dis");
+			// System.out.println("You owe " + owner.piece.name().toString() +
+			// ".");
+			// Player.setMoney(moved, -Board.b.getRent(Board.board[row][col]));
+			int rent = Board.b.getRent(Board.board[row][col]);
+			System.out.println("rent is $: " + rent);
+			Player.setMoney(moved, -rent);
+			if(owner == null){
+				System.out.println("i like dik");
+			}
+			System.out.println(GamePieces.getGamePieces(Player.getPiece(moved)));
+
+			System.out.println(GamePieces.getGamePieces(Player.getPiece(owner)));
+			Player.setMoney(Board.b.getOwnedBy(Board.board[row][col]), +rent);
+			System.out.println("i do not accept");
+
 		}
 	}
 
