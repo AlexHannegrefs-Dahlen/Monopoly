@@ -497,15 +497,12 @@ public class Property {
 		return rent;
 	}
 
-	public void LuxuryTax() throws IOException {
-		Player.setMoney(Game.getPlayerWhosTurnItIs(), -75);
-	}
-
 	public void ElectricCompany() throws IOException {
 		if (Board.b.getOwnedBy(Board.board[8][0]) == Board.b.getOwnedBy(Board.board[0][8])) {
-			Player.setMoney(Game.getPlayerWhosTurnItIs(), -(10 * Player.getAmountOnDie(Game.getPlayerWhosTurnItIs())));
+			Player.setMoney(Game.getPlayerWhosTurnItIs(),
+					(int) -(10 * Player.getAmountOnDie(Game.getPlayerWhosTurnItIs())));
 			Player.setMoney(Board.b.getOwnedBy(Board.board[8][0]),
-					(10 * Player.getAmountOnDie(Game.getPlayerWhosTurnItIs())));
+					(int) (10 * Player.getAmountOnDie(Game.getPlayerWhosTurnItIs())));
 		} else {
 			Player.setMoney(Game.getPlayerWhosTurnItIs(), -(4 * Player.getAmountOnDie(Game.getPlayerWhosTurnItIs())));
 			Player.setMoney(Board.b.getOwnedBy(Board.board[8][0]),

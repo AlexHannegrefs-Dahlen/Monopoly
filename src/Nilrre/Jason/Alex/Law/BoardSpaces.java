@@ -44,7 +44,7 @@ public class BoardSpaces {
 			if (mort && !space.mortgaged) {
 				Player.setMoney(space.ownedBy, space.morgageValue);
 			} else {
-				Player.setMoney(space.ownedBy, space.morgageValue * 1.1);
+				Player.setMoney(space.ownedBy, (int) (space.morgageValue * 1.1));
 			}
 			space.mortgaged = mort;
 		} else {
