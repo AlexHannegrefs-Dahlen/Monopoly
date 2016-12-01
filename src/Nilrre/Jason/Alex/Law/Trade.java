@@ -10,6 +10,7 @@ public class Trade {
 	// ArrayList<BoardSpaces>();
 	// private static ArrayList<BoardSpaces> tradingPlayerLand = new
 	// ArrayList<BoardSpaces>();
+	//not in use
 	private static boolean exitTrade;
 	private static boolean currentJailCard;
 	private static boolean playersJailCard;
@@ -23,7 +24,7 @@ public class Trade {
 		do {
 			pickedThemself = false;
 
-			inputPlayerNumber = ConsoleUI.promptForInt("Select player to trade with. 1 - 8", 1, 8);
+			inputPlayerNumber = ConsoleUI.promptForInt("Select a player to trade with. 1 - 8", 1, 8);
 
 			if (inputPlayerNumber == 1 && !(Game.returnPlayerOne().equals(Game.getPlayerWhosTurnItIs()))
 					&& Player.getPlayingGame(Game.returnPlayerOne())) {
@@ -58,14 +59,16 @@ public class Trade {
 	}
 
 	public static void askCurrentPlayerForTrade(Player player) throws IOException {
+		
 		exitTrade = true;
-		System.out.println("Would you like to continue trade?");
+		System.out.println("Are you sure you want to initiate trade?");
 		String[] currentPlayerSelection = new String[] { "Accept", "Decline" };
+		
 		int menuSelect = ConsoleUI.promptForMenuSelection(currentPlayerSelection, false);
 
 		if (menuSelect == 1) {
 
-			System.out.println("Please select something you would like to trade:");
+			System.out.println("Please select something you would like to give to " + Player.getPiece(player).name());
 			String[] currentPlayerChooseTrade = new String[] { "Money", "Get Out of Jail Free", "Properties" };
 			int selectWhatToTrade = ConsoleUI.promptForMenuSelection(currentPlayerChooseTrade, false);
 
@@ -78,8 +81,8 @@ public class Trade {
 					boolean amountRight = true;
 					do {
 						int playersMoney = Player.getMoney(Game.getPlayerWhosTurnItIs());
-						System.out.println("You have: " + playersMoney);
-						enterValue = ConsoleUI.promptForInt("Enter in the value of money you would like to exchange:",
+						System.out.println("You have: $" + playersMoney);
+						enterValue = ConsoleUI.promptForInt("Enter in a value of money you would like to exchange with " + Player.getPiece(player).name(),
 								0, Integer.MAX_VALUE);
 						amountRight = true;
 						exitTrade = true;
@@ -89,7 +92,7 @@ public class Trade {
 							amountRight = true;
 						} else {
 							System.out.println("Money value is sufficient!");
-							System.out.println("Amount To Be Exchanged: " + enterValue);
+							System.out.println("Amount To Be Exchanged: $" + enterValue);
 							amountRight = false;
 						}
 					} while (amountRight);
@@ -104,19 +107,19 @@ public class Trade {
 						.promptForBool("Would you like to trade your Get Out of Jail Card?" + "[Y/N]", "Y", "N");
 
 				if (decideToTradeJailCard == true) {
-					System.out.println("Checking to see if player has card");
+					System.out.println("Checking to see if " + Player.getPiece(Game.getPlayerWhosTurnItIs()).name() + " has card");
 					if (!Player.getGetOutOfJailChance(Game.getPlayerWhosTurnItIs())
 							&& !Player.getGetOutOfJailChest(Game.getPlayerWhosTurnItIs())) {
-						System.out.println("Sorry, you don't possess a Get Out of Jail Free card");
+						System.out.println("Sorry, " + Player.getPiece(Game.getPlayerWhosTurnItIs()).name() + " you don't possess a Get Out of Jail Free card");
 						currentJailCard = false;
 					} else if (Player.getGetOutOfJailChance(Game.getPlayerWhosTurnItIs())
 							|| Player.getGetOutOfJailChest(Game.getPlayerWhosTurnItIs())) {
-						System.out.println("Excellent! You are eligible for trade");
+						System.out.println("Excellent! " + Player.getPiece(Game.getPlayerWhosTurnItIs()).name() + ", you are eligible for trade");
 						currentJailCard = true;
 					}
 
 					else if (decideToTradeJailCard == false) {
-						System.out.println("No Get Out of Jail Free cards will be traded");
+						System.out.println("No Get Out of Jail Free cards will be given");
 					}
 				}
 			}
@@ -165,14 +168,14 @@ public class Trade {
 			}
 
 		} else {
-			System.out.println("There will be no trade");
+			System.out.println(Player.getPiece(player).name() + ", will be giving nothing to " + Player.getPiece(player).name());
 			exitTrade = false;
 		}
 	}
 
 	public static int selectWhatOtherPlayerTrades(Player player) throws IOException {
 
-		System.out.println("What would you like to take from Player:" + Player.getPiece(player).name());
+		System.out.println("What would you like to take from Player: " + Player.getPiece(player).name());
 		String[] tradingWithOtherPlayer = new String[] { "Money", "Get Out of Jail Free", "Properties" };
 		int requestOtherPlayerTrade = ConsoleUI.promptForMenuSelection(tradingWithOtherPlayer, false);
 
@@ -183,15 +186,11 @@ public class Trade {
 
 			if (exchangeMoneyWithOtherPlayer == true) {
 				int otherPlayersMoney = Player.getMoney(player);
-				System.out.println("Player has: " + otherPlayersMoney);
-
+				System.out.println("Player has: $" + otherPlayersMoney);
 				enter2Value = ConsoleUI.promptForInt("Enter in the value of money you would like to request", 0,
 						otherPlayersMoney);
-
-			}
-
-			else if (exchangeMoneyWithOtherPlayer == false) {
-				System.out.println("No cash will be exchanged");
+			} else if (exchangeMoneyWithOtherPlayer == false) {
+				System.out.println("No cash will be requested from " + Player.getPiece(player).name());
 				enter2Value = 0;
 			}
 			return enter2Value;
@@ -199,15 +198,15 @@ public class Trade {
 
 		if (requestOtherPlayerTrade == 2) {
 			boolean askPlayerForJailCard = ConsoleUI
-					.promptForBool("Would you like to request a Get out of jail card from "
+					.promptForBool("Would you like to request a Get Out of Jail Free card from "
 							+ Player.getPiece(player).name() + "?" + "[Y/N]", "Y", "N");
 
 			if (askPlayerForJailCard == true) {
-				System.out.println("Checking to see if player " + Player.getPiece(player).name() + " has a card");
+				System.out.println("Checking to see if Player: " + Player.getPiece(player).name() + " has a card");
 
 				if (!Player.getGetOutOfJailChance(player) && !Player.getGetOutOfJailChest(player)) {
-					System.out.println("Sorry, Player: " + Player.getPiece(player).name()
-							+ " doesn't possess a Get out of jail free card");
+					System.out.println("Sorry, " + Player.getPiece(player).name()
+							+ " doesn't possess a Get Out of Jail Free card");
 					playersJailCard = false;
 				} else if (Player.getGetOutOfJailChance(player) || Player.getGetOutOfJailChest(player)) {
 					System.out.println("Excellent! " + Player.getPiece(player).name() + " is eligible for trade");
@@ -216,7 +215,7 @@ public class Trade {
 			}
 
 			else if (askPlayerForJailCard == false) {
-				System.out.println("No Get Out of Jail Free cards will be traded");
+				System.out.println("No Get Out of Jail Free cards will be requested");
 			}
 		}
 		if (requestOtherPlayerTrade == 3) {
@@ -272,25 +271,25 @@ public class Trade {
 				int selectWhatToModify = ConsoleUI.promptForMenuSelection(modifyChoices, false);
 
 				if (selectWhatToModify == 1) {
-					boolean modifyExchange = ConsoleUI.promptForBool("Please modify exchange" + "[Y/N]", "Y", "N");
+					boolean modifyExchange = ConsoleUI.promptForBool("Will you modify money exchange?" + "[Y/N]", "Y", "N");
 					if (modifyExchange == true) {
 
 						boolean checkModifiedAmount = false;
 						while (!checkModifiedAmount) {
-							enter2Value = ConsoleUI.promptForInt("Modify money value", 0, Integer.MAX_VALUE);
+							enter2Value = ConsoleUI.promptForInt("Enter modified money value", 0, Integer.MAX_VALUE);
 							if (enter2Value > Player.getMoney(player)) {
 								System.out.println(Player.getPiece(player).name() + " you don't have that much money");
 								checkModifiedAmount = false;
 							} else {
 								System.out.println("Modified amount is sufficient");
-								System.out.println("Amount To Be Exchanged: " + enter2Value);
+								System.out.println("Amount To Be Exchanged (Modified): $" + enter2Value);
 								Player.setMoney(player, -enter2Value);
 								Player.setMoney(Game.getPlayerWhosTurnItIs(), enter2Value);
-								System.out.println(Player.getPiece(Game.getPlayerWhosTurnItIs()).name() + " has "
+								System.out.println(Player.getPiece(Game.getPlayerWhosTurnItIs()).name() + " has $"
 										+ enter2Value + " added to their account");
 								Player.setMoney(Game.getPlayerWhosTurnItIs(), -enterValue);
 								Player.setMoney(player, enterValue);
-								System.out.println(Player.getPiece(player).name() + " has " + enterValue
+								System.out.println(Player.getPiece(player).name() + " has $" + enterValue
 										+ " added to their account");
 								checkModifiedAmount = true;
 							}
@@ -298,7 +297,7 @@ public class Trade {
 					}
 
 					else if (modifyExchange == false) {
-						System.out.println("No cash will be exchanged");
+						System.out.println(Player.getPiece(player).name() + " will not be giving any cash to " + Player.getPiece(Game.getPlayerWhosTurnItIs()).name());
 						enter2Value = 0;
 						enterValue = 0;
 					}
@@ -306,7 +305,7 @@ public class Trade {
 
 				if (selectWhatToModify == 2) {
 					boolean modifyJailCard = ConsoleUI.promptForBool(Player.getPiece(player).name()
-							+ "Would you like to trade your Get Out of Jail Card?" + "[Y/N]", "Y", "N");
+							+ ", would you like to trade your Get Out of Jail Card?" + "[Y/N]", "Y", "N");
 
 					if (modifyJailCard == true) {
 						System.out.println("Checking to see if players have a card");
@@ -316,58 +315,55 @@ public class Trade {
 
 						else if (playersJailCard == true && currentJailCard == false) {
 							System.out.println(
-									"Excellent! " + Player.getPiece(Game.getPlayerWhosTurnItIs()).name() + " is able to trade with current player.");
+									"Excellent! " + Player.getPiece(player).name() + " is able to trade with " + Player.getPiece(Game.getPlayerWhosTurnItIs()).name());
 							if (Player.getGetOutOfJailChance(player) == true) {
+								System.out.println(Player.getPiece(player).name() + ", you will be giving away a Chance card");
 								Player.setGetOutOfJailChance(Game.getPlayerWhosTurnItIs(), true);
 								Player.setGetOutOfJailChance(player, false);
 							}
 							if (Player.getGetOutOfJailChest(player) == true) {
+								System.out.println(Player.getPiece(player).name() + ", you will be giving away a Community Chest card");
 								Player.setGetOutOfJailChest(Game.getPlayerWhosTurnItIs(), true);
 								Player.setGetOutOfJailChest(player, false);
 							}
 						} else if (playersJailCard == false && currentJailCard == true) {
-							System.out.println("Excellent! " + "current player can trade");
+							System.out.println("Excellent! " + Player.getPiece(Game.getPlayerWhosTurnItIs()).name() + " can trade with " + Player.getPiece(player).name());
 							if (Player.getGetOutOfJailChance(Game.getPlayerWhosTurnItIs()) == true) {
+								System.out.println(Player.getPiece(Game.getPlayerWhosTurnItIs()).name() + ", you will be giving away a Chance card");
 								Player.setGetOutOfJailChance(player, true);
 								Player.setGetOutOfJailChance(Game.getPlayerWhosTurnItIs(), false);
 							}
 							if (Player.getGetOutOfJailChest(Game.getPlayerWhosTurnItIs())) {
+								System.out.println(Player.getPiece(Game.getPlayerWhosTurnItIs()).name() + ", you will be giving away a Community Chest card");
 								Player.setGetOutOfJailChest(player, true);
 								Player.setGetOutOfJailChest(Game.getPlayerWhosTurnItIs(), true);
 							}
 						} else if (playersJailCard == true && currentJailCard == true) {
-							System.out.println("Excellent! Both players are able to trade with current player.");
+							System.out.println("Excellent! Both players are able to trade. Which seems kinda useless, but eh.");
 							if (Player.getGetOutOfJailChance(player) == true) {
+								System.out.println(Player.getPiece(player).name() + ", you will be giving away a Chance card");
 								Player.setGetOutOfJailChance(Game.getPlayerWhosTurnItIs(), true);
 								Player.setGetOutOfJailChance(player, false);
 							}
 							if (Player.getGetOutOfJailChest(player) == true) {
+								System.out.println(Player.getPiece(player).name() + ", you will be giving away a Community Chest card");
 								Player.setGetOutOfJailChest(Game.getPlayerWhosTurnItIs(), true);
 								Player.setGetOutOfJailChest(player, false);
 							}
 							if (Player.getGetOutOfJailChance(Game.getPlayerWhosTurnItIs()) == true) {
+								System.out.println(Player.getPiece(Game.getPlayerWhosTurnItIs()).name() + ", you will be giving away a Chance card");
 								Player.setGetOutOfJailChance(player, true);
 								Player.setGetOutOfJailChance(Game.getPlayerWhosTurnItIs(), false);
 							}
 							if (Player.getGetOutOfJailChest(Game.getPlayerWhosTurnItIs())) {
+								System.out.println(Player.getPiece(Game.getPlayerWhosTurnItIs()).name() + ", you will be giving away a Community Chest card");
 								Player.setGetOutOfJailChest(player, true);
 								Player.setGetOutOfJailChest(Game.getPlayerWhosTurnItIs(), true);
 							}
-							System.out.println("Excellent! " + Player.getPiece(player).name()
-									+ " is able to trade with current player.");
-							Player.giveJailCard(Game.getPlayerWhosTurnItIs());
-							Player.setGetOutOfJailChance(Game.getPlayerWhosTurnItIs(), true);
-							Player.setGetOutOfJailChance(player, false);
-						} else if (playersJailCard == false && currentJailCard == true) {
-							Player.giveJailCard(Game.getPlayerWhosTurnItIs());
-							Player.setGetOutOfJailChest(Game.getPlayerWhosTurnItIs(), true);
-							Player.setGetOutOfJailChest(player, false);
-							// if (!Player.getGetOutOfJailChance(player)
-							// && !Player.getGetOutOfJailChest(player))
 						}
 
 						else if (modifyJailCard == false) {
-							System.out.println("No Get out of jail free cards will be traded");
+							System.out.println("You will give away no Get Out of Jail Free cards");
 						}
 					}
 				}
@@ -409,26 +405,27 @@ public class Trade {
 
 			else {
 				System.out.println("Trade will commence");
+				System.out.println(Player.getPiece(Game.getPlayerWhosTurnItIs()).name() + " and " + Player.getPiece(player).name() + " have traded successfully");
 				Player.setMoney(player, -enter2Value);
 				Player.setMoney(Game.getPlayerWhosTurnItIs(), enter2Value);
-				System.out.println(Player.getPiece(Game.getPlayerWhosTurnItIs()).name() + " has " + enter2Value
+				System.out.println(Player.getPiece(Game.getPlayerWhosTurnItIs()).name() + " has $" + enter2Value
 						+ " added to their account");
 				Player.setMoney(Game.getPlayerWhosTurnItIs(), -enterValue);
 				Player.setMoney(player, enterValue);
-				System.out.println(Player.getPiece(player).name() + " has " + enterValue + " added to their account");
+				System.out.println(Player.getPiece(player).name() + " has $" + enterValue + " added to their account");
 				// MONEY
 
 			}
 		}
 
 		else {
-			System.out.println("Trade declined");
-			System.out.println("Let's restart the process");
+			System.out.println("Trade has been declined");
+			System.out.println("Booting back to game");
 			enterValue = 0;
 			enter2Value = 0;
 			currentJailCard = null != null;
 			playersJailCard = null != null;
-			whatPlayerToTradeWith();
+//			whatPlayerToTradeWith();
 		}
 		return acceptOrDecline;
 	}
