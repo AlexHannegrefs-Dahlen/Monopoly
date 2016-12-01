@@ -258,7 +258,7 @@ public class Trade {
 		System.out.println("Player: " + Player.getPiece(player).name() + " what will you do?");
 
 		boolean acceptOrDecline = ConsoleUI.promptForBool(
-				Player.getPiece(player).name() + "would you like to trade with the player intiating trade?" + "[Y/N]",
+				Player.getPiece(player).name() + ", would you like to trade with the player intiating trade?" + "[Y/N]",
 				"Y", "N");
 
 		if (acceptOrDecline == true) {
