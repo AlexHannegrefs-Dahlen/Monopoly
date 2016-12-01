@@ -76,12 +76,8 @@ public class Chance_Cards {
 			System.out.println("Bank pays your dividend of $50");
 		}
 		if (retVal == "GB3") {// Finished
-			Game.getPlayerWhosTurnItIs();
-			if(Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) == 3){
-				Player.spaceNumberToBoardCords(40);
-			}
 			Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(),
-					(Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs())) - 3);
+					Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) - 3);
 			System.out.println("Go Back 3 Steps");
 		}
 		if (retVal == "ADV1") {// Finished
@@ -231,14 +227,10 @@ public class Chance_Cards {
 				int col12 = space12[1];
 				if (Game.getPlayerWhosTurnItIs() != Board.b.getOwnedBy(Board.board[row12][col12])
 						&& Board.b.getOwnedBy(Board.board[row12][col12]) != null) {
-					int[] space121 = Player.spaceNumberToBoardCords(13);
-					int row121 = space121[0];
-					int col121 = space121[1];
-					int val = Player.getAmountOnDie(Game.getPlayerWhosTurnItIs()) * 10;
-					Player.setMoney(Game.getPlayerWhosTurnItIs(), -val);
-					Player.setMoney(Board.b.getOwnedBy(Board.board[row121][col121]), val);
-					System.out.println("But the Space is already Taken, you pay $" + val);
-
+					int payment = 10 * Player.getAmountOnDie(Game.getPlayerWhosTurnItIs());
+					Player.setMoney(Game.getPlayerWhosTurnItIs(), -payment);
+					Player.setMoney(Board.b.getOwnedBy(Board.board[row12][col12]), payment);
+					System.out.println("But the property is owned, you have to pay $" + payment);
 				} else {
 					Player.checkSpaceMovedToForOwner(row12, col12, Game.getPlayerWhosTurnItIs());
 				}
@@ -252,65 +244,64 @@ public class Chance_Cards {
 				int col12 = space12[1];
 				if (Game.getPlayerWhosTurnItIs() != Board.b.getOwnedBy(Board.board[row12][col12])
 						&& Board.b.getOwnedBy(Board.board[row12][col12]) != null) {
-					int[] space121 = Player.spaceNumberToBoardCords(29);
-					int row121 = space121[0];
-					int col121 = space121[1];
-					int val = Player.getAmountOnDie(Game.getPlayerWhosTurnItIs()) * 10;
-					Player.setMoney(Game.getPlayerWhosTurnItIs(), -val);
-					Player.setMoney(Board.b.getOwnedBy(Board.board[row121][col121]), val);
-					System.out.println("But the Space is already Taken, you pay $" + val);
+					int payment = 10 * Player.getAmountOnDie(Game.getPlayerWhosTurnItIs());
+					Player.setMoney(Game.getPlayerWhosTurnItIs(), -payment);
+					Player.setMoney(Board.b.getOwnedBy(Board.board[row12][col12]), payment);
+					System.out.println("But the property is owned, you have to pay $" + payment);
+				} else {
+					Player.checkSpaceMovedToForOwner(row12, col12, Game.getPlayerWhosTurnItIs());
 				}
-			}
-			if (Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) == 37) {
-				Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 13);
-				System.out.println("You've landed on Electric Company");
-				int[] space12 = Player.spaceNumberToBoardCords(13);
-				int row12 = space12[0];
-				int col12 = space12[1];
-				if (Game.getPlayerWhosTurnItIs() != Board.b.getOwnedBy(Board.board[row12][col12])
-						&& Board.b.getOwnedBy(Board.board[row12][col12]) != null) {
+				if (Player.getSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs()) == 37) {
+					Player.setSpaceCurrentlyOn(Game.getPlayerWhosTurnItIs(), 13);
+					System.out.println("You've landed on Electric Company");
 					int[] space121 = Player.spaceNumberToBoardCords(13);
 					int row121 = space121[0];
 					int col121 = space121[1];
-					int val = Player.getAmountOnDie(Game.getPlayerWhosTurnItIs()) * 10;
-					Player.setMoney(Game.getPlayerWhosTurnItIs(), -val);
-					Player.setMoney(Board.b.getOwnedBy(Board.board[row121][col121]), val);
-					System.out.println("But the Space is already Taken, you pay $" + val);
-					Player.setMoney(Game.getPlayerWhosTurnItIs(), 200);
+					if (Game.getPlayerWhosTurnItIs() != Board.b.getOwnedBy(Board.board[row121][col121])
+							&& Board.b.getOwnedBy(Board.board[row121][col121]) != null) {
+						int payment = 10 * Player.getAmountOnDie(Game.getPlayerWhosTurnItIs());
+						Player.setMoney(Game.getPlayerWhosTurnItIs(), -payment);
+						Player.setMoney(Board.b.getOwnedBy(Board.board[row12][col12]), payment);
+						System.out.println("But the property is owned, you have to pay $" + payment);
+					} else {
+						Player.checkSpaceMovedToForOwner(row121, col121, Game.getPlayerWhosTurnItIs());
+					}
 				}
 			}
-		}
-		if (retVal == "C150") {// Finished
-			Player.setMoney(Game.getPlayerWhosTurnItIs(), 150);
-			System.out.println("Your Loan matures, Collect $150");
-		}
-		if (retVal == "C100") {// Finished
-			Player.setMoney(Game.getPlayerWhosTurnItIs(), 100);
-			System.out.println("you won a crossword competition, Collect $100");
-		}
-		if (retVal == "GETOUT") {// Finished
-			Player.setGetOutOfJailChance(Game.getPlayerWhosTurnItIs(), true);
-			CARDS.remove("GETOUT");
-			/*if (UsedCardJail == 0) {
+			if (retVal == "C150") {// Finished
+				Player.setMoney(Game.getPlayerWhosTurnItIs(), 150);
+				System.out.println("Your Loan matures, Collect $150");
+			}
+			if (retVal == "C100") {// Finished
+				Player.setMoney(Game.getPlayerWhosTurnItIs(), 100);
+				System.out.println("you won a crossword competition, Collect $100");
+			}
+			if (retVal == "GETOUT") {// Finished
+				System.out.println("You gained a get out of jail free card");
 				Player.setGetOutOfJailChance(Game.getPlayerWhosTurnItIs(), true);
-				UsedCardJail++;
-				System.out.println("You gained a Get out of Jail card");
-			}
-			else if (UsedCardJail > 0) {
-				DRAW();
-			}*/
+				CARDS.remove("GETOUT");
+				/*
+				 * if (UsedCardJail == 0) {
+				 * Player.setGetOutOfJailChance(Game.getPlayerWhosTurnItIs(),
+				 * true); UsedCardJail++;
+				 * System.out.println("You gained a Get out of Jail card"); }
+				 * else if (UsedCardJail > 0) { DRAW(); }
+				 */
 
-		}
-		if (retVal == "P25HOUSEPHOTEL100") {// Finished?
-			if ((Player.getHousesOwned(Game.getPlayerWhosTurnItIs()) == 0)
-					&& Player.getHotelsOwned(Game.getPlayerWhosTurnItIs()) == 0) {
-				System.out.println("You were accessed for street repairs, you don't own any real estate");
 			}
-			Player.setMoney(Game.getPlayerWhosTurnItIs(), Player.getHousesOwned(Game.getPlayerWhosTurnItIs()) * -20);
-			Player.setMoney(Game.getPlayerWhosTurnItIs(), Player.getHotelsOwned(Game.getPlayerWhosTurnItIs()) * -100);
-			System.out.println("You are accessed for street repairs, you pay $"
-					+ (((Player.getHousesOwned(Game.getPlayerWhosTurnItIs())) * 20)
-							+ (Player.getHotelsOwned(Game.getPlayerWhosTurnItIs()) * 100)));
+			if (retVal == "P25HOUSEPHOTEL100") {// Finished?
+				if ((Player.getHousesOwned(Game.getPlayerWhosTurnItIs()) == 0)
+						&& Player.getHotelsOwned(Game.getPlayerWhosTurnItIs()) == 0) {
+					System.out.println("You were accessed for street repairs, you don't own any real estate");
+				}
+				Player.setMoney(Game.getPlayerWhosTurnItIs(),
+						Player.getHousesOwned(Game.getPlayerWhosTurnItIs()) * -20);
+				Player.setMoney(Game.getPlayerWhosTurnItIs(),
+						Player.getHotelsOwned(Game.getPlayerWhosTurnItIs()) * -100);
+				System.out.println("You are accessed for street repairs, you pay $"
+						+ (((Player.getHousesOwned(Game.getPlayerWhosTurnItIs())) * 20)
+								+ (Player.getHotelsOwned(Game.getPlayerWhosTurnItIs()) * 100)));
+			}
 		}
 	}
 }

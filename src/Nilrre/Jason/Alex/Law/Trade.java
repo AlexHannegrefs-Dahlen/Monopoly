@@ -1,7 +1,6 @@
 package Nilrre.Jason.Alex.Law;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 //added existing BoardSpaces arraylist for trading properties
 public class Trade {
