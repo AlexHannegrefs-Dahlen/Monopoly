@@ -1,4 +1,5 @@
 package Nilrre.Jason.Alex.Law;
+
 //
 import java.io.IOException;
 
@@ -26,15 +27,14 @@ public class BoardSpaces {
 	private boolean mortgaged;
 	private int landValue;
 
-	
-	public int getLandValue(BoardSpaces space){
+	public int getLandValue(BoardSpaces space) {
 		return space.landValue;
 	}
-	
-	public void setLandValue(BoardSpaces space, int value){
+
+	public void setLandValue(BoardSpaces space, int value) {
 		space.landValue = value;
 	}
-	
+
 	public boolean getMortgaged(BoardSpaces space) {
 		return space.mortgaged;
 	}
@@ -53,10 +53,12 @@ public class BoardSpaces {
 	}
 
 	public Player getOwnedBy(BoardSpaces space) {
+		System.out.println("loser me dik");
 		return space.ownedBy;
 	}
 
 	public void setOwnedBy(Player buying, BoardSpaces space) {
+		System.out.println("winner me dik");
 		space.ownedBy = buying;
 	}
 
@@ -116,13 +118,13 @@ public class BoardSpaces {
 		return space.boardSpaceNumber;
 
 	}
-	
-	public void setIsAvailable(BoardSpaces space, boolean avail){
+
+	public void setIsAvailable(BoardSpaces space, boolean avail) {
 		space.isAvailable = avail;
 	}
 
-	public void makeSpace(BoardSpaces space, SpaceColor color, String name, int rent, int morgage, int housePrice, int PropertyValue,
-			boolean isAvail, SpaceType Type, int boardSpaceNumber) {
+	public void makeSpace(BoardSpaces space, SpaceColor color, String name, int rent, int morgage, int housePrice,
+			int PropertyValue, boolean isAvail, SpaceType Type, int boardSpaceNumber) {
 		space.isAvailable = isAvail;
 		space.color = color;
 		space.name = name;
