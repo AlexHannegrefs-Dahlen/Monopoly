@@ -15,6 +15,8 @@ public class Trade {
 	private static boolean playersJailCard;
 	private static int enterValue = 0;
 	private static int enter2Value = 0;
+	private static int landToTrade = 0;
+	private static int requestLand = 0;
 	private static Player player = new Player();
 
 	public static Player whatPlayerToTradeWith() throws IOException {
@@ -139,7 +141,7 @@ public class Trade {
 							System.out.println("What property will you be trading?");
 							System.out.println(Player.getland(Game.getPlayerWhosTurnItIs()));
 							// tradingLand.addAll(Player.getland(Game.getPlayerWhosTurnItIs()));
-							int landToTrade = ConsoleUI.promptForInt(
+							landToTrade = ConsoleUI.promptForInt(
 									"Select what property you want to trade and remove from your inventory", 1, 40);
 							int[] space = Player.spaceNumberToBoardCords(landToTrade);
 							int row = 0;
@@ -245,7 +247,7 @@ public class Trade {
 					do {
 						System.out.println("What property do you want?");
 						System.out.println(Player.getland(player));
-						int requestLand = ConsoleUI.promptForInt("Select what property you want to take", 1,
+						requestLand = ConsoleUI.promptForInt("Select what property you want to take", 1,
 						40);
 						int[] space = Player.spaceNumberToBoardCords(requestLand);
 						int row = 0;
@@ -410,14 +412,15 @@ public class Trade {
 							    do{
 								System.out.println("What property do you want?");
 								System.out.println(Player.getland(Game.getPlayerWhosTurnItIs()));
-								int modifyLand = ConsoleUI.promptForInt("Select what property you want to take", 1,
+								requestLand = 0;
+								requestLand = ConsoleUI.promptForInt("Select what property you want to take", 1,
 										40);
-								int [] space = Player.spaceNumberToBoardCords(modifyLand);
+								int [] space = Player.spaceNumberToBoardCords(requestLand);
 								int row = 0;
 								int col = 0;
 								for(int i = 1; i < 11; i++){
 									for (int j = 1; j < 11; j++){
-										if(Board.b.getBoardSpaceNumber(Board.board[i][j]) == modifyLand){
+										if(Board.b.getBoardSpaceNumber(Board.board[i][j]) == requestLand){
 											row = i;
 											col = j;
 										}
@@ -439,7 +442,7 @@ public class Trade {
 								continuePropModification = false;
 							}
 						}while (!isModifyTrue);
-
+						
 					} else if (willYouModifyPlayerProperty == false) {
 						System.out.println("No property will be asked of");
 					}
@@ -448,6 +451,7 @@ public class Trade {
 
 			else {
 				System.out.println("Trade will commence");
+				
 				System.out.println(Player.getPiece(Game.getPlayerWhosTurnItIs()).name() + " and " + Player.getPiece(player).name() + " have traded successfully");
 				Player.setMoney(player, -enter2Value);
 				Player.setMoney(Game.getPlayerWhosTurnItIs(), enter2Value);
@@ -510,6 +514,7 @@ public class Trade {
 				}
 				//Jail
 				
+				
 			}
 		}
 
@@ -520,6 +525,8 @@ public class Trade {
 			enter2Value = 0;
 			currentJailCard = null != null;
 			playersJailCard = null != null;
+			landToTrade = 0;
+			requestLand = 0;
 //			whatPlayerToTradeWith();
 		}
 		return acceptOrDecline;
