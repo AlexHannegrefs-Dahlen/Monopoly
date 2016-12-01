@@ -235,7 +235,7 @@ public class Player {
 	}
 
 	public static diffPieces getPiece(Player pieceFinder) {
-		if(pieceFinder == null){
+		if(pieceFinder.piece == null){
 			System.out.println("There is no peice");
 		}
 		return pieceFinder.piece;
