@@ -617,10 +617,12 @@ public class Player {
 			}
 		} else if (!Board.b.getMortgaged(Board.board[row][col])) {
 			Player owner = Board.b.getOwnedBy(Board.board[row][col]);
-				System.out.println("You owe " + owner.piece.name().toString() + ".");
-				Player.setMoney(moved, -Board.b.getRent(Board.board[row][col]));
-				Player.setMoney(owner, Board.b.getRent(Board.board[row][col]));
-			
+//				System.out.println("You owe " + owner.piece.name().toString() + ".");
+//				Player.setMoney(moved, -Board.b.getRent(Board.board[row][col]));
+				int rent = Board.b.getRent(Board.board[row][col]);
+				Player.setMoney(moved, -rent);
+			Player.setMoney(owner, rent);
+			System.out.println("rent is $" + rent);
 		}
 	}
 
