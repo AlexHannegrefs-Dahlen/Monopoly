@@ -156,6 +156,7 @@ public class Player {
 	public static void buyLand(Player land, BoardSpaces property, int price) throws IOException {
 		land.land.add(property);
 		property.setIsAvailable(property, false);
+		property.setOwnedBy(land, property);
 		Player.setMoney(land, -price);
 	}
 
