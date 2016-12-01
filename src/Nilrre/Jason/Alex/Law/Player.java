@@ -634,9 +634,6 @@ System.out.println("not dis");
 			int rent = Board.b.getRent(Board.board[row][col]);
 			System.out.println("rent is $: " + rent);
 			Player.setMoney(moved, -rent);
-			if(owner == null){
-				System.out.println("i like dik");
-			}
 			System.out.println(GamePieces.getGamePieces(Player.getPiece(moved)));
 
 			System.out.println(GamePieces.getGamePieces(Player.getPiece(owner)));

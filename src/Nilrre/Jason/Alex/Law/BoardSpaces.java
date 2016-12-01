@@ -53,12 +53,10 @@ public class BoardSpaces {
 	}
 
 	public Player getOwnedBy(BoardSpaces space) {
-		System.out.println("loser me dik");
 		return space.ownedBy;
 	}
 
 	public void setOwnedBy(Player buying, BoardSpaces space) {
-		System.out.println("winner me dik");
 		space.ownedBy = buying;
 	}
 
