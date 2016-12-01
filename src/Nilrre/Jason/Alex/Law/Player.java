@@ -256,6 +256,7 @@ public class Player {
 				System.out.println("Sorry. Piece Already Taken");
 			} else {
 				GamePieces.takePiece(newPiece.piece);
+				Player.setPiece(newPiece);
 			}
 		} while (pieceAlreadyTaken);
 	}
