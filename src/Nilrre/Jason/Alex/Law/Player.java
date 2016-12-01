@@ -177,16 +177,10 @@ public class Player {
 	}
 
 	public static void setMoney(Player moneyVal, int valuetoadd) throws IOException {
-		// if (moneyVal.money <= 0) {
-		// System.out.println("You must mortgage to afford this payment. What
-		// would you like to mortgage?");
-		// } else {
-
-		// }else {
-
-		moneyVal.money = (Player.getMoney(moneyVal) + valuetoadd);
-		// }
-		// }
+		moneyVal.money = Player.getMoney(moneyVal) + valuetoadd;
+		if (moneyVal.money <= 0) {
+			System.out.println("You must mortgage to afford this payment. What would you like to mortgage?");
+		}
 	}
 
 	public static void unmortgage(Player unmortgaging) throws IOException {
@@ -245,7 +239,6 @@ public class Player {
 	public static void setPiece(Player newPiece) throws IOException {
 		boolean pieceAlreadyTaken;
 		do {
-
 			for (int i = 0; i < GamePieces.getPieces().length; i++) {
 				System.out.print(i + 1 + ": " + GamePieces.getPieces()[i] + " ");
 			}
@@ -257,7 +250,6 @@ public class Player {
 				System.out.println("Sorry. Piece Already Taken");
 			} else {
 				GamePieces.takePiece(newPiece.piece);
-				setPiece(newPiece);
 			}
 		} while (pieceAlreadyTaken);
 	}
