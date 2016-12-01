@@ -2,7 +2,32 @@ package Nilrre.Jason.Alex.Law;
 
 import java.io.IOException;
 
+
 public class LandValue {
+	
+	public static void startUpgrade() throws IOException{
+		String[] colors = new String[]{"1: Purple", "2: Silver", "3: Pink", "4: Orange", "5: Red", "6: Yellow", "7: Green", "8: Blue"};
+		int select = ConsoleUI.promptForInt("What color would you like to buy upgrades for?" + colors, 1, 8);
+		if(select == 1){
+			buyPurpleProperty();
+		}else if(select == 2){
+			buySilverProperty();
+		}else if(select == 3){
+			buyPinkProperty();
+		}else if (select == 4){
+			buyOrangeProperty();
+		}else if (select == 5){
+			buyRedProperty();
+		}else if (select == 6){
+			buyYellowProperty();
+		}else if (select == 7){
+			buyGreenProperty();
+		}else if(select == 8){
+			buyBlueProperty();
+		}else{
+			startUpgrade();
+		}
+				}
 
 	public static void buyPurpleProperty() throws IOException{
 		if(Game.getPlayerWhosTurnItIs() == Board.board[10][9].getOwnedBy(Board.board[10][9]) && Game.getPlayerWhosTurnItIs() == Board.board[10][7].getOwnedBy(Board.board[10][7])){

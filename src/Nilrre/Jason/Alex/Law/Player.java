@@ -157,7 +157,6 @@ public class Player {
 		land.land.add(property);
 		property.setIsAvailable(property, false);
 		Player.setMoney(land, -price);
-		// test for jason
 	}
 
 	public static int getJailcard(Player jailcard) {
@@ -618,7 +617,7 @@ public class Player {
 			}
 		} else if (!Board.b.getMortgaged(Board.board[row][col])) {
 			Player owner = Board.b.getOwnedBy(Board.board[row][col]);
-				//System.out.println("You owe " + owner.piece.toString() + ".");
+				System.out.println("You owe " + owner.piece.name().toString() + ".");
 				Player.setMoney(moved, -Board.b.getRent(Board.board[row][col]));
 				Player.setMoney(owner, Board.b.getRent(Board.board[row][col]));
 			
@@ -636,8 +635,8 @@ public class Player {
 		return rolledDoubles;
 	}
 
-	public static void buyHousesOrHotel(Player upgrading) {
-		// LandValue;
+	public static void buyHousesOrHotel() throws IOException {
+		LandValue.startUpgrade();
 	}
 
 	public static void trade(Player trading) throws IOException {
