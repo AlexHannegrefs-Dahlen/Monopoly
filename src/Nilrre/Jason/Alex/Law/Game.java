@@ -209,7 +209,7 @@ public class Game {
 		if (turnSelect == 1) {
 			Player.roll(play);
 		} else if (turnSelect == 2) {
-			Player.buyHousesOrHotel(play);
+			Player.buyHousesOrHotel();
 		} else if (turnSelect == 3) {
 			Player.trade(play);
 		} else if (turnSelect == 4) {
