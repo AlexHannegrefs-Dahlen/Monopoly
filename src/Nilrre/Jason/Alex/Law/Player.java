@@ -176,6 +176,7 @@ public class Player {
 	}
 
 	public static void setMoney(Player moneyVal, int valuetoadd) throws IOException {
+		//delete this line
 		moneyVal.money += valuetoadd;
 		if (moneyVal.money < 0) {
 			System.out.println("You must mortgage to afford this payment. What would you like to mortgage?");
