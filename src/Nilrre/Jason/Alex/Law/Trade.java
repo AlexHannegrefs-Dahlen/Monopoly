@@ -153,7 +153,9 @@ public class Trade {
 								if (Board.b.getOwnedBy(Board.board[row][col]) != (Game.getPlayerWhosTurnItIs())) {
 									ownLand = false;
 								} else {
-									Player.getland(Game.getPlayerWhosTurnItIs()).remove(Board.board[row][col]);
+									//Player.getland(Game.getPlayerWhosTurnItIs()).remove(Board.board[row][col]);
+									Player.removeLand(Game.getPlayerWhosTurnItIs(), Board.board[row][col]);
+									Player.buyLand(player, Board.board[row][col], 0);
 									decideTrade = true;
 									continuePropTrade = true;
 									ownLand = true;
