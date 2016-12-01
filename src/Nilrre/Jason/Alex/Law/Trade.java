@@ -125,16 +125,16 @@ public class Trade {
 
 			else if (selectWhatToTrade == 3) {
 				boolean decideToTradeProperty = ConsoleUI
-						.promptForBool("Would you like to trade some property?" + "[Y/N]", "Y", "N");
+						.promptForBool(Player.getPiece(Game.getPlayerWhosTurnItIs()).name() + ", would you like to trade some property?" + "[Y/N]", "Y", "N");
 
 				if (decideToTradeProperty == true) {
 					boolean decideTrade = true;
-					while (decideTrade) {
+					do {
 						boolean continuePropTrade = ConsoleUI
 								.promptForBool("Would you like to continue trade?" + "[Y/N]", "Y", "N");
 
 						if (continuePropTrade == true) {
-							boolean ownLand;
+							boolean ownLand = true;
 							do{
 							System.out.println("What property will you be trading?");
 							System.out.println(Player.getland(Game.getPlayerWhosTurnItIs()));
@@ -142,23 +142,35 @@ public class Trade {
 							int landToTrade = ConsoleUI.promptForInt(
 									"Select what property you want to trade and remove from your inventory", 1, 40);
 							int[] space = Player.spaceNumberToBoardCords(landToTrade);
-							int row = space[0];
-							int col = space[1];
-							if (!Board.b.getOwnedBy(Board.board[row][col]).equals(Game.getPlayerWhosTurnItIs())) {
-								ownLand = false;
+							int row = 0;
+							int col = 0;
+							for(int i = 1; i < 11; i++){
+								for (int j = 1; j < 11; j++){
+									if(Board.b.getBoardSpaceNumber(Board.board[i][j]) == landToTrade){
+										row = i;
+										col = j;
+									}
+									else if (Board.b.getBoardSpaceNumber(Board.board[i][j]) != landToTrade){
+										System.out.println("You don't own this");
+										
+									}
+								}
+							}
+							if (Board.b.getOwnedBy(Board.board[row][col]) != (Game.getPlayerWhosTurnItIs())) {
+							ownLand = false;
 							} else {
 								Player.getland(Game.getPlayerWhosTurnItIs()).remove(Board.board[row][col]);
 								decideTrade = true;
 								continuePropTrade = true;
 								ownLand = true;
 							}
-							}while(!ownLand);
+							}while(ownLand);
 						} else {
 							System.out.println("No more property will be traded");
 							decideTrade = true;
 							continuePropTrade = false;
 						}
-					}
+					}while (!decideTrade);
 				}
 
 				else if (decideToTradeProperty == false) {
@@ -195,7 +207,7 @@ public class Trade {
 			return enter2Value;
 		}
 
-		if (requestOtherPlayerTrade == 2) {
+		else if (requestOtherPlayerTrade == 2) {
 			boolean askPlayerForJailCard = ConsoleUI
 					.promptForBool("Would you like to request a Get Out of Jail Free card from "
 							+ Player.getPiece(player).name() + "?" + "[Y/N]", "Y", "N");
@@ -217,7 +229,7 @@ public class Trade {
 				System.out.println("No Get Out of Jail Free cards will be requested");
 			}
 		}
-		if (requestOtherPlayerTrade == 3) {
+		else if (requestOtherPlayerTrade == 3) {
 			boolean requestToTradePlayerProperty = ConsoleUI.promptForBool(
 					"Would you like to request some property from " + Player.getPiece(player).name() + " ?" + "[Y/N]",
 					"Y", "N");
@@ -225,28 +237,43 @@ public class Trade {
 			if (requestToTradePlayerProperty == true) {
 				boolean tradeRequest = true;
 
-				while (tradeRequest) {
+				do {
 					boolean continuePropTrade = ConsoleUI.promptForBool("Would you like to continue trade?" + "[Y/N]",
 							"Y", "N");
 					if (continuePropTrade == true) {
+					boolean ownLand = true;
+					do {
 						System.out.println("What property do you want?");
 						System.out.println(Player.getland(player));
 						int requestLand = ConsoleUI.promptForInt("Select what property you want to take", 1,
-						Player.getland(player).size());
+						40);
 						int[] space = Player.spaceNumberToBoardCords(requestLand);
-						int row = space[0];
-						int col = space[1];
+						int row = 0;
+						int col = 0;
+						for(int i = 1; i < 11; i++){
+							for (int j = 1; j < 11; j++){
+								if(Board.b.getBoardSpaceNumber(Board.board[i][j]) == requestLand){
+									row = i;
+									col = j;
+								}
+							}
+						}
+						if (Board.b.getOwnedBy(Board.board[row][col]) != (player)) {	
+							ownLand = false;
+						} else {
 						Player.getland(player).remove(Board.board[row][col]);
 						tradeRequest = true;
 						continuePropTrade = true;
-					} else {
-						System.out.println("No more property will be asked of");
-						tradeRequest = true;
-						continuePropTrade = false;
+						ownLand = true;
+					} 
+			}while (ownLand);
+		} else {
+					System.out.println("No more property will be asked of");
+					tradeRequest = true;
+					continuePropTrade = false;
 					}
-				}
+				}while (!tradeRequest);
 			}
-
 			else if (requestToTradePlayerProperty == false) {
 				System.out.println("No property will be asked of");
 			}
@@ -302,7 +329,7 @@ public class Trade {
 					}
 				}
 
-				if (selectWhatToModify == 2) {
+				else if (selectWhatToModify == 2) {
 					boolean modifyJailCard = ConsoleUI.promptForBool(Player.getPiece(player).name()
 							+ ", would you like to trade your Get Out of Jail Card?" + "[Y/N]", "Y", "N");
 
@@ -367,36 +394,53 @@ public class Trade {
 					}
 				}
 
-				if (selectWhatToModify == 3) {
-					boolean willYouTradePlayerProperty = ConsoleUI.promptForBool(
+				else if (selectWhatToModify == 3) {
+					boolean willYouModifyPlayerProperty = ConsoleUI.promptForBool(
 							"Would you like to trade some property " + Player.getPiece(player).name() + " ?" + "[Y/N]",
 							"Y", "N");
 
-					if (willYouTradePlayerProperty == true) {
-						boolean isTradeTrue = true;
-						while (isTradeTrue) {
-							boolean continuePropTrade = ConsoleUI
+					if (willYouModifyPlayerProperty == true) {
+						boolean isModifyTrue = true;
+						do {
+							boolean continuePropModification = ConsoleUI
 									.promptForBool("Would you like to continue trade?" + "[Y/N]", "Y", "N");
 
-							if (continuePropTrade == true) {
+							if (continuePropModification == true) {
+								boolean ownLand = true;
+							    do{
 								System.out.println("What property do you want?");
 								System.out.println(Player.getland(Game.getPlayerWhosTurnItIs()));
-								int tradeLand = ConsoleUI.promptForInt("Select what property you want to take", 1,
+								int modifyLand = ConsoleUI.promptForInt("Select what property you want to take", 1,
 										40);
-								int [] space = Player.spaceNumberToBoardCords(tradeLand);
-								int row = space[0];
-								int col = space[1];
+								int [] space = Player.spaceNumberToBoardCords(modifyLand);
+								int row = 0;
+								int col = 0;
+								for(int i = 1; i < 11; i++){
+									for (int j = 1; j < 11; j++){
+										if(Board.b.getBoardSpaceNumber(Board.board[i][j]) == modifyLand){
+											row = i;
+											col = j;
+										}
+									}
+								}
+							if (Board.b.getOwnedBy(Board.board[row][col]) != (player)) {	
+									ownLand = false;
+							} 
+							else{
 								Player.getland(Game.getPlayerWhosTurnItIs()).remove(Board.board[row][col]);
-								isTradeTrue = true;
-								continuePropTrade = true;
-							} else {
+								isModifyTrue = true;
+								continuePropModification = true;
+								ownLand = true;
+							} 
+						}while (ownLand);
+					}		    else {
 								System.out.println("No more property will be asked of");
-								isTradeTrue = true;
-								continuePropTrade = false;
+								isModifyTrue = true;
+								continuePropModification = false;
 							}
+						}while (!isModifyTrue);
 
-						}
-					} else if (willYouTradePlayerProperty == false) {
+					} else if (willYouModifyPlayerProperty == false) {
 						System.out.println("No property will be asked of");
 					}
 				}
@@ -413,7 +457,59 @@ public class Trade {
 				Player.setMoney(player, enterValue);
 				System.out.println(Player.getPiece(player).name() + " has $" + enterValue + " added to their account");
 				// MONEY
-
+				if (playersJailCard == false && currentJailCard == false) {
+					System.out.println("Sorry, no player possesses a Get Out of Jail Free card");
+				}
+				else if (playersJailCard == true && currentJailCard == false) {
+					System.out.println(
+							"Excellent! " + Player.getPiece(player).name() + " is able to trade with " + Player.getPiece(Game.getPlayerWhosTurnItIs()).name());
+					if (Player.getGetOutOfJailChance(player) == true) {
+						System.out.println(Player.getPiece(player).name() + ", you will be giving away a Chance card");
+						Player.setGetOutOfJailChance(Game.getPlayerWhosTurnItIs(), true);
+						Player.setGetOutOfJailChance(player, false);
+					}
+					else if (Player.getGetOutOfJailChest(player) == true) {
+						System.out.println(Player.getPiece(player).name() + ", you will be giving away a Community Chest card");
+						Player.setGetOutOfJailChest(Game.getPlayerWhosTurnItIs(), true);
+						Player.setGetOutOfJailChest(player, false);
+					}
+				} else if (playersJailCard == false && currentJailCard == true) {
+					System.out.println("Excellent! " + Player.getPiece(Game.getPlayerWhosTurnItIs()).name() + " can trade with " + Player.getPiece(player).name());
+					if (Player.getGetOutOfJailChance(Game.getPlayerWhosTurnItIs()) == true) {
+						System.out.println(Player.getPiece(Game.getPlayerWhosTurnItIs()).name() + ", you will be giving away a Chance card");
+						Player.setGetOutOfJailChance(player, true);
+						Player.setGetOutOfJailChance(Game.getPlayerWhosTurnItIs(), false);
+					}
+				  else if (Player.getGetOutOfJailChest(Game.getPlayerWhosTurnItIs())) {
+						System.out.println(Player.getPiece(Game.getPlayerWhosTurnItIs()).name() + ", you will be giving away a Community Chest card");
+						Player.setGetOutOfJailChest(player, true);
+						Player.setGetOutOfJailChest(Game.getPlayerWhosTurnItIs(), true);
+					}
+				} else if (playersJailCard == true && currentJailCard == true) {
+					System.out.println("Excellent! Both players are able to trade. Which seems kinda useless, but eh.");
+					if (Player.getGetOutOfJailChance(player) == true) {
+						System.out.println(Player.getPiece(player).name() + ", you will be giving away a Chance card");
+						Player.setGetOutOfJailChance(Game.getPlayerWhosTurnItIs(), true);
+						Player.setGetOutOfJailChance(player, false);
+					}
+					else if (Player.getGetOutOfJailChest(player) == true) {
+						System.out.println(Player.getPiece(player).name() + ", you will be giving away a Community Chest card");
+						Player.setGetOutOfJailChest(Game.getPlayerWhosTurnItIs(), true);
+						Player.setGetOutOfJailChest(player, false);
+					}
+					else if (Player.getGetOutOfJailChance(Game.getPlayerWhosTurnItIs()) == true) {
+						System.out.println(Player.getPiece(Game.getPlayerWhosTurnItIs()).name() + ", you will be giving away a Chance card");
+						Player.setGetOutOfJailChance(player, true);
+						Player.setGetOutOfJailChance(Game.getPlayerWhosTurnItIs(), false);
+					}
+					else if (Player.getGetOutOfJailChest(Game.getPlayerWhosTurnItIs())) {
+						System.out.println(Player.getPiece(Game.getPlayerWhosTurnItIs()).name() + ", you will be giving away a Community Chest card");
+						Player.setGetOutOfJailChest(player, true);
+						Player.setGetOutOfJailChest(Game.getPlayerWhosTurnItIs(), true);
+					}
+				}
+				//Jail
+				
 			}
 		}
 
