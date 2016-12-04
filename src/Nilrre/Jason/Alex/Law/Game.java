@@ -63,7 +63,7 @@ public class Game {
 		do {
 			for (int i = 1; i <= amountOfPlayers; i++) {
 				if (players.size() == 1) {
-					System.out.println("Congrats " + players.get(0).toString() + ". You Won!");
+					System.out.println("Congrats " + Player.getPiece(players.get(0)) + ". You Won!");
 					noOneHasWon = false;
 				} else if (i == 1 && players.contains(one)) {
 					turn(one);
@@ -202,26 +202,32 @@ public class Game {
 
 	public static void turn(Player play) throws IOException {
 		Player.setMyTurn(play, true);
-		System.out.println(Player.getPiece(play) + "'s turn.");
-		String[] options = new String[] { "1: Roll", "2: Buy Houses or Hotels", "3: Trade with another Player",
-				"4: Unmortgage", "5: Quit Playing Game" };
-		int turnSelect = ConsoleUI.promptForMenuSelection(options, false);
-		if (turnSelect == 1) {
-			Player.roll(play);
-		} else if (turnSelect == 2) {
-			Player.buyHousesOrHotel();
-		} else if (turnSelect == 3) {
-			Player.trade(play);
-		} else if (turnSelect == 4) {
-			Player.unmortgage(play);
-		} else if (turnSelect == 5) {
-			for(int i = 0; i < Player.getland(play).size(); i++){
-				Auction.startAuction(Player.getland(play).get(i));
+		boolean valid;
+		do {
+			valid = true;
+			System.out.println(Player.getPiece(play) + "'s turn.");
+			String[] options = new String[] { "1: Roll", "2: Buy Houses or Hotels", "3: Trade with another Player",
+					"4: Unmortgage", "5: Quit Playing Game" };
+			int turnSelect = ConsoleUI.promptForMenuSelection(options, false);
+			if (turnSelect == 1) {
+				Player.roll(play);
+			} else if (turnSelect == 2) {
+				Player.buyHousesOrHotel();
+			} else if (turnSelect == 3) {
+				Player.trade(play);
+			} else if (turnSelect == 4) {
+				Player.unmortgage(play);
+			} else if (turnSelect == 5) {
+				for (int i = 0; i < Player.getland(play).size(); i++) {
+					Auction.startAuction(Player.getland(play).get(i));
+				}
+				Player.getland(play).clear();
+				players.remove(play);
+				Player.setPlayingGame(play, false);
+			} else {
+				valid = false;
 			}
-			Player.getland(play).clear();
-			players.remove(play);
-			Player.setPlayingGame(play, false);
-		}
+		} while (!valid);
 		Player.setMyTurn(play, false);
-	} 
+	}
 }
